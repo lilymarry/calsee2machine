@@ -1,0 +1,826 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 51;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3DD0C1A11E0F562370B41D69 /* libPods-Calsee2qdsme.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E42917C439AC511F71615F06 /* libPods-Calsee2qdsme.a */; };
+		8848946324EF78EF00C13783 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8848946124EF78EF00C13783 /* MainViewController.m */; };
+		8848946424EF78EF00C13783 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8848946224EF78EF00C13783 /* MainViewController.xib */; };
+		8848947124EF946000C13783 /* PlayViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 8848946F24EF945F00C13783 /* PlayViewController1.m */; };
+		8848947224EF946000C13783 /* PlayViewController1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8848947024EF945F00C13783 /* PlayViewController1.xib */; };
+		8848947A24EFC1D400C13783 /* CameraPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8848947824EFC1D300C13783 /* CameraPushViewController.m */; };
+		8848947B24EFC1D400C13783 /* CameraPushViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8848947924EFC1D400C13783 /* CameraPushViewController.xib */; };
+		8848947E24EFC8B400C13783 /* HelpCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 8848947D24EFC8B300C13783 /* HelpCommon.m */; };
+		888F8F7F24F4F3C50086A446 /* WKWebView-WKScriptMessageHandler.html in Resources */ = {isa = PBXBuildFile; fileRef = 888F8F7E24F4F3C50086A446 /* WKWebView-WKScriptMessageHandler.html */; };
+		88D297AB24F6293A006AE927 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297AA24F6293A006AE927 /* libz.tbd */; };
+		88D297AD24F62953006AE927 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297AC24F62953006AE927 /* libresolv.tbd */; };
+		88D297AF24F6295E006AE927 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297AE24F6295E006AE927 /* CoreTelephony.framework */; };
+		88D297B124F62969006AE927 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297B024F62969006AE927 /* SystemConfiguration.framework */; };
+		88D297B324F6297C006AE927 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297B224F6297C006AE927 /* libsqlite3.tbd */; };
+		88D297B524F63286006AE927 /* aliyun in Resources */ = {isa = PBXBuildFile; fileRef = 88D297B424F63285006AE927 /* aliyun */; };
+		88D297B724F639B4006AE927 /* AliyunEmasServices-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88D297B624F639B4006AE927 /* AliyunEmasServices-Info.plist */; };
+		88EFD46C24EE2B4F0018A6D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD46B24EE2B4F0018A6D1 /* AppDelegate.m */; };
+		88EFD47224EE2B4F0018A6D1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD47124EE2B4F0018A6D1 /* ViewController.m */; };
+		88EFD47524EE2B4F0018A6D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88EFD47324EE2B4F0018A6D1 /* Main.storyboard */; };
+		88EFD47724EE2B520018A6D1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 88EFD47624EE2B520018A6D1 /* Assets.xcassets */; };
+		88EFD47A24EE2B520018A6D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88EFD47824EE2B520018A6D1 /* LaunchScreen.storyboard */; };
+		88EFD47D24EE2B520018A6D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD47C24EE2B520018A6D1 /* main.m */; };
+		88EFD48724EE2B520018A6D1 /* Calsee2qdsmeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD48624EE2B520018A6D1 /* Calsee2qdsmeTests.m */; };
+		88EFD49224EE2B520018A6D1 /* Calsee2qdsmeUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD49124EE2B520018A6D1 /* Calsee2qdsmeUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		88EFD48324EE2B520018A6D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 88EFD45F24EE2B4F0018A6D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 88EFD46624EE2B4F0018A6D1;
+			remoteInfo = Calsee2qdsme;
+		};
+		88EFD48E24EE2B520018A6D1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 88EFD45F24EE2B4F0018A6D1 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 88EFD46624EE2B4F0018A6D1;
+			remoteInfo = Calsee2qdsme;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8848946024EF78EF00C13783 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
+		8848946124EF78EF00C13783 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
+		8848946224EF78EF00C13783 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
+		8848946524EF7CEC00C13783 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		8848946E24EF945F00C13783 /* PlayViewController1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayViewController1.h; sourceTree = "<group>"; };
+		8848946F24EF945F00C13783 /* PlayViewController1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayViewController1.m; sourceTree = "<group>"; };
+		8848947024EF945F00C13783 /* PlayViewController1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayViewController1.xib; sourceTree = "<group>"; };
+		8848947724EFC1D300C13783 /* CameraPushViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraPushViewController.h; sourceTree = "<group>"; };
+		8848947824EFC1D300C13783 /* CameraPushViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraPushViewController.m; sourceTree = "<group>"; };
+		8848947924EFC1D400C13783 /* CameraPushViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraPushViewController.xib; sourceTree = "<group>"; };
+		8848947C24EFC8B300C13783 /* HelpCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpCommon.h; sourceTree = "<group>"; };
+		8848947D24EFC8B300C13783 /* HelpCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpCommon.m; sourceTree = "<group>"; };
+		888F8F7E24F4F3C50086A446 /* WKWebView-WKScriptMessageHandler.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "WKWebView-WKScriptMessageHandler.html"; sourceTree = "<group>"; };
+		88D297AA24F6293A006AE927 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		88D297AC24F62953006AE927 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		88D297AE24F6295E006AE927 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		88D297B024F62969006AE927 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		88D297B224F6297C006AE927 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		88D297B424F63285006AE927 /* aliyun */ = {isa = PBXFileReference; lastKnownFileType = folder; path = aliyun; sourceTree = "<group>"; };
+		88D297B624F639B4006AE927 /* AliyunEmasServices-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AliyunEmasServices-Info.plist"; sourceTree = "<group>"; };
+		88D297B824F64C5F006AE927 /* 机床工具云展览.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "机床工具云展览.entitlements"; sourceTree = "<group>"; };
+		88EFD46724EE2B4F0018A6D1 /* 机床工具云展览.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "机床工具云展览.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88EFD46A24EE2B4F0018A6D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		88EFD46B24EE2B4F0018A6D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		88EFD47024EE2B4F0018A6D1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		88EFD47124EE2B4F0018A6D1 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		88EFD47424EE2B4F0018A6D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		88EFD47624EE2B520018A6D1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		88EFD47924EE2B520018A6D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		88EFD47B24EE2B520018A6D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88EFD47C24EE2B520018A6D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		88EFD48224EE2B520018A6D1 /* Calsee2qdsmeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Calsee2qdsmeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		88EFD48624EE2B520018A6D1 /* Calsee2qdsmeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Calsee2qdsmeTests.m; sourceTree = "<group>"; };
+		88EFD48824EE2B520018A6D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		88EFD48D24EE2B520018A6D1 /* Calsee2qdsmeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Calsee2qdsmeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		88EFD49124EE2B520018A6D1 /* Calsee2qdsmeUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Calsee2qdsmeUITests.m; sourceTree = "<group>"; };
+		88EFD49324EE2B520018A6D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8A0C0DB039C5EAE881C1C46D /* Pods-Calsee2qdsme.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calsee2qdsme.release.xcconfig"; path = "Target Support Files/Pods-Calsee2qdsme/Pods-Calsee2qdsme.release.xcconfig"; sourceTree = "<group>"; };
+		C8418D97ED265A8F133E3147 /* Pods-Calsee2qdsme.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Calsee2qdsme.debug.xcconfig"; path = "Target Support Files/Pods-Calsee2qdsme/Pods-Calsee2qdsme.debug.xcconfig"; sourceTree = "<group>"; };
+		E42917C439AC511F71615F06 /* libPods-Calsee2qdsme.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Calsee2qdsme.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		88EFD46424EE2B4F0018A6D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88D297B324F6297C006AE927 /* libsqlite3.tbd in Frameworks */,
+				88D297B124F62969006AE927 /* SystemConfiguration.framework in Frameworks */,
+				88D297AF24F6295E006AE927 /* CoreTelephony.framework in Frameworks */,
+				88D297AD24F62953006AE927 /* libresolv.tbd in Frameworks */,
+				88D297AB24F6293A006AE927 /* libz.tbd in Frameworks */,
+				3DD0C1A11E0F562370B41D69 /* libPods-Calsee2qdsme.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88EFD47F24EE2B520018A6D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88EFD48A24EE2B520018A6D1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		88EFD45E24EE2B4F0018A6D1 = {
+			isa = PBXGroup;
+			children = (
+				88EFD46924EE2B4F0018A6D1 /* Calsee2qdsme */,
+				88EFD48524EE2B520018A6D1 /* Calsee2qdsmeTests */,
+				88EFD49024EE2B520018A6D1 /* Calsee2qdsmeUITests */,
+				88EFD46824EE2B4F0018A6D1 /* Products */,
+				B0D40914C87E6A0944BC4D39 /* Pods */,
+				90672F34DAFCDEE9C9661136 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		88EFD46824EE2B4F0018A6D1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				88EFD46724EE2B4F0018A6D1 /* 机床工具云展览.app */,
+				88EFD48224EE2B520018A6D1 /* Calsee2qdsmeTests.xctest */,
+				88EFD48D24EE2B520018A6D1 /* Calsee2qdsmeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		88EFD46924EE2B4F0018A6D1 /* Calsee2qdsme */ = {
+			isa = PBXGroup;
+			children = (
+				88D297B824F64C5F006AE927 /* 机床工具云展览.entitlements */,
+				88D297B424F63285006AE927 /* aliyun */,
+				88EFD46A24EE2B4F0018A6D1 /* AppDelegate.h */,
+				88EFD46B24EE2B4F0018A6D1 /* AppDelegate.m */,
+				88D297B624F639B4006AE927 /* AliyunEmasServices-Info.plist */,
+				8848946524EF7CEC00C13783 /* PrefixHeader.pch */,
+				8848946024EF78EF00C13783 /* MainViewController.h */,
+				8848946124EF78EF00C13783 /* MainViewController.m */,
+				8848946224EF78EF00C13783 /* MainViewController.xib */,
+				8848946E24EF945F00C13783 /* PlayViewController1.h */,
+				8848946F24EF945F00C13783 /* PlayViewController1.m */,
+				8848947024EF945F00C13783 /* PlayViewController1.xib */,
+				8848947724EFC1D300C13783 /* CameraPushViewController.h */,
+				8848947824EFC1D300C13783 /* CameraPushViewController.m */,
+				8848947924EFC1D400C13783 /* CameraPushViewController.xib */,
+				88EFD47024EE2B4F0018A6D1 /* ViewController.h */,
+				88EFD47124EE2B4F0018A6D1 /* ViewController.m */,
+				88EFD47324EE2B4F0018A6D1 /* Main.storyboard */,
+				8848947C24EFC8B300C13783 /* HelpCommon.h */,
+				8848947D24EFC8B300C13783 /* HelpCommon.m */,
+				888F8F7E24F4F3C50086A446 /* WKWebView-WKScriptMessageHandler.html */,
+				88EFD47624EE2B520018A6D1 /* Assets.xcassets */,
+				88EFD47824EE2B520018A6D1 /* LaunchScreen.storyboard */,
+				88EFD47B24EE2B520018A6D1 /* Info.plist */,
+				88EFD47C24EE2B520018A6D1 /* main.m */,
+			);
+			path = Calsee2qdsme;
+			sourceTree = "<group>";
+		};
+		88EFD48524EE2B520018A6D1 /* Calsee2qdsmeTests */ = {
+			isa = PBXGroup;
+			children = (
+				88EFD48624EE2B520018A6D1 /* Calsee2qdsmeTests.m */,
+				88EFD48824EE2B520018A6D1 /* Info.plist */,
+			);
+			path = Calsee2qdsmeTests;
+			sourceTree = "<group>";
+		};
+		88EFD49024EE2B520018A6D1 /* Calsee2qdsmeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				88EFD49124EE2B520018A6D1 /* Calsee2qdsmeUITests.m */,
+				88EFD49324EE2B520018A6D1 /* Info.plist */,
+			);
+			path = Calsee2qdsmeUITests;
+			sourceTree = "<group>";
+		};
+		90672F34DAFCDEE9C9661136 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				88D297B224F6297C006AE927 /* libsqlite3.tbd */,
+				88D297B024F62969006AE927 /* SystemConfiguration.framework */,
+				88D297AE24F6295E006AE927 /* CoreTelephony.framework */,
+				88D297AC24F62953006AE927 /* libresolv.tbd */,
+				88D297AA24F6293A006AE927 /* libz.tbd */,
+				E42917C439AC511F71615F06 /* libPods-Calsee2qdsme.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B0D40914C87E6A0944BC4D39 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C8418D97ED265A8F133E3147 /* Pods-Calsee2qdsme.debug.xcconfig */,
+				8A0C0DB039C5EAE881C1C46D /* Pods-Calsee2qdsme.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		88EFD46624EE2B4F0018A6D1 /* Calsee2qdsme */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88EFD49624EE2B520018A6D1 /* Build configuration list for PBXNativeTarget "Calsee2qdsme" */;
+			buildPhases = (
+				A9D35B625913BF8C04B04117 /* [CP] Check Pods Manifest.lock */,
+				88EFD46324EE2B4F0018A6D1 /* Sources */,
+				88EFD46424EE2B4F0018A6D1 /* Frameworks */,
+				88EFD46524EE2B4F0018A6D1 /* Resources */,
+				B98030B9593FD18E60435053 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Calsee2qdsme;
+			productName = Calsee2qdsme;
+			productReference = 88EFD46724EE2B4F0018A6D1 /* 机床工具云展览.app */;
+			productType = "com.apple.product-type.application";
+		};
+		88EFD48124EE2B520018A6D1 /* Calsee2qdsmeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88EFD49924EE2B520018A6D1 /* Build configuration list for PBXNativeTarget "Calsee2qdsmeTests" */;
+			buildPhases = (
+				88EFD47E24EE2B520018A6D1 /* Sources */,
+				88EFD47F24EE2B520018A6D1 /* Frameworks */,
+				88EFD48024EE2B520018A6D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				88EFD48424EE2B520018A6D1 /* PBXTargetDependency */,
+			);
+			name = Calsee2qdsmeTests;
+			productName = Calsee2qdsmeTests;
+			productReference = 88EFD48224EE2B520018A6D1 /* Calsee2qdsmeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		88EFD48C24EE2B520018A6D1 /* Calsee2qdsmeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 88EFD49C24EE2B520018A6D1 /* Build configuration list for PBXNativeTarget "Calsee2qdsmeUITests" */;
+			buildPhases = (
+				88EFD48924EE2B520018A6D1 /* Sources */,
+				88EFD48A24EE2B520018A6D1 /* Frameworks */,
+				88EFD48B24EE2B520018A6D1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				88EFD48F24EE2B520018A6D1 /* PBXTargetDependency */,
+			);
+			name = Calsee2qdsmeUITests;
+			productName = Calsee2qdsmeUITests;
+			productReference = 88EFD48D24EE2B520018A6D1 /* Calsee2qdsmeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		88EFD45F24EE2B4F0018A6D1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1160;
+				ORGANIZATIONNAME = SCHENK;
+				TargetAttributes = {
+					88EFD46624EE2B4F0018A6D1 = {
+						CreatedOnToolsVersion = 11.6;
+					};
+					88EFD48124EE2B520018A6D1 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = 88EFD46624EE2B4F0018A6D1;
+					};
+					88EFD48C24EE2B520018A6D1 = {
+						CreatedOnToolsVersion = 11.6;
+						TestTargetID = 88EFD46624EE2B4F0018A6D1;
+					};
+				};
+			};
+			buildConfigurationList = 88EFD46224EE2B4F0018A6D1 /* Build configuration list for PBXProject "Calsee2qdsme" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 88EFD45E24EE2B4F0018A6D1;
+			productRefGroup = 88EFD46824EE2B4F0018A6D1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				88EFD46624EE2B4F0018A6D1 /* Calsee2qdsme */,
+				88EFD48124EE2B520018A6D1 /* Calsee2qdsmeTests */,
+				88EFD48C24EE2B520018A6D1 /* Calsee2qdsmeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		88EFD46524EE2B4F0018A6D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88D297B524F63286006AE927 /* aliyun in Resources */,
+				88EFD47A24EE2B520018A6D1 /* LaunchScreen.storyboard in Resources */,
+				8848947B24EFC1D400C13783 /* CameraPushViewController.xib in Resources */,
+				88EFD47724EE2B520018A6D1 /* Assets.xcassets in Resources */,
+				8848947224EF946000C13783 /* PlayViewController1.xib in Resources */,
+				888F8F7F24F4F3C50086A446 /* WKWebView-WKScriptMessageHandler.html in Resources */,
+				88D297B724F639B4006AE927 /* AliyunEmasServices-Info.plist in Resources */,
+				88EFD47524EE2B4F0018A6D1 /* Main.storyboard in Resources */,
+				8848946424EF78EF00C13783 /* MainViewController.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88EFD48024EE2B520018A6D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88EFD48B24EE2B520018A6D1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A9D35B625913BF8C04B04117 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Calsee2qdsme-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B98030B9593FD18E60435053 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Calsee2qdsme/Pods-Calsee2qdsme-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Calsee2qdsme/Pods-Calsee2qdsme-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Calsee2qdsme/Pods-Calsee2qdsme-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		88EFD46324EE2B4F0018A6D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88EFD47224EE2B4F0018A6D1 /* ViewController.m in Sources */,
+				8848947A24EFC1D400C13783 /* CameraPushViewController.m in Sources */,
+				88EFD46C24EE2B4F0018A6D1 /* AppDelegate.m in Sources */,
+				88EFD47D24EE2B520018A6D1 /* main.m in Sources */,
+				8848947E24EFC8B400C13783 /* HelpCommon.m in Sources */,
+				8848947124EF946000C13783 /* PlayViewController1.m in Sources */,
+				8848946324EF78EF00C13783 /* MainViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88EFD47E24EE2B520018A6D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88EFD48724EE2B520018A6D1 /* Calsee2qdsmeTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		88EFD48924EE2B520018A6D1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				88EFD49224EE2B520018A6D1 /* Calsee2qdsmeUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		88EFD48424EE2B520018A6D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 88EFD46624EE2B4F0018A6D1 /* Calsee2qdsme */;
+			targetProxy = 88EFD48324EE2B520018A6D1 /* PBXContainerItemProxy */;
+		};
+		88EFD48F24EE2B520018A6D1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 88EFD46624EE2B4F0018A6D1 /* Calsee2qdsme */;
+			targetProxy = 88EFD48E24EE2B520018A6D1 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		88EFD47324EE2B4F0018A6D1 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88EFD47424EE2B4F0018A6D1 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		88EFD47824EE2B520018A6D1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				88EFD47924EE2B520018A6D1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		88EFD49424EE2B520018A6D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		88EFD49524EE2B520018A6D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		88EFD49724EE2B520018A6D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C8418D97ED265A8F133E3147 /* Pods-Calsee2qdsme.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Calsee2qdsme/机床工具云展览.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 5W969USCV9;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/TXLiteAVSDK_Professional/TXLiteAVSDK_Professional\"",
+					"$(PROJECT_DIR)/Calsee2qdsme/aliyun",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Calsee2qdsme/PrefixHeader.pch";
+				INFOPLIST_FILE = Calsee2qdsme/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"MBProgressHUD-YF\"",
+					"-l\"MJExtension\"",
+					"-l\"MJRefresh\"",
+					"-l\"Masonry\"",
+					"-l\"SDWebImage\"",
+					"-l\"c++\"",
+					"-l\"iconv\"",
+					"-l\"resolv\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"OpenAL\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"TXLiteAVSDK_Professional\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"VideoToolbox\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.calsee2machine;
+				PRODUCT_NAME = "机床工具云展览";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		88EFD49824EE2B520018A6D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8A0C0DB039C5EAE881C1C46D /* Pods-Calsee2qdsme.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Calsee2qdsme/机床工具云展览.entitlements";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1.0.3;
+				DEVELOPMENT_TEAM = 5W969USCV9;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/TXLiteAVSDK_Professional/TXLiteAVSDK_Professional\"",
+					"$(PROJECT_DIR)/Calsee2qdsme/aliyun",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Calsee2qdsme/PrefixHeader.pch";
+				INFOPLIST_FILE = Calsee2qdsme/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-ObjC",
+					"-l\"AFNetworking\"",
+					"-l\"MBProgressHUD-YF\"",
+					"-l\"MJExtension\"",
+					"-l\"MJRefresh\"",
+					"-l\"Masonry\"",
+					"-l\"SDWebImage\"",
+					"-l\"c++\"",
+					"-l\"iconv\"",
+					"-l\"resolv\"",
+					"-l\"sqlite3\"",
+					"-l\"z\"",
+					"-framework",
+					"\"AVFoundation\"",
+					"-framework",
+					"\"Accelerate\"",
+					"-framework",
+					"\"CoreGraphics\"",
+					"-framework",
+					"\"CoreTelephony\"",
+					"-framework",
+					"\"Foundation\"",
+					"-framework",
+					"\"ImageIO\"",
+					"-framework",
+					"\"OpenAL\"",
+					"-framework",
+					"\"QuartzCore\"",
+					"-framework",
+					"\"SystemConfiguration\"",
+					"-framework",
+					"\"TXLiteAVSDK_Professional\"",
+					"-framework",
+					"\"UIKit\"",
+					"-framework",
+					"\"VideoToolbox\"",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.calsee2machine;
+				PRODUCT_NAME = "机床工具云展览";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+		88EFD49A24EE2B520018A6D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Calsee2qdsmeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = schenk.Calsee2qdsmeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calsee2qdsme.app/Calsee2qdsme";
+			};
+			name = Debug;
+		};
+		88EFD49B24EE2B520018A6D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Calsee2qdsmeTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = schenk.Calsee2qdsmeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Calsee2qdsme.app/Calsee2qdsme";
+			};
+			name = Release;
+		};
+		88EFD49D24EE2B520018A6D1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Calsee2qdsmeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = schenk.Calsee2qdsmeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Calsee2qdsme;
+			};
+			name = Debug;
+		};
+		88EFD49E24EE2B520018A6D1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = Calsee2qdsmeUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = schenk.Calsee2qdsmeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Calsee2qdsme;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		88EFD46224EE2B4F0018A6D1 /* Build configuration list for PBXProject "Calsee2qdsme" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88EFD49424EE2B520018A6D1 /* Debug */,
+				88EFD49524EE2B520018A6D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88EFD49624EE2B520018A6D1 /* Build configuration list for PBXNativeTarget "Calsee2qdsme" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88EFD49724EE2B520018A6D1 /* Debug */,
+				88EFD49824EE2B520018A6D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88EFD49924EE2B520018A6D1 /* Build configuration list for PBXNativeTarget "Calsee2qdsmeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88EFD49A24EE2B520018A6D1 /* Debug */,
+				88EFD49B24EE2B520018A6D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		88EFD49C24EE2B520018A6D1 /* Build configuration list for PBXNativeTarget "Calsee2qdsmeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				88EFD49D24EE2B520018A6D1 /* Debug */,
+				88EFD49E24EE2B520018A6D1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 88EFD45F24EE2B4F0018A6D1 /* Project object */;
+}
