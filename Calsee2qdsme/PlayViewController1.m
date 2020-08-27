@@ -34,28 +34,25 @@
     [_player setConfig:config];
     
     
-    CGRect videoFrame = self.view.bounds;
-    _videoView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, videoFrame.size.width, 200)];
-    _videoView.backgroundColor=[UIColor yellowColor];
+ //   CGRect videoFrame = self.view.bounds;
+    _videoView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, ScreenW, ScreenW*2/3)];
+    _videoView.backgroundColor=[UIColor lightGrayColor];
     [self.view addSubview:_videoView];
     
     self.playUrl = @"http://liteavapp.qcloud.com/live/liteavdemoplayerstreamid.flv";
     
-  
+      if (![self startPlay]) {
+                 return;
+             }
+    
     
 }
 - (void)viewDidDisappear:(BOOL)animated{
     [self stopPlay];
 }
-- (IBAction)playPress:(id)sender {
-
-    if (![self startPlay]) {
-               return;
-           }
-}
 - (BOOL)startPlay {
-      CGRect frame = CGRectMake(self.view.bounds.size.width, 0, self.view.bounds.size.width, self.view.bounds.size.height);
-         _videoView.frame = frame;
+   //  CGRect frame = CGRectMake(self.view.bounds.size.width, 0, self.view.bounds.size.width, self.view.bounds.size.height);
+   //   _videoView.frame = frame;
         
          
          NSString *playUrl =  self.playUrl;
@@ -65,17 +62,17 @@
          }
          
          [_player setDelegate:self];
-         [_player setupVideoWidget:CGRectZero containView:_videoView insertIndex:0];
+         [_player setupVideoWidget:CGRectMake(0, 64, ScreenW, ScreenW*2/3) containView:_videoView insertIndex:0];
          
          
          int ret = [_player startPlay:playUrl type:_playType];
          
-         frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
-         [UIView animateWithDuration:0.4 animations:^{
-             _videoView.frame = CGRectMake(0, 0, self.view.bounds.size.width, 200);
-         } completion:^(BOOL finished) {
-           //  [self.view addSubview:_loadingImageView];
-         }];
+//         frame = CGRectMake(0, 64, ScreenW, ScreenW*2/3);
+//         [UIView animateWithDuration:0.4 animations:^{
+//             _videoView.frame =  CGRectMake(0, 64, ScreenW, ScreenW*2/3);
+//         } completion:^(BOOL finished) {
+//
+//         }];
 
          if (ret != 0) {
              NSLog(@"播放器启动失败");
