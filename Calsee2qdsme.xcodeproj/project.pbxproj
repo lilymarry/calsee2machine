@@ -15,7 +15,6 @@
 		8848947A24EFC1D400C13783 /* CameraPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8848947824EFC1D300C13783 /* CameraPushViewController.m */; };
 		8848947B24EFC1D400C13783 /* CameraPushViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8848947924EFC1D400C13783 /* CameraPushViewController.xib */; };
 		8848947E24EFC8B400C13783 /* HelpCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 8848947D24EFC8B300C13783 /* HelpCommon.m */; };
-		888F8F7F24F4F3C50086A446 /* WKWebView-WKScriptMessageHandler.html in Resources */ = {isa = PBXBuildFile; fileRef = 888F8F7E24F4F3C50086A446 /* WKWebView-WKScriptMessageHandler.html */; };
 		88D297AB24F6293A006AE927 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297AA24F6293A006AE927 /* libz.tbd */; };
 		88D297AD24F62953006AE927 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297AC24F62953006AE927 /* libresolv.tbd */; };
 		88D297AF24F6295E006AE927 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297AE24F6295E006AE927 /* CoreTelephony.framework */; };
@@ -63,7 +62,6 @@
 		8848947924EFC1D400C13783 /* CameraPushViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraPushViewController.xib; sourceTree = "<group>"; };
 		8848947C24EFC8B300C13783 /* HelpCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpCommon.h; sourceTree = "<group>"; };
 		8848947D24EFC8B300C13783 /* HelpCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpCommon.m; sourceTree = "<group>"; };
-		888F8F7E24F4F3C50086A446 /* WKWebView-WKScriptMessageHandler.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "WKWebView-WKScriptMessageHandler.html"; sourceTree = "<group>"; };
 		88D297AA24F6293A006AE927 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		88D297AC24F62953006AE927 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		88D297AE24F6295E006AE927 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -169,7 +167,6 @@
 				88EFD47324EE2B4F0018A6D1 /* Main.storyboard */,
 				8848947C24EFC8B300C13783 /* HelpCommon.h */,
 				8848947D24EFC8B300C13783 /* HelpCommon.m */,
-				888F8F7E24F4F3C50086A446 /* WKWebView-WKScriptMessageHandler.html */,
 				88EFD47624EE2B520018A6D1 /* Assets.xcassets */,
 				88EFD47824EE2B520018A6D1 /* LaunchScreen.storyboard */,
 				88EFD47B24EE2B520018A6D1 /* Info.plist */,
@@ -328,7 +325,6 @@
 				8848947B24EFC1D400C13783 /* CameraPushViewController.xib in Resources */,
 				88EFD47724EE2B520018A6D1 /* Assets.xcassets in Resources */,
 				8848947224EF946000C13783 /* PlayViewController1.xib in Resources */,
-				888F8F7F24F4F3C50086A446 /* WKWebView-WKScriptMessageHandler.html in Resources */,
 				88D297B724F639B4006AE927 /* AliyunEmasServices-Info.plist in Resources */,
 				88EFD47524EE2B4F0018A6D1 /* Main.storyboard in Resources */,
 				8848946424EF78EF00C13783 /* MainViewController.xib in Resources */,
