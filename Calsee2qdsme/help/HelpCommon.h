@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import <UIKit/UIKit.h>
 NS_ASSUME_NONNULL_BEGIN
 
 @interface HelpCommon : NSObject
@@ -22,6 +22,8 @@ NS_ASSUME_NONNULL_BEGIN
 +(NSString*)ArrToJSONString:(NSArray  *)arr;
 //字典转json
 +(NSString*)dicToJSONString:(NSDictionary  *)arr;
+
++ (UIColor *)colorWithHexString: (NSString *) stringToConvert;
 //#pragma mark 图片压缩
 //+(UIImage *)zipImage:(UIImage *)image;
 ////压缩图片为指定大小

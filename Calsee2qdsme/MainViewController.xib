@@ -19,11 +19,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZRz-sc-S9r">
-                    <rect key="frame" x="121" y="143" width="46" height="30"/>
+                    <rect key="frame" x="129" y="75" width="46" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Button"/>
                     <connections>
                         <action selector="playPress:" destination="-1" eventType="touchUpInside" id="r5M-M2-MQh"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8S-7l-ahN">
+                    <rect key="frame" x="121" y="144" width="62" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="观看直播"/>
+                    <connections>
+                        <action selector="watchLivePress:" destination="-1" eventType="touchUpInside" id="CWc-1M-jO5"/>
                     </connections>
                 </button>
             </subviews>

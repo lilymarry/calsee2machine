@@ -8,10 +8,22 @@
 
 /* Begin PBXBuildFile section */
 		3DD0C1A11E0F562370B41D69 /* libPods-Calsee2qdsme.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E42917C439AC511F71615F06 /* libPods-Calsee2qdsme.a */; };
+		883924D824F8D9A400C34F20 /* PlayedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883924D724F8D9A400C34F20 /* PlayedViewController.m */; };
+		8839B7E924F777B20051B7EC /* WatchLivePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8839B7E724F777B20051B7EC /* WatchLivePlayViewController.m */; };
+		8839B7F124F79ED10051B7EC /* WatchLivePlayDiscussCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 8839B7F024F79ED10051B7EC /* WatchLivePlayDiscussCell.m */; };
+		883ABE6C24FC7DFB00F30C03 /* ReportReasonView.m in Sources */ = {isa = PBXBuildFile; fileRef = 883ABE6A24FC7DFB00F30C03 /* ReportReasonView.m */; };
+		883ABE6D24FC7DFB00F30C03 /* ReportReasonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 883ABE6B24FC7DFB00F30C03 /* ReportReasonView.xib */; };
+		883ABEA224FCAB9900F30C03 /* BaseAFNetworkingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 883ABEA024FCAB9900F30C03 /* BaseAFNetworkingManager.m */; };
+		883ABEA324FCAB9900F30C03 /* HttpManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 883ABEA124FCAB9900F30C03 /* HttpManager.m */; };
+		883ABEA624FCABF100F30C03 /* InRoomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 883ABEA524FCABF100F30C03 /* InRoomModel.m */; };
+		883ABEA924FCAC4000F30C03 /* CollectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 883ABEA824FCAC4000F30C03 /* CollectModel.m */; };
+		883ABEAF24FCBD9B00F30C03 /* LiveUserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 883ABEAE24FCBD9B00F30C03 /* LiveUserModel.m */; };
+		883ABEB224FCBFBA00F30C03 /* AccusationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 883ABEB124FCBFBA00F30C03 /* AccusationModel.m */; };
+		883ABEB524FCC0D000F30C03 /* LivechatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 883ABEB424FCC0D000F30C03 /* LivechatModel.m */; };
+		883ABEB824FCC23200F30C03 /* HasKeFuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 883ABEB724FCC23200F30C03 /* HasKeFuModel.m */; };
 		8848946324EF78EF00C13783 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8848946124EF78EF00C13783 /* MainViewController.m */; };
 		8848946424EF78EF00C13783 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8848946224EF78EF00C13783 /* MainViewController.xib */; };
 		8848947124EF946000C13783 /* PlayViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 8848946F24EF945F00C13783 /* PlayViewController1.m */; };
-		8848947224EF946000C13783 /* PlayViewController1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8848947024EF945F00C13783 /* PlayViewController1.xib */; };
 		8848947A24EFC1D400C13783 /* CameraPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8848947824EFC1D300C13783 /* CameraPushViewController.m */; };
 		8848947B24EFC1D400C13783 /* CameraPushViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8848947924EFC1D400C13783 /* CameraPushViewController.xib */; };
 		8848947E24EFC8B400C13783 /* HelpCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 8848947D24EFC8B300C13783 /* HelpCommon.m */; };
@@ -50,13 +62,38 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		883924D624F8D9A400C34F20 /* PlayedViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayedViewController.h; sourceTree = "<group>"; };
+		883924D724F8D9A400C34F20 /* PlayedViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayedViewController.m; sourceTree = "<group>"; };
+		8839B7E624F777B20051B7EC /* WatchLivePlayViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchLivePlayViewController.h; sourceTree = "<group>"; };
+		8839B7E724F777B20051B7EC /* WatchLivePlayViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchLivePlayViewController.m; sourceTree = "<group>"; };
+		8839B7EF24F79ED10051B7EC /* WatchLivePlayDiscussCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WatchLivePlayDiscussCell.h; sourceTree = "<group>"; };
+		8839B7F024F79ED10051B7EC /* WatchLivePlayDiscussCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WatchLivePlayDiscussCell.m; sourceTree = "<group>"; };
+		883ABE6924FC7DFB00F30C03 /* ReportReasonView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ReportReasonView.h; sourceTree = "<group>"; };
+		883ABE6A24FC7DFB00F30C03 /* ReportReasonView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ReportReasonView.m; sourceTree = "<group>"; };
+		883ABE6B24FC7DFB00F30C03 /* ReportReasonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportReasonView.xib; sourceTree = "<group>"; };
+		883ABE9D24FCAB9900F30C03 /* BaseAFNetworkingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseAFNetworkingManager.h; sourceTree = "<group>"; };
+		883ABE9E24FCAB9900F30C03 /* HttpManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpManager.h; sourceTree = "<group>"; };
+		883ABE9F24FCAB9900F30C03 /* HttpUrl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpUrl.h; sourceTree = "<group>"; };
+		883ABEA024FCAB9900F30C03 /* BaseAFNetworkingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseAFNetworkingManager.m; sourceTree = "<group>"; };
+		883ABEA124FCAB9900F30C03 /* HttpManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpManager.m; sourceTree = "<group>"; };
+		883ABEA424FCABF100F30C03 /* InRoomModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InRoomModel.h; sourceTree = "<group>"; };
+		883ABEA524FCABF100F30C03 /* InRoomModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InRoomModel.m; sourceTree = "<group>"; };
+		883ABEA724FCAC4000F30C03 /* CollectModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CollectModel.h; sourceTree = "<group>"; };
+		883ABEA824FCAC4000F30C03 /* CollectModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CollectModel.m; sourceTree = "<group>"; };
+		883ABEAD24FCBD9B00F30C03 /* LiveUserModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LiveUserModel.h; sourceTree = "<group>"; };
+		883ABEAE24FCBD9B00F30C03 /* LiveUserModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LiveUserModel.m; sourceTree = "<group>"; };
+		883ABEB024FCBFBA00F30C03 /* AccusationModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccusationModel.h; sourceTree = "<group>"; };
+		883ABEB124FCBFBA00F30C03 /* AccusationModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccusationModel.m; sourceTree = "<group>"; };
+		883ABEB324FCC0D000F30C03 /* LivechatModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LivechatModel.h; sourceTree = "<group>"; };
+		883ABEB424FCC0D000F30C03 /* LivechatModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LivechatModel.m; sourceTree = "<group>"; };
+		883ABEB624FCC23200F30C03 /* HasKeFuModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HasKeFuModel.h; sourceTree = "<group>"; };
+		883ABEB724FCC23200F30C03 /* HasKeFuModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HasKeFuModel.m; sourceTree = "<group>"; };
 		8848946024EF78EF00C13783 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		8848946124EF78EF00C13783 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		8848946224EF78EF00C13783 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
 		8848946524EF7CEC00C13783 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8848946E24EF945F00C13783 /* PlayViewController1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayViewController1.h; sourceTree = "<group>"; };
 		8848946F24EF945F00C13783 /* PlayViewController1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayViewController1.m; sourceTree = "<group>"; };
-		8848947024EF945F00C13783 /* PlayViewController1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PlayViewController1.xib; sourceTree = "<group>"; };
 		8848947724EFC1D300C13783 /* CameraPushViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraPushViewController.h; sourceTree = "<group>"; };
 		8848947824EFC1D300C13783 /* CameraPushViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraPushViewController.m; sourceTree = "<group>"; };
 		8848947924EFC1D400C13783 /* CameraPushViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraPushViewController.xib; sourceTree = "<group>"; };
@@ -122,6 +159,56 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		883ABEB924FCF1FC00F30C03 /* web */ = {
+			isa = PBXGroup;
+			children = (
+				883ABE9D24FCAB9900F30C03 /* BaseAFNetworkingManager.h */,
+				883ABEA024FCAB9900F30C03 /* BaseAFNetworkingManager.m */,
+				883ABE9E24FCAB9900F30C03 /* HttpManager.h */,
+				883ABEA124FCAB9900F30C03 /* HttpManager.m */,
+				883ABE9F24FCAB9900F30C03 /* HttpUrl.h */,
+			);
+			path = web;
+			sourceTree = "<group>";
+		};
+		883ABEBA24FCF24200F30C03 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				883ABEA424FCABF100F30C03 /* InRoomModel.h */,
+				883ABEA524FCABF100F30C03 /* InRoomModel.m */,
+				883ABEA724FCAC4000F30C03 /* CollectModel.h */,
+				883ABEA824FCAC4000F30C03 /* CollectModel.m */,
+				883ABEAD24FCBD9B00F30C03 /* LiveUserModel.h */,
+				883ABEAE24FCBD9B00F30C03 /* LiveUserModel.m */,
+				883ABEB024FCBFBA00F30C03 /* AccusationModel.h */,
+				883ABEB124FCBFBA00F30C03 /* AccusationModel.m */,
+				883ABEB324FCC0D000F30C03 /* LivechatModel.h */,
+				883ABEB424FCC0D000F30C03 /* LivechatModel.m */,
+				883ABEB624FCC23200F30C03 /* HasKeFuModel.h */,
+				883ABEB724FCC23200F30C03 /* HasKeFuModel.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		883ABEBC24FCF28700F30C03 /* help */ = {
+			isa = PBXGroup;
+			children = (
+				8848947C24EFC8B300C13783 /* HelpCommon.h */,
+				88D297B624F639B4006AE927 /* AliyunEmasServices-Info.plist */,
+				8848947D24EFC8B300C13783 /* HelpCommon.m */,
+				8848946524EF7CEC00C13783 /* PrefixHeader.pch */,
+			);
+			path = help;
+			sourceTree = "<group>";
+		};
+		883ABEBD24FCF2C000F30C03 /* 三方 */ = {
+			isa = PBXGroup;
+			children = (
+				88D297B424F63285006AE927 /* aliyun */,
+			);
+			path = "三方";
+			sourceTree = "<group>";
+		};
 		88EFD45E24EE2B4F0018A6D1 = {
 			isa = PBXGroup;
 			children = (
@@ -148,25 +235,32 @@
 			isa = PBXGroup;
 			children = (
 				88D297B824F64C5F006AE927 /* 机床工具云展览.entitlements */,
-				88D297B424F63285006AE927 /* aliyun */,
 				88EFD46A24EE2B4F0018A6D1 /* AppDelegate.h */,
 				88EFD46B24EE2B4F0018A6D1 /* AppDelegate.m */,
-				88D297B624F639B4006AE927 /* AliyunEmasServices-Info.plist */,
-				8848946524EF7CEC00C13783 /* PrefixHeader.pch */,
 				8848946024EF78EF00C13783 /* MainViewController.h */,
 				8848946124EF78EF00C13783 /* MainViewController.m */,
 				8848946224EF78EF00C13783 /* MainViewController.xib */,
+				883924D624F8D9A400C34F20 /* PlayedViewController.h */,
+				883924D724F8D9A400C34F20 /* PlayedViewController.m */,
 				8848946E24EF945F00C13783 /* PlayViewController1.h */,
 				8848946F24EF945F00C13783 /* PlayViewController1.m */,
-				8848947024EF945F00C13783 /* PlayViewController1.xib */,
+				8839B7E624F777B20051B7EC /* WatchLivePlayViewController.h */,
+				8839B7E724F777B20051B7EC /* WatchLivePlayViewController.m */,
+				883ABE6924FC7DFB00F30C03 /* ReportReasonView.h */,
+				883ABE6A24FC7DFB00F30C03 /* ReportReasonView.m */,
+				883ABE6B24FC7DFB00F30C03 /* ReportReasonView.xib */,
+				8839B7EF24F79ED10051B7EC /* WatchLivePlayDiscussCell.h */,
+				8839B7F024F79ED10051B7EC /* WatchLivePlayDiscussCell.m */,
 				8848947724EFC1D300C13783 /* CameraPushViewController.h */,
 				8848947824EFC1D300C13783 /* CameraPushViewController.m */,
 				8848947924EFC1D400C13783 /* CameraPushViewController.xib */,
 				88EFD47024EE2B4F0018A6D1 /* ViewController.h */,
 				88EFD47124EE2B4F0018A6D1 /* ViewController.m */,
 				88EFD47324EE2B4F0018A6D1 /* Main.storyboard */,
-				8848947C24EFC8B300C13783 /* HelpCommon.h */,
-				8848947D24EFC8B300C13783 /* HelpCommon.m */,
+				883ABEBD24FCF2C000F30C03 /* 三方 */,
+				883ABEBC24FCF28700F30C03 /* help */,
+				883ABEBA24FCF24200F30C03 /* model */,
+				883ABEB924FCF1FC00F30C03 /* web */,
 				88EFD47624EE2B520018A6D1 /* Assets.xcassets */,
 				88EFD47824EE2B520018A6D1 /* LaunchScreen.storyboard */,
 				88EFD47B24EE2B520018A6D1 /* Info.plist */,
@@ -324,9 +418,9 @@
 				88EFD47A24EE2B520018A6D1 /* LaunchScreen.storyboard in Resources */,
 				8848947B24EFC1D400C13783 /* CameraPushViewController.xib in Resources */,
 				88EFD47724EE2B520018A6D1 /* Assets.xcassets in Resources */,
-				8848947224EF946000C13783 /* PlayViewController1.xib in Resources */,
 				88D297B724F639B4006AE927 /* AliyunEmasServices-Info.plist in Resources */,
 				88EFD47524EE2B4F0018A6D1 /* Main.storyboard in Resources */,
+				883ABE6D24FC7DFB00F30C03 /* ReportReasonView.xib in Resources */,
 				8848946424EF78EF00C13783 /* MainViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,9 +490,21 @@
 			files = (
 				88EFD47224EE2B4F0018A6D1 /* ViewController.m in Sources */,
 				8848947A24EFC1D400C13783 /* CameraPushViewController.m in Sources */,
+				8839B7F124F79ED10051B7EC /* WatchLivePlayDiscussCell.m in Sources */,
+				883ABEB524FCC0D000F30C03 /* LivechatModel.m in Sources */,
+				883ABEA324FCAB9900F30C03 /* HttpManager.m in Sources */,
+				883ABEB824FCC23200F30C03 /* HasKeFuModel.m in Sources */,
 				88EFD46C24EE2B4F0018A6D1 /* AppDelegate.m in Sources */,
+				883ABEB224FCBFBA00F30C03 /* AccusationModel.m in Sources */,
 				88EFD47D24EE2B520018A6D1 /* main.m in Sources */,
+				883ABEA224FCAB9900F30C03 /* BaseAFNetworkingManager.m in Sources */,
+				883ABEA624FCABF100F30C03 /* InRoomModel.m in Sources */,
+				8839B7E924F777B20051B7EC /* WatchLivePlayViewController.m in Sources */,
+				883ABE6C24FC7DFB00F30C03 /* ReportReasonView.m in Sources */,
 				8848947E24EFC8B400C13783 /* HelpCommon.m in Sources */,
+				883ABEAF24FCBD9B00F30C03 /* LiveUserModel.m in Sources */,
+				883ABEA924FCAC4000F30C03 /* CollectModel.m in Sources */,
+				883924D824F8D9A400C34F20 /* PlayedViewController.m in Sources */,
 				8848947124EF946000C13783 /* PlayViewController1.m in Sources */,
 				8848946324EF78EF00C13783 /* MainViewController.m in Sources */,
 			);
@@ -579,10 +685,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/TXLiteAVSDK_Professional/TXLiteAVSDK_Professional\"",
-					"$(PROJECT_DIR)/Calsee2qdsme/aliyun",
+					"$(PROJECT_DIR)/Calsee2qdsme/三方/aliyun",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/Calsee2qdsme/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Calsee2qdsme/help/PrefixHeader.pch";
 				INFOPLIST_FILE = Calsee2qdsme/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -649,10 +755,10 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/TXLiteAVSDK_Professional/TXLiteAVSDK_Professional\"",
-					"$(PROJECT_DIR)/Calsee2qdsme/aliyun",
+					"$(PROJECT_DIR)/Calsee2qdsme/三方/aliyun",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "$(SRCROOT)/Calsee2qdsme/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "$(SRCROOT)/Calsee2qdsme/help/PrefixHeader.pch";
 				INFOPLIST_FILE = Calsee2qdsme/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = (

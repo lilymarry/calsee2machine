@@ -7,7 +7,25 @@
 		<key>Calsee2qdsme.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>8</integer>
+			<integer>9</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>88EFD46624EE2B4F0018A6D1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>88EFD48124EE2B520018A6D1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>88EFD48C24EE2B520018A6D1</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

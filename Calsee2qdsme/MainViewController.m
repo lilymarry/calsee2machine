@@ -9,12 +9,16 @@
 #import "MainViewController.h"
 #import<WebKit/WebKit.h>
 #import "PlayViewController1.h"
-
+#import "WatchLivePlayViewController.h"
+#import "PlayedViewController.h"
+#import "WebViewJavascriptBridge.h"
+#import "InRoomModel.h"
 @interface MainViewController ()<WKNavigationDelegate, WKUIDelegate,UIScrollViewDelegate,WKScriptMessageHandler>
 
 @property (strong, nonatomic) WKWebView *webView;
 @property (nonatomic, strong) UIProgressView *progressView;
 @property (strong, nonatomic) NSString *urlStr;
+@property WebViewJavascriptBridge* bridge;
 @end
 
 @implementation MainViewController
@@ -32,22 +36,26 @@
         statusBarHeight = [[UIApplication sharedApplication] statusBarFrame].size.height;
     }
     
-     _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, statusBarHeight+5,ScreenW ,ScreenH-statusBarHeight-5 )configuration: _config];
+    _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, statusBarHeight+5,ScreenW ,ScreenH-statusBarHeight-5 )configuration: _config];
      
    _webView.navigationDelegate = self;
    _webView.UIDelegate = self;
    _webView.scrollView.delegate = self;
+    
+    _bridge = [WebViewJavascriptBridge bridgeForWebView:_webView];
+    [_bridge setWebViewDelegate:self];
+    
     NSString *url=@"https://www.calseeglobal.com/web/ios/index.aspx?exhiid=295621120832";
     NSString *userbh = [[NSUserDefaults standardUserDefaults] objectForKey:Userbh];
     if (userbh.length>0) {
-      url=[NSString stringWithFormat:@"https://www.calseeglobal.com/web/ios/index.aspx?exhiid=295621120832&ubh=%@",userbh];
+      url=[NSString stringWithFormat:@"https://www.calseeglobal.com/web/ios/index.aspx?exhiid=295621120832&ubh=%@&lang=%@",userbh,@"zh-CN"];
     }
    
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
 
-   [_webView loadRequest:request];
+//[_webView loadRequest:request];
    
-   [self.view addSubview:_webView];
+// [self.view addSubview:_webView];
     
    self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, statusBarHeight, ScreenW, 5)];
    self.progressView.backgroundColor = [UIColor whiteColor];
@@ -59,6 +67,9 @@
     //3.添加KVO，WKWebView有一个属性estimatedProgress，就是当前网页加载的进度，所以监听这个属性。
    [_webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
     
+}
+- (void)registerHandler:(NSString *)handlerName handler:(WVJBHandler)handler {
+    NSLog(@"qqwqqqq");
 }
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message
 {
@@ -84,13 +95,23 @@
     //退出登录
   else   if ([message.name isEqualToString:@"logout"]) {
       [[NSUserDefaults standardUserDefaults] removeObjectForKey:Userbh];
-       [[NSUserDefaults standardUserDefaults] removeObjectForKey:Exhibh];
+   //    [[NSUserDefaults standardUserDefaults] removeObjectForKey:Exhibh];
        [[NSUserDefaults standardUserDefaults]synchronize];
       NSString *str=@"15@15.com";
                 //解除绑定
                 [ CloudPushSDK unbindTag:1 withTags:@[str] withAlias:@"1111" withCallback:^(CloudPushCallbackResult *res) {
                      }];
     }
+    
+    else   if ([message.name isEqualToString:@"openCeremony"]||[message.name isEqualToString:@"watchLiveBroadcast"]||[message.name isEqualToString:@"openMeeting"]||[message.name isEqualToString:@"openLiveBroadcast"]||[message.name isEqualToString:@"openForum"]) {
+           NSData *jsonData = [message.body dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *err;
+        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                                     options:NSJSONReadingMutableContainers
+                                                                    error:&err];
+           
+             NSLog(@"AAAAA %@",dic);
+      }
 }
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -105,7 +126,7 @@
     WKUserContentController *controller = self.webView.configuration.userContentController;
     [controller removeScriptMessageHandlerForName:@"exhiinfo"];
     [controller removeScriptMessageHandlerForName:@"logout"];
-     [self.navigationController setNavigationBarHidden:NO];
+  //   [self.navigationController setNavigationBarHidden:NO];
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
   
@@ -195,8 +216,13 @@
     return nil;
 }
 - (IBAction)playPress:(id)sender {
-    PlayViewController1 *play=[[PlayViewController1 alloc]init];
+  //  PlayViewController1 *play=[[PlayViewController1 alloc]init];
+    PlayedViewController *play=[[PlayedViewController alloc]init];
     [self.navigationController pushViewController:play animated:YES];
+}
+- (IBAction)watchLivePress:(id)sender {
+    WatchLivePlayViewController*play=[[WatchLivePlayViewController alloc]init];
+      [self.navigationController pushViewController:play animated:YES];
 }
 
 - (void)dealloc {

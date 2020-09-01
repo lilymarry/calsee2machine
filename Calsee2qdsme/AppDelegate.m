@@ -381,42 +381,42 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
  *  只有当应用程序位于前台时，该方法才会在委托上调用。如果方法未被执行或处理程序没有及时调用，则通知将不会被提交。
  *  应用程序可以选择将通知呈现为声音、徽章、警报和/或通知列表中。此决定应基于通知中的信息是否对用户可见。
  */
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
-    NSLog(@"\n ====== App 处于前台时收到通知 (iOS 10+ ) Receive a notification in foregound.");
-    
-    //音效文件路径
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"PushSound" ofType:@"caf"];
-    // 这里是指你的音乐名字和文件类型
-    NSLog(@"path-----------------------%@",path);
-    
-    //组装并播放音效
-    SystemSoundID soundID;
-    NSURL *filePath = [NSURL fileURLWithPath:path isDirectory:NO];
-    AudioServicesCreateSystemSoundID((__bridge CFURLRef)filePath, &soundID);
-    AudioServicesPlaySystemSound(soundID);
-    
-    // 处理iOS 10通知，并上报通知打开回执
-    [self handleiOS10Notification:notification];
-    
-    /*
-     处理完成后调用 completionHandler ，用于指示在前台显示通知的形式
-     completionHandler() 功能：可设置是否在应用内弹出通知
-     在 iOS 10 中 通知在前台的显示设置：
-     */
-    
-    // 1、通知在前台不显示
-    // 如果调用下面代码： 通知不在前台弹出也不在通知栏显示
-    // completionHandler(UNNotificationPresentationOptionNone);
-    
-    // 2、通知在前台显示
-    // 如果调用下面代码： 通知在前台弹出也在通知栏显示
-    // completionHandler(UNNotificationPresentationOptionAlert);
-    
-    
-    // 3、通知在前台显示 并带有声音
-    // 如果调用下面代码：通知弹出，且带有声音、内容和角标
-    completionHandler(UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionBadge);
-}
+//- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
+//    NSLog(@"\n ====== App 处于前台时收到通知 (iOS 10+ ) Receive a notification in foregound.");
+//
+//    //音效文件路径
+//    NSString *path = [[NSBundle mainBundle] pathForResource:@"PushSound" ofType:@"caf"];
+//    // 这里是指你的音乐名字和文件类型
+//    NSLog(@"path-----------------------%@",path);
+//
+//    //组装并播放音效
+//    SystemSoundID soundID;
+//    NSURL *filePath = [NSURL fileURLWithPath:path isDirectory:NO];
+//    AudioServicesCreateSystemSoundID((__bridge CFURLRef)filePath, &soundID);
+//    AudioServicesPlaySystemSound(soundID);
+//
+//    // 处理iOS 10通知，并上报通知打开回执
+//    [self handleiOS10Notification:notification];
+//
+//    /*
+//     处理完成后调用 completionHandler ，用于指示在前台显示通知的形式
+//     completionHandler() 功能：可设置是否在应用内弹出通知
+//     在 iOS 10 中 通知在前台的显示设置：
+//     */
+//
+//    // 1、通知在前台不显示
+//    // 如果调用下面代码： 通知不在前台弹出也不在通知栏显示
+//    // completionHandler(UNNotificationPresentationOptionNone);
+//
+//    // 2、通知在前台显示
+//    // 如果调用下面代码： 通知在前台弹出也在通知栏显示
+//    // completionHandler(UNNotificationPresentationOptionAlert);
+//
+//
+//    // 3、通知在前台显示 并带有声音
+//    // 如果调用下面代码：通知弹出，且带有声音、内容和角标
+//    completionHandler(UNNotificationPresentationOptionSound | UNNotificationPresentationOptionAlert | UNNotificationPresentationOptionBadge);
+//}
 
 /**
  *  处理App 处于前台时收到通知 (iOS 10+ )

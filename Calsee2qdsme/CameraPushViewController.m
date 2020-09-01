@@ -26,7 +26,7 @@
     [super viewDidLoad];
          NSDate *currentDate = [NSDate date];
             // 指定日期声明
-          NSTimeInterval oneDay = 2 * 60 *60;  // 2H一共有多少秒
+          NSTimeInterval oneDay = 12 * 60 *60;  // 2H一共有多少秒
         NSDate * appointDate = [currentDate initWithTimeIntervalSinceNow: oneDay];
     
              NSDateFormatter *formatter = [[NSDateFormatter alloc] init];

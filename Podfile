@@ -7,6 +7,6 @@ target 'Calsee2qdsme' do
     pod 'MBProgressHUD-YF'
     pod 'MJExtension'
     pod 'MJRefresh'
-  
+    pod 'WebViewJavascriptBridge'
     pod 'TXLiteAVSDK_Professional', :podspec => 'http://pod-1252463788.cosgz.myqcloud.com/liteavsdkspec/TXLiteAVSDK_Professional.podspec'
 end

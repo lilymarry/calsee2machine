@@ -1,0 +1,40 @@
+//
+//  PrefixHeader.pch
+//  Calsee2qdsme
+//
+//  Created by SCHENK on 2020/8/21.
+//  Copyright © 2020 SCHENK. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+#import "HelpCommon.h"
+#import "MBProgressHUD+YF.h"
+#import "AFNetworkReachabilityManager.h"
+#import "AFNetworking.h"
+#import "HttpUrl.h"
+#define RTMP_PUBLISH_URL    @"请输入推流地址或者扫二维码进行输入"
+#define Userbh    @"userbh"
+#define Exhibh    @"exhibh"
+#import <CloudPushSDK/CloudPushSDK.h>
+#import "Masonry.h"
+#import "HttpManager.h"
+
+
+#define ScreenW [UIScreen mainScreen].bounds.size.width
+#define ScreenH [UIScreen mainScreen].bounds.size.height
+#define KIsiPhoneX \
+({BOOL KIsiPhoneX = NO;\
+if (@available(iOS 11.0, *)) {\
+KIsiPhoneX = [[UIApplication sharedApplication] delegate].window.safeAreaInsets.bottom > 0.0;\
+}\
+(KIsiPhoneX);})
+
+#define RBGColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define Color(hex)  [HelpCommon colorWithHexString:hex]
+#define NOTNULL(x) ((![x isKindOfClass:[NSNull class]])&&x)
+#define SWNOTEmptyArr(X) (NOTNULL(X)&&[X isKindOfClass:[NSArray class]]&&[X count])
+#define SWNOTEmptyDictionary(X) (NOTNULL(X)&&[X isKindOfClass:[NSDictionary class]]&&[[X allKeys]count])
+#define SWNOTEmptyStr(X) (NOTNULL(X)&&[X isKindOfClass:[NSString class]]&&((NSString *)X).length)
+
+#endif /* PrefixHeader_pch */
