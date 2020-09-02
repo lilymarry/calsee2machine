@@ -244,8 +244,8 @@
 -(void)onEnterRoom:(NSInteger)result{
     if (result > 0) {
         NSLog(@"进房成功，总计耗时[%ld]ms",(long)result);
-//        remoteViewOwen = [[UIView alloc]initWithFrame:CGRectMake(10, 40+10+LL_StatusBarHeight,(self.view.frame.size.width-30)/2 , (self.view.frame.size.height-140-LL_TabbarSafeBottomMargin)/3)];
-        remoteViewOwen = [[UIView alloc]initWithFrame:CGRectMake(0, LL_StatusBarHeight, self.view.frame.size.width, self.view.frame.size.height-LL_StatusBarHeight-LL_TabbarSafeBottomMargin)];
+        remoteViewOwen = [[UIView alloc]initWithFrame:CGRectMake(0, LL_StatusBarHeight,(self.view.frame.size.width)/2 , (self.view.frame.size.height-LL_StatusBarHeight-LL_TabbarSafeBottomMargin)/3)];
+//        remoteViewOwen = [[UIView alloc]initWithFrame:CGRectMake(0, LL_StatusBarHeight, self.view.frame.size.width, self.view.frame.size.height-LL_StatusBarHeight-LL_TabbarSafeBottomMargin)];
         [self.view addSubview:remoteViewOwen];
         [remoteViewDic setObject:remoteViewOwen forKey:benrenUid];
         [uidArr addObject:benrenUid];
@@ -271,7 +271,7 @@
     TRTCMixUser* remote2 = [TRTCMixUser new];
     remote2.userId = userId;
     remote2.zOrder = 1;
-    remote2.rect   = CGRectMake(10*((numUser%2)+1)+(((self.view.frame.size.width-30)/2)*(numUser%2)), 40+LL_StatusBarHeight+10*(numchu+1)+((self.view.frame.size.height-140-LL_TabbarSafeBottomMargin)/3)*numchu,(self.view.frame.size.width-30)/2, (self.view.frame.size.height-140-LL_TabbarSafeBottomMargin)/3);//仅供参考
+    remote2.rect   = CGRectMake((((self.view.frame.size.width-30)/2)*(numUser%2)), LL_StatusBarHeight+((self.view.frame.size.height-LL_StatusBarHeight-LL_TabbarSafeBottomMargin)/3)*numchu,(self.view.frame.size.width)/2, (self.view.frame.size.height-LL_StatusBarHeight-LL_TabbarSafeBottomMargin)/3);//仅供参考
     remote2.roomID = roomid; // 本地用户不用填写 roomID，远程需要
     [mixUserArr addObject:remote2];
     config.mixUsers = mixUserArr;
@@ -283,12 +283,12 @@
 
 - (void)onRemoteUserLeaveRoom:(NSString *)userId reason:(NSInteger)reason{
     
-    [uidArr removeObject:userId];
-    UIView *remoteview = [remoteViewDic objectForKey:userId];
-    [remoteview removeFromSuperview];
-    [remoteViewDic removeObjectForKey:userId];
+//    [uidArr removeObject:userId];
+//    UIView *remoteview = [remoteViewDic objectForKey:userId];
+//    [remoteview removeFromSuperview];
+//    [remoteViewDic removeObjectForKey:userId];
     [_trtcCloud stopRemoteView:userId];
-    [self setViewBuju:userId];
+//    [self setViewBuju:userId];
     
 }
 -(void)onUserVideoAvailable:(NSString *)uid available:(BOOL)available{
@@ -297,10 +297,10 @@
     if ([[remoteViewDic allKeys] containsObject:uid]) {
         remoteView = [remoteViewDic objectForKey:uid];
     }else{
-        
-
-//        remoteView = [[UIView alloc]initWithFrame:CGRectMake(10*((numUser%2)+1)+(((self.view.frame.size.width-30)/2)*(numUser%2)), 40+LL_StatusBarHeight+10*(numchu+1)+((self.view.frame.size.height-140-LL_TabbarSafeBottomMargin)/3)*numchu,(self.view.frame.size.width-30)/2, (self.view.frame.size.height-140-LL_TabbarSafeBottomMargin)/3)];
-        if (uidArr.count == 1) {
+        long numUser = [remoteViewDic allKeys].count;
+        long numchu = numUser/2;
+        remoteView = [[UIView alloc]initWithFrame:CGRectMake((((self.view.frame.size.width-30)/2)*(numUser%2)), LL_StatusBarHeight+((self.view.frame.size.height-LL_StatusBarHeight-LL_TabbarSafeBottomMargin)/3)*numchu,(self.view.frame.size.width)/2, (self.view.frame.size.height-LL_StatusBarHeight-LL_TabbarSafeBottomMargin)/3)];
+       /* if (uidArr.count == 1) {
             remoteView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height, 0, 0)];
         }else if(uidArr.count == 2){
             remoteView = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width, self.view.frame.size.height, 0, 0)];
@@ -310,14 +310,14 @@
             remoteView = [[UIView alloc]initWithFrame:CGRectMake(0, self.view.frame.size.height, 0, 0)];
         }else if(uidArr.count == 5){
             remoteView = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width, self.view.frame.size.height, 0, 0)];
-        }
+        }*/
         
         [self.view addSubview:remoteView];
         [uidArr addObject:uid];
     }
     [remoteViewDic setObject:remoteView forKey:uid];
     
-    [self setViewBuju:uid];
+//    [self setViewBuju:uid];
     if (available) {
         [_trtcCloud startRemoteView:uid view:remoteView];
         [_trtcCloud setRemoteViewFillMode:uid mode:TRTCVideoFillMode_Fill];

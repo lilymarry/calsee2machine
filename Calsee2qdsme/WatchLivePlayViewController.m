@@ -166,13 +166,12 @@
             [self->chatlist addObjectsFromArray:returnValue[@"detail"][@"chatlist"] ];
             
             
-            self->numLab.text=[NSString stringWithFormat:@"%d人",(int)[userArr count]];
+            self->numLab.text=[NSString stringWithFormat:@"%d人",(int)[self->userArr count]];
             NSArray *arr=returnValue[@"detail"][@"chatlist"];
             if (arr.count>0) {
                 NSDictionary*dic=[arr lastObject];
                 self->lastId=dic[@"id"];
             }
-            
             
             [self->tableView reloadData];
             [self initScrollView];
@@ -396,7 +395,9 @@
     model.lang=[[NSUserDefaults standardUserDefaults] objectForKey:Lang];
     model.ubh=[[NSUserDefaults standardUserDefaults] objectForKey:Userbh];;
     model.cid=_mainDic[@"cid"];
+    [MBProgressHUD showMessage:nil toView:self.view];
     [model HasKeFuModelSuccess:^(NSMutableDictionary * _Nonnull returnValue) {
+         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         if ([returnValue[@"code"] isEqualToString:@"101"]||[returnValue[@"code"] isEqualToString:@"102"]||[returnValue[@"code"] isEqualToString:@"103"]) {
            
             [MBProgressHUD showError:returnValue[@"message"] toView:self.view];
@@ -408,10 +409,11 @@
               room.lang=[[NSUserDefaults standardUserDefaults] objectForKey:Lang];
               room.ubh=[[NSUserDefaults standardUserDefaults] objectForKey:Userbh];;
             room.cid=self->_mainDic[@"cid"];
-            
+             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
             [room IntoroomModelSuccess:^(NSMutableDictionary * _Nonnull returnValue) {
+                 [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                
                 if ([returnValue[@"code"] isEqualToString:@"100"]) {
-                        
                 NSDictionary *dic = [returnValue objectForKey:@"detail"];
                                            [self.navigationController setNavigationBarHidden:YES animated:YES];
                                            OneToOneViewController *play=[[OneToOneViewController alloc]init];
@@ -427,32 +429,43 @@
                      [MBProgressHUD showError:returnValue[@"message"] toView:self.view];
                 }
             } failure:^(NSString * _Nonnull errorMessage) {
-                
+              [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                 [MBProgressHUD showError:@"网络错误 "toView:self.view];
             }];
            
           
         }
         
     } failure:^(NSString * _Nonnull errorMessage) {
-        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+                        [MBProgressHUD showError:@"网络错误 "toView:self.view];
     }];
 }
 -(void)alertPerss
 {
     ReportReasonView *view=[[ReportReasonView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
     view.reasonBlock = ^(NSString * _Nonnull reason) {
+        
+        if (reason.length==0) {
+            [MBProgressHUD showError:@"请输入举报理由"toView:self.view];
+            return;
+        }
         AccusationModel *model=[[AccusationModel alloc]init];
         model.exhiid= [[NSUserDefaults standardUserDefaults] objectForKey:Exhibh];
         model.lang=[[NSUserDefaults standardUserDefaults] objectForKey:Lang];
         model.ubh=[[NSUserDefaults standardUserDefaults] objectForKey:Userbh];;
         model.roomid=self.mainDic[@"roomid"];
         model.content=reason;
+        [MBProgressHUD showMessage:nil toView:self.view];
         [model AccusationModelSuccess:^(NSMutableDictionary * _Nonnull returnValue) {
+              [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
               if ([returnValue[@"code"] isEqualToString:@"100"]) {
+                  
                     [MBProgressHUD showSuccess:@"举报成功" toView:self.view];
                 }
         } failure:^(NSString * _Nonnull errorMessage) {
-            
+            [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+             [MBProgressHUD showError:@"网络错误 "toView:self.view];
         }];
     };
     [self.view.window addSubview:view];
@@ -475,7 +488,9 @@
     model.ubh=[[NSUserDefaults standardUserDefaults] objectForKey:Userbh];;
     model.lx=@"2";
     model.id=_mainDic[@"cid"];
+    [MBProgressHUD showMessage:nil toView:self.view];
     [model CollectModelSuccessBlock:^(NSMutableDictionary * _Nonnull returnValue) {
+         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         if ([returnValue[@"code"] isEqualToString:@"100"]) {
             NSLog(@"收藏成功");
         }
@@ -488,13 +503,20 @@
 -(void)sendMessage
 {
     [self.view endEditing:YES];
+
+      if (chartTF.text.length==0) {
+              [MBProgressHUD showError:@"请输入聊天内容"toView:self.view];
+              return;
+          }
     LivechatModel *model=[[LivechatModel alloc]init];
     model.exhiid= [[NSUserDefaults standardUserDefaults] objectForKey:Exhibh];
     model.lang=[[NSUserDefaults standardUserDefaults] objectForKey:Lang];
     model.ubh=[[NSUserDefaults standardUserDefaults] objectForKey:Userbh];;
     model.roomid=_mainDic[@"roomid"];
     model.nr=chartTF.text;
+    [MBProgressHUD showMessage:nil toView:self.view];
     [model LivechatModelSuccess:^(NSMutableDictionary * _Nonnull returnValue) {
+          [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         if ([returnValue[@"code"] isEqualToString:@"100"]) {
             NSMutableDictionary *dic=[[NSMutableDictionary alloc]init];
             [dic setValue:@"我" forKey:@"mc"];
@@ -504,7 +526,9 @@
             self->chartTF.text=nil;
         }
     } failure:^(NSString * _Nonnull errorMessage) {
-        
+        [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+        [MBProgressHUD showError:@"网络错误 "toView:self.view];
+
     }];
     
 }

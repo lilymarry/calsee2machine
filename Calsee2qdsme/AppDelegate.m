@@ -12,10 +12,6 @@
 
 // iOS 10 Notification
 #import <UserNotifications/UserNotifications.h>
-
-// 跳转界面
-//#import "JumpViewController.h"
-
 #import <AVFoundation/AVFoundation.h>
 #import "TXLiveBase.h"  //TRTC
 #import "LoginBL.h"
@@ -60,7 +56,7 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
     
     // APNs注册，获取deviceToken并上报
     [self registerAPNS:application];
- 
+    
     // 初始化SDK
     [self initCloudPush];
     
@@ -86,7 +82,7 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
      在该方法中 didFinishLaunchingWithOptions: 这个函数 在正常启动下 launchOptions 是空，
      如果你是从点击推送通知过来的，那么 laungchOptions 里面会包含你的推送的内容。
      在这里就可以进行相应的处理，你就可以发一个通知，可以在 rootViewController 中接收执行相应的操作
-    */
+     */
     
     // 当APP为关闭状态 收到推送通知，点击 图标 会调用该方法 didFinishLaunchingWithOptions:
     if (launchOptions) {
@@ -103,13 +99,13 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
     [self jumpViewController:launchOptions];
     
     
-      [TXLiveBase setLicenceURL:@"http://license.vod2.myqcloud.com/license/v1/5f901ebb7ffb139ab68f6d7343011500/TXLiveSDK.licence" key:@"9a344e2f2cf615b2d44fc65342a19c73"];
-     
-       [NSThread sleepForTimeInterval:3.0]; //引导页休眠时间
-      MainViewController *main=[[MainViewController  alloc]init];
-   UINavigationController *navi=[[UINavigationController alloc]initWithRootViewController:main];
+    [TXLiveBase setLicenceURL:@"http://license.vod2.myqcloud.com/license/v1/5f901ebb7ffb139ab68f6d7343011500/TXLiveSDK.licence" key:@"9a344e2f2cf615b2d44fc65342a19c73"];
     
-     self.window.rootViewController=navi;
+    [NSThread sleepForTimeInterval:3.0]; //引导页休眠时间
+    MainViewController *main=[[MainViewController  alloc]init];
+    UINavigationController *navi=[[UINavigationController alloc]initWithRootViewController:main];
+    
+    self.window.rootViewController=navi;
     
     return YES;
 }
@@ -139,7 +135,7 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
             if (granted) {
                 // granted
                 NSLog(@"\n ====== User authored notification.");
-        
+                
                 // 向APNs注册，获取deviceToken  // 要求在主线程中
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [application registerForRemoteNotifications];
@@ -193,10 +189,10 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
          [[UIApplication sharedApplication] registerForRemoteNotifications];
          
          if ([[UIApplication sharedApplication] currentUserNotificationSettings].types  == UIUserNotificationTypeNone) { //判断用户是否打开通知开关
-             NSLog(@"没有打开");
-           } else {
-             NSLog(@"已经打开");
-           }
+         NSLog(@"没有打开");
+         } else {
+         NSLog(@"已经打开");
+         }
          */
         
 #pragma clang diagnostic pop
@@ -252,12 +248,12 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
  */
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken NS_AVAILABLE_IOS(3_0) {
     NSLog(@"Upload deviceToken to CloudPush server.");
-//   NSString* newToken = [deviceToken description];
-//
-//   newToken = [newToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
-//
-//   newToken = [newToken stringByReplacingOccurrencesOfString:@" "
-//                                                  withString:@""];
+    //   NSString* newToken = [deviceToken description];
+    //
+    //   newToken = [newToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+    //
+    //   newToken = [newToken stringByReplacingOccurrencesOfString:@" "
+    //                                                  withString:@""];
     
     
     
@@ -290,14 +286,14 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
             NSMutableDictionary *dictoken = [[NSMutableDictionary alloc]init];
             NSString *userbh = [[NSUserDefaults standardUserDefaults] objectForKey:Userbh];
             if (userbh.length>0) {
-              [dictoken setObject:userbh forKey:@"ubh"];
-              [dictoken setObject:exhiid2 forKey:@"exhiid"];
-              [dictoken setObject:newToken forKey:@"devicetoken"];
-              [LoginBL updevicetoken:dictoken success:^(NSMutableDictionary *returnValue) {
-                  
-              } failure:^(NSString *errorMessage) {
-                  
-              }];
+                [dictoken setObject:userbh forKey:@"ubh"];
+                [dictoken setObject:exhiid2 forKey:@"exhiid"];
+                [dictoken setObject:newToken forKey:@"devicetoken"];
+                [LoginBL updevicetoken:dictoken success:^(NSMutableDictionary *returnValue) {
+                    
+                } failure:^(NSString *errorMessage) {
+                    
+                }];
             }
         } else {
             NSLog(@"\n ====== Push SDK init failed, error: %@", res.error);
@@ -357,11 +353,11 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
     for (NSString *tfStr in remoteNotification) {
         
         // 通知里面的内容需要包含 " "
-//        if ([tfStr isEqualToString:@"careline"]) {
-//            JumpViewController *_viewController =  [[JumpViewController alloc]init];
-//            UINavigationController *nav= (UINavigationController *)self.window.rootViewController;
-//            [nav pushViewController:_viewController animated:YES];
-//        }
+        //        if ([tfStr isEqualToString:@"careline"]) {
+        //            JumpViewController *_viewController =  [[JumpViewController alloc]init];
+        //            UINavigationController *nav= (UINavigationController *)self.window.rootViewController;
+        //            [nav pushViewController:_viewController animated:YES];
+        //        }
     }
 }
 
@@ -485,7 +481,7 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
     UIViewController *viewController = [AppDelegate currentViewController];
     [viewController.navigationController setNavigationBarHidden:YES animated:YES];
     OneToOneViewController *play=[[OneToOneViewController alloc]init];
-      play.callFrom = 2;
+    play.callFrom = 2;
     play.roomid = [detailDic objectForKey:@"roomid"];
     [viewController.navigationController pushViewController:play animated:YES];
     
@@ -578,7 +574,7 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
         UIViewController *viewController = [AppDelegate currentViewController];
         [viewController.navigationController setNavigationBarHidden:YES animated:YES];
         OneToOneViewController *play=[[OneToOneViewController alloc]init];
-          play.callFrom = 2;
+        play.callFrom = 2;
         play.roomid = [detailDic objectForKey:@"roomid"];
         [viewController.navigationController pushViewController:play animated:YES];
         
@@ -593,17 +589,17 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
         UIViewController *viewController = [AppDelegate currentViewController];
         [viewController.navigationController setNavigationBarHidden:YES animated:YES];
         OneToOneViewController *play=[[OneToOneViewController alloc]init];
-          play.callFrom = 2;
+        play.callFrom = 2;
         play.roomid = [detailDic objectForKey:@"roomid"];
         [viewController.navigationController pushViewController:play animated:YES];
         // 程序处于后台 做相应的处理
-//        for (NSString *tfStr in userInfo) {
-//            if ([tfStr isEqualToString:@"careline"]) {
-//                JumpViewController *_viewController =  [[JumpViewController alloc]init];
-//                UINavigationController *nav= (UINavigationController *)self.window.rootViewController;
-//                [nav pushViewController:_viewController animated:YES];
-//            }
-//        }
+        //        for (NSString *tfStr in userInfo) {
+        //            if ([tfStr isEqualToString:@"careline"]) {
+        //                JumpViewController *_viewController =  [[JumpViewController alloc]init];
+        //                UINavigationController *nav= (UINavigationController *)self.window.rootViewController;
+        //                [nav pushViewController:_viewController animated:YES];
+        //            }
+        //        }
     }
 }
 
@@ -643,42 +639,42 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
 
 - (void)applicationWillTerminate:(UIApplication *)application { }
 
- + (UIViewController*)currentViewController{
-     UIViewController* vc = [UIApplication sharedApplication].keyWindow.rootViewController;
-     while (1) {
-    
-    if ([vc isKindOfClass:[UITabBarController class]]) {
++ (UIViewController*)currentViewController{
+    UIViewController* vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+    while (1) {
         
-        vc = ((UITabBarController*)vc).selectedViewController;
+        if ([vc isKindOfClass:[UITabBarController class]]) {
+            
+            vc = ((UITabBarController*)vc).selectedViewController;
+            
+        }
+        
+        
+        
+        if ([vc isKindOfClass:[UINavigationController class]]) {
+            
+            vc = ((UINavigationController*)vc).visibleViewController;
+            
+        }
+        
+        
+        
+        if (vc.presentedViewController) {
+            
+            vc = vc.presentedViewController;
+            
+        }else{
+            
+            break;
+            
+        }
+        
+        
         
     }
     
     
     
-    if ([vc isKindOfClass:[UINavigationController class]]) {
-        
-        vc = ((UINavigationController*)vc).visibleViewController;
-        
-    }
-    
-    
-    
-    if (vc.presentedViewController) {
-        
-        vc = vc.presentedViewController;
-        
-    }else{
-        
-        break;
-        
-    }
-    
-    
-    
-     }
-
-
-
-     return vc;
+    return vc;
 }
 @end

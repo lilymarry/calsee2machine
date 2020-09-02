@@ -155,10 +155,16 @@
         
     }
     
+    
+    
+    
+    
+    
+    
 }
 -(void)setButtonTop{
     //左上角公司视图
-        UIView *companyInfoView = [[UIView alloc]initWithFrame:CGRectMake(18, 10+LL_StatusBarHeight, self.view.frame.size.width-36, 38)];
+        UIView *companyInfoView = [[UIView alloc]initWithFrame:CGRectMake(18, 10+LL_StatusBarHeight, (self.view.frame.size.width-36)/2, 38)];
         UIImageView *touxiangIcon = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 38, 38)];
     [touxiangIcon sd_setImageWithURL:[NSURL URLWithString:self.touxiangUrl]];
         touxiangIcon.layer.masksToBounds = YES;
@@ -178,28 +184,26 @@
            joinCompanyNumLab.textColor = [UIColor whiteColor];
            [companyInfoView addSubview:joinCompanyNumLab];
         
+    
+    
+    
+    
     //    [companyInfoView setBackgroundColor:[UIColor blueColor]];
         [self.view addSubview:companyInfoView];
-    UIButton *closeBtu = [[UIButton alloc]initWithFrame:CGRectMake(companyInfoView.frame.size.width-25, 0, 25, 25)];
-//    [closeBtu setBackgroundColor:[UIColor yellowColor]];
-    [closeBtu setBackgroundImage:[UIImage imageNamed:@"qxxzly"] forState:UIControlStateNormal];
-    closeBtu.layer.masksToBounds = YES;
-
-    closeBtu.layer.cornerRadius = closeBtu.frame.size.width / 2;
-    [closeBtu addTarget:self action:@selector(closeLive) forControlEvents:UIControlEventTouchUpInside];
-    [companyInfoView addSubview:closeBtu];
+   //右下角加入人员视图
+       joinUserIconView = [[UIScrollView alloc]initWithFrame:CGRectMake((self.view.frame.size.width-36)/2, self.view.frame.size.height-248-LL_TabbarSafeBottomMargin, (self.view.frame.size.width-36)/2, 36)];
+       
+       
+   //    [joinUserIconView setBackgroundColor:[UIColor redColor]];
+       [self.view addSubview:joinUserIconView];
+    
 }
 -(void)setButtonIcon{
     
-    //右下角加入人员视图
-    joinUserIconView = [[UIScrollView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-36-18, self.view.frame.size.height-248-LL_TabbarSafeBottomMargin, 36, 162)];
     
-    
-//    [joinUserIconView setBackgroundColor:[UIColor redColor]];
-    [self.view addSubview:joinUserIconView];
     
     //左下角文字显示
-    joinTextShowView = [[UIScrollView alloc]initWithFrame:CGRectMake(18, self.view.frame.size.height-248-LL_TabbarSafeBottomMargin, self.view.frame.size.width-18-64, 208)];
+    joinTextShowView = [[UIScrollView alloc]initWithFrame:CGRectMake(18, self.view.frame.size.height-248-LL_TabbarSafeBottomMargin, self.view.frame.size.width-18-18-85, 208)];
     
 //    [joinTextShowView setBackgroundColor:[UIColor redColor]];
     [self.view addSubview:joinTextShowView];
@@ -208,16 +212,23 @@
     
     
     //右下角控制按钮显示
-    UIView *controllBtuView = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-36-18, self.view.frame.size.height-76-LL_TabbarSafeBottomMargin, 36, 36)];
-    UIButton *switchBtu = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 36, 36)];
+    UIView *controllBtuView = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-85-18, self.view.frame.size.height-70-LL_TabbarSafeBottomMargin, 85, 30)];
+    UIButton *switchBtu = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 38, 30)];
 //    [switchBtu setBackgroundColor:[UIColor systemPinkColor]];
-    [switchBtu setBackgroundImage:[UIImage imageNamed:@"toggleCameraIcon"] forState:UIControlStateNormal];
+    [switchBtu setBackgroundImage:[UIImage imageNamed:@"icon_live_switch"] forState:UIControlStateNormal];
     [switchBtu addTarget:self action:@selector(qiehuanShexiang) forControlEvents:UIControlEventTouchUpInside];
 //    switchBtu.layer.masksToBounds = YES;
 //    switchBtu.layer.cornerRadius = switchBtu.frame.size.width / 2;
     [controllBtuView addSubview:switchBtu];
     
-    
+     UIButton *closeBtu = [[UIButton alloc]initWithFrame:CGRectMake(controllBtuView.frame.size.width-27, 0, 27, 30)];
+    //    [closeBtu setBackgroundColor:[UIColor yellowColor]];
+        [closeBtu setBackgroundImage:[UIImage imageNamed:@"icon_closelive"] forState:UIControlStateNormal];
+//        closeBtu.layer.masksToBounds = YES;
+//
+//        closeBtu.layer.cornerRadius = closeBtu.frame.size.width / 2;
+        [closeBtu addTarget:self action:@selector(closeLive) forControlEvents:UIControlEventTouchUpInside];
+        [controllBtuView addSubview:closeBtu];
     
     [self.view addSubview:controllBtuView];
     
@@ -516,7 +527,7 @@
     }
     float totalwidth = 0.0f;
     for (NSString *companyIconUrl in companyArr) {
-        UIImageView *companyIcon = [[UIImageView alloc]initWithFrame:CGRectMake(0, 10+totalwidth, 36, 36)];
+        UIImageView *companyIcon = [[UIImageView alloc]initWithFrame:CGRectMake(10+totalwidth,0 , 36, 36)];
         companyIcon.layer.masksToBounds = YES;
         companyIcon.layer.cornerRadius = companyIcon.frame.size.width / 2;
         [companyIcon sd_setImageWithURL:[NSURL URLWithString:companyIconUrl]];
