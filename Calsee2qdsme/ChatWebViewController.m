@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self.view setBackgroundColor:[UIColor whiteColor]];
      WKWebViewConfiguration*   _config = [[WKWebViewConfiguration alloc]init];
      _config.userContentController = [[WKUserContentController alloc]init];
 
@@ -31,18 +32,19 @@
      UIView *   topView = [[UIView alloc] initWithFrame:CGRectMake(0, statusBarHeight, ScreenW, 64)];
      topView.backgroundColor = [UIColor whiteColor];
      [self.view addSubview:topView];
-     UIButton *  collectBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-      collectBtn.frame=CGRectMake(10, 10, 60, 35);
-     
-      [collectBtn setTitle:@"<返回" forState:UIControlStateNormal];
-       [collectBtn addTarget:self action:@selector(collectPress) forControlEvents:UIControlEventTouchUpInside];
     
-      collectBtn.titleLabel.font=[UIFont systemFontOfSize:17];
-    [collectBtn setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
-    [topView addSubview:collectBtn];
+     UIButton *  collectBtn=[UIButton buttonWithType:UIButtonTypeCustom];
+       collectBtn.frame=CGRectMake(0, 0, 60, 50);
+     collectBtn.backgroundColor=[UIColor clearColor];
+       [collectBtn addTarget:self action:@selector(collectPress) forControlEvents:UIControlEventTouchUpInside];
+       [topView addSubview:collectBtn];
+    
+    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(15, 15, 12, 20)];
+    imageView.image=[UIImage imageNamed:@"icon_back_title"];
+    [collectBtn addSubview:imageView];
     
     _webView = [[WKWebView alloc] initWithFrame:CGRectMake(0, statusBarHeight+64,ScreenW ,ScreenH-statusBarHeight-5-64 )configuration: _config];
-     
+    _webView.backgroundColor=[UIColor whiteColor];
   // _webView.navigationDelegate = self;
  //  _webView.UIDelegate = self;
  //  _webView.scrollView.delegate = self;
@@ -70,7 +72,7 @@
 }
 -(void)collectPress
 {
-    [self.navigationController popToRootViewControllerAnimated:YES];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
   

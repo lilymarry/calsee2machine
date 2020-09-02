@@ -66,7 +66,7 @@
     [super viewDidLoad];
     chatlist=   [NSMutableArray array];
     [self initNotification];
-    // Do any additional setup after loading the view from its nib.
+   
     // 创建播放器
     _player = [[TXLivePlayer alloc] init];
     
@@ -87,11 +87,11 @@
     lastId=@"";
     isBottom=NO;
     
-    _roomid=_mainDic[@"roomid"];
+   NSString * roomid=_mainDic[@"roomid"];
     
     NSDate *currentDate = [NSDate date];
     // 指定日期声明
-    NSTimeInterval oneDay = 2 * 60 *60;  // 2H一共有多少秒
+    NSTimeInterval oneDay = 12 * 60 *60;  // 12H一共有多少秒
     NSDate * appointDate = [currentDate initWithTimeIntervalSinceNow: oneDay];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -106,18 +106,32 @@
     NSString *appkey=@"2aab1d8f1639b1765d88cdd84e92e69c";
     NSString *appName=@"live";
     
-    NSString *result=[NSString stringWithFormat:@"%@%@%@",appkey,_roomid,str1];
+    NSString *result=[NSString stringWithFormat:@"%@%@%@",appkey,roomid,str1];
     NSString *url=@"playlive2.calseeglobal.com";
     NSString *md5Str=[self md5String:result];
-    self.playUrl =[NSString stringWithFormat:@"rtmp://%@/%@/%@?txSecret=%@&txTime=%@",url,appName,_roomid,md5Str,str1];
+    self.playUrl =[NSString stringWithFormat:@"rtmp://%@/%@/%@?txSecret=%@&txTime=%@",url,appName,roomid,md5Str,str1];
+  //self.playUrl = @"http://liteavapp.qcloud.com/live/liteavdemoplayerstreamid.flv";
     
     if (![self startPlay]) {
         return;
-        
     }
     [self startGetDataTimer];
     [self getData];
 }
+
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    
+    // [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
+    //  [self.navigationController.navigationBar setShadowImage:[UIImage new]];
+    
+    //   [self inRoomWithType:@"inroom"];
+}
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+  
+}
+
 #pragma  mark--------  计时器
 -(void)startGetDataTimer
 {
@@ -125,62 +139,47 @@
     getDataTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(reloadView) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:getDataTimer  forMode:NSRunLoopCommonModes];
 }
-
-
-- ( NSString *)md5String:( NSString *)str
+-(void)reloadView
 {
     
-    const char *myPasswd = [str UTF8String ];
-    
-    unsigned char mdc[ 16 ];
-    
-    CC_MD5 (myPasswd, ( CC_LONG ) strlen (myPasswd), mdc);
-    
-    NSMutableString *md5String = [ NSMutableString string ];
-    
-    for ( int i = 0 ; i< 16 ; i++) {
-        //(x代表以十六进制形式输出,02代表不足两位，前面补0输出，如果超过两位，则以实际输出)
-        [md5String appendFormat : @"%02x" ,mdc[i]];
-        
+    timerCount++;
+    NSLog(@"timerCount  %ld",(long)timerCount);
+    if (timerCount%5==0)
+    {
+        [self getData];
     }
-    
-    return md5String;
-    
 }
-- (NSString *)getHexByDecimal:(NSInteger)decimal
+-(void)getData
 {
+    LiveUserModel *model=[[LiveUserModel alloc]init];
+    model.exhiid= [[NSUserDefaults standardUserDefaults] objectForKey:Exhibh];
+    model.lang=[[NSUserDefaults standardUserDefaults] objectForKey:Lang];
+    model.ubh=[[NSUserDefaults standardUserDefaults] objectForKey:Userbh];;
+    model.lastid=lastId;
+    model.roomid=_mainDic[@"roomid"];
     
-    NSString *hex =@"";
-    NSString *letter;
-    NSInteger number;
-    for (int i = 0; i<9; i++) {
-        
-        number = decimal % 16;
-        decimal = decimal / 16;
-        switch (number) {
-                
-            case 10:
-                letter =@"A"; break;
-            case 11:
-                letter =@"B"; break;
-            case 12:
-                letter =@"C"; break;
-            case 13:
-                letter =@"D"; break;
-            case 14:
-                letter =@"E"; break;
-            case 15:
-                letter =@"F"; break;
-            default:
-                letter = [NSString stringWithFormat:@"%ld", number];
-        }
-        hex = [letter stringByAppendingString:hex];
-        if (decimal == 0) {
+    [model LiveUserModelSuccessBlock:^(NSMutableDictionary * _Nonnull returnValue) {
+        if ([returnValue[@"code"] isEqualToString:@"100"]) {
             
-            break;
+            self->userArr=[NSMutableArray arrayWithArray:returnValue[@"detail"][@"userlist"]];
+            
+            [self->chatlist addObjectsFromArray:returnValue[@"detail"][@"chatlist"] ];
+            
+            
+            self->numLab.text=[NSString stringWithFormat:@"%d人",(int)[userArr count]];
+            NSArray *arr=returnValue[@"detail"][@"chatlist"];
+            if (arr.count>0) {
+                NSDictionary*dic=[arr lastObject];
+                self->lastId=dic[@"id"];
+            }
+            
+            
+            [self->tableView reloadData];
+            [self initScrollView];
         }
-    }
-    return hex;
+    } failure:^(NSString * _Nonnull errorMessage) {
+        
+    }];
 }
 -(void)creatUI
 {
@@ -228,7 +227,7 @@
     numLab.font=[UIFont systemFontOfSize:12];
     [leftView addSubview:numLab];
     
-    if ([_mainDic[@"livetype"] isEqualToString:@"直播"]) {
+   if ([_mainDic[@"livetype"] isEqualToString:@"直播"]) {
         
         collectBtn=[UIButton buttonWithType:UIButtonTypeCustom];
         collectBtn.frame=CGRectMake(ScreenW/2-60, 15, 60, 35);
@@ -367,7 +366,7 @@
     }
     if (userArr.count>0) {
         for (int i=0; i< userArr.count ;i++) {
-            UIImageView *view=[[UIImageView alloc]initWithFrame:CGRectMake(i* 35+5, 10,  35, 35)];
+            UIImageView *view=[[UIImageView alloc]initWithFrame:CGRectMake(i* 37+5, 10,  35, 35)];
             view.backgroundColor=[UIColor whiteColor];
             view.layer.masksToBounds = YES;
             view.layer.cornerRadius = view.frame.size.width/2;
@@ -375,89 +374,31 @@
             
             NSString* encodedString =[name stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];//URL 含有中文 encode 编码
             
-            [userImageView sd_setImageWithURL:[NSURL URLWithString:encodedString] ];
+            [userImageView  sd_setImageWithURL:[NSURL URLWithString:encodedString] placeholderImage:[UIImage imageNamed:@"ic_placeholder"]];
             
             [userScroll addSubview:view];
             
         }
-        [userScroll setContentSize:CGSizeMake(35 * userArr.count+35, 0)];
+        [userScroll setContentSize:CGSizeMake(37 * userArr.count+35, 0)];
     }
-    
-    
-    
 }
+
 -(void)goChat
 {
     ChatWebViewController *chart=[[ChatWebViewController alloc]init];
     chart.url=[NSString stringWithFormat:@"https://www.calseeglobal.com/web/ios/chat.aspx?cid=%@",_mainDic[@"cid"]];
     [self.navigationController pushViewController:chart animated:YES];
-    
-}
-
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    [self.view endEditing:YES];
-}
-- (void)initNotification {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
-}
-
-- (void)keyboardWillShow:(NSNotification *)notification
-{
-    if (isBottom) {
-        //得到键盘高度
-        NSDictionary *userInfo = [notification userInfo];
-        NSValue* aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
-        CGRect keyboardRect = [aValue CGRectValue];
-        // - 49
-        bottomView.frame = CGRectMake(0, CGRectGetHeight([UIScreen mainScreen].bounds) - keyboardRect.size.height - 50, CGRectGetWidth(bottomView.frame), CGRectGetHeight(bottomView.frame));
-        bottomView.backgroundColor = [UIColor colorWithWhite:1 alpha:1];
-        chartTF.backgroundColor= [UIColor colorWithWhite:1 alpha:1];
-        chartTF.textColor=[UIColor blackColor];
-        sendBtn.hidden=NO;
-    }
-    
-    
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification
-{
-    if (isBottom) {
-        bottomView.frame = _rect;
-        bottomView.backgroundColor = [UIColor colorWithWhite:0.f alpha:0.5];
-        chartTF.backgroundColor =  [UIColor colorWithWhite:0.f alpha:0.7];
-        chartTF.textColor=[UIColor whiteColor];
-        sendBtn.hidden=YES;
-    }
-    
-}
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
-{
-    isBottom=YES;
-    
-    
-    return YES;
-    
-}
--(void)textFieldDidEndEditing:(UITextField *)textField
-{
-    isBottom=NO;
 }
 -(void)goVedio
 {
     HasKeFuModel *model=[[HasKeFuModel alloc]init];
-    
-    
     model.exhiid= [[NSUserDefaults standardUserDefaults] objectForKey:Exhibh];
     model.lang=[[NSUserDefaults standardUserDefaults] objectForKey:Lang];
     model.ubh=[[NSUserDefaults standardUserDefaults] objectForKey:Userbh];;
     model.cid=_mainDic[@"cid"];
-    
     [model HasKeFuModelSuccess:^(NSMutableDictionary * _Nonnull returnValue) {
         if ([returnValue[@"code"] isEqualToString:@"101"]||[returnValue[@"code"] isEqualToString:@"102"]||[returnValue[@"code"] isEqualToString:@"103"]) {
-            
+           
             [MBProgressHUD showError:returnValue[@"message"] toView:self.view];
         }
         else
@@ -466,7 +407,7 @@
               room.exhiid= [[NSUserDefaults standardUserDefaults] objectForKey:Exhibh];
               room.lang=[[NSUserDefaults standardUserDefaults] objectForKey:Lang];
               room.ubh=[[NSUserDefaults standardUserDefaults] objectForKey:Userbh];;
-              room.cid=_mainDic[@"cid"];
+            room.cid=self->_mainDic[@"cid"];
             
             [room IntoroomModelSuccess:^(NSMutableDictionary * _Nonnull returnValue) {
                 if ([returnValue[@"code"] isEqualToString:@"100"]) {
@@ -481,6 +422,10 @@
                                            play.roomsig = [dic objectForKey:@"sig"];
                                            [self.navigationController pushViewController:play animated:YES];
                     }
+                else
+                {
+                     [MBProgressHUD showError:returnValue[@"message"] toView:self.view];
+                }
             } failure:^(NSString * _Nonnull errorMessage) {
                 
             }];
@@ -497,15 +442,15 @@
     ReportReasonView *view=[[ReportReasonView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
     view.reasonBlock = ^(NSString * _Nonnull reason) {
         AccusationModel *model=[[AccusationModel alloc]init];
-        
-        
         model.exhiid= [[NSUserDefaults standardUserDefaults] objectForKey:Exhibh];
         model.lang=[[NSUserDefaults standardUserDefaults] objectForKey:Lang];
         model.ubh=[[NSUserDefaults standardUserDefaults] objectForKey:Userbh];;
         model.roomid=self.mainDic[@"roomid"];
         model.content=reason;
         [model AccusationModelSuccess:^(NSMutableDictionary * _Nonnull returnValue) {
-            [MBProgressHUD showSuccess:@"举报成功" toView:self.view];
+              if ([returnValue[@"code"] isEqualToString:@"100"]) {
+                    [MBProgressHUD showSuccess:@"举报成功" toView:self.view];
+                }
         } failure:^(NSString * _Nonnull errorMessage) {
             
         }];
@@ -556,7 +501,7 @@
             [dic setValue:self->chartTF.text forKey:@"nr"];
             [self->chatlist addObject:dic];
             [MBProgressHUD showSuccess:@"发送成功" toView:self.view];
-            chartTF.text=nil;
+            self->chartTF.text=nil;
         }
     } failure:^(NSString * _Nonnull errorMessage) {
         
@@ -565,16 +510,14 @@
 }
 -(void)returnPress
 {
+    [self inRoomWithType:@"outroom"];
+    [self stopPlay];
+    [getDataTimer invalidate];
+    getDataTimer=nil;
     [self.navigationController popViewControllerAnimated:YES];
 }
--(void)viewWillAppear:(BOOL)animated{
-    [super viewWillAppear:animated];
-    
-    // [self.navigationController.navigationBar setBackgroundImage:[UIImage new] forBarMetrics:UIBarMetricsDefault];
-    //  [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    
-    //   [self inRoomWithType:@"inroom"];
-}
+
+
 -(void)inRoomWithType:(NSString *)type
 {
     InRoomModel *model=[[InRoomModel alloc]init];
@@ -589,58 +532,114 @@
         [MBProgressHUD showError:@"网络错误，稍后再试" toView:self.view];
     }];
 }
--(void)reloadView
+
+
+- ( NSString *)md5String:( NSString *)str
 {
     
-    timerCount++;
-    NSLog(@"timerCount  %ld",(long)timerCount);
-    if (timerCount%5==0)
-    {
-        [self getData];
+    const char *myPasswd = [str UTF8String ];
+    
+    unsigned char mdc[ 16 ];
+    
+    CC_MD5 (myPasswd, ( CC_LONG ) strlen (myPasswd), mdc);
+    
+    NSMutableString *md5String = [ NSMutableString string ];
+    
+    for ( int i = 0 ; i< 16 ; i++) {
+        //(x代表以十六进制形式输出,02代表不足两位，前面补0输出，如果超过两位，则以实际输出)
+        [md5String appendFormat : @"%02x" ,mdc[i]];
+        
+    }
+    
+    return md5String;
+    
+}
+- (NSString *)getHexByDecimal:(NSInteger)decimal
+{
+    
+    NSString *hex =@"";
+    NSString *letter;
+    NSInteger number;
+    for (int i = 0; i<9; i++) {
+        
+        number = decimal % 16;
+        decimal = decimal / 16;
+        switch (number) {
+                
+            case 10:
+                letter =@"A"; break;
+            case 11:
+                letter =@"B"; break;
+            case 12:
+                letter =@"C"; break;
+            case 13:
+                letter =@"D"; break;
+            case 14:
+                letter =@"E"; break;
+            case 15:
+                letter =@"F"; break;
+            default:
+                letter = [NSString stringWithFormat:@"%ld", number];
+        }
+        hex = [letter stringByAppendingString:hex];
+        if (decimal == 0) {
+            
+            break;
+        }
+    }
+    return hex;
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    [self.view endEditing:YES];
+}
+
+- (void)initNotification {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)keyboardWillShow:(NSNotification *)notification
+{
+    if (isBottom) {
+        //得到键盘高度
+        NSDictionary *userInfo = [notification userInfo];
+        NSValue* aValue = [userInfo objectForKey:UIKeyboardFrameEndUserInfoKey];
+        CGRect keyboardRect = [aValue CGRectValue];
+        // - 49
+        bottomView.frame = CGRectMake(0, CGRectGetHeight([UIScreen mainScreen].bounds) - keyboardRect.size.height - 50, CGRectGetWidth(bottomView.frame), CGRectGetHeight(bottomView.frame));
+        bottomView.backgroundColor = [UIColor colorWithWhite:1 alpha:1];
+        chartTF.backgroundColor= [UIColor colorWithWhite:1 alpha:1];
+        chartTF.textColor=[UIColor blackColor];
+        sendBtn.hidden=NO;
     }
     
     
 }
--(void)getData
+
+- (void)keyboardWillHide:(NSNotification *)notification
 {
-    LiveUserModel *model=[[LiveUserModel alloc]init];
-    model.exhiid= [[NSUserDefaults standardUserDefaults] objectForKey:Exhibh];
-    model.lang=[[NSUserDefaults standardUserDefaults] objectForKey:Lang];
-    model.ubh=[[NSUserDefaults standardUserDefaults] objectForKey:Userbh];;
-    model.lastid=lastId;
-    model.roomid=_mainDic[@"roomid"];
-    
-    [model LiveUserModelSuccessBlock:^(NSMutableDictionary * _Nonnull returnValue) {
-        if ([returnValue[@"code"] isEqualToString:@"100"]) {
-            
-            self->userArr=[NSMutableArray arrayWithArray:returnValue[@"detail"][@"userlist"]];
-            
-            [self->chatlist addObjectsFromArray:returnValue[@"detail"][@"chatlist"] ];
-            
-            
-            numLab.text=[NSString stringWithFormat:@"%d人",(int)[userArr count]];
-            NSArray *arr=returnValue[@"detail"][@"chatlist"];
-            if (arr.count>0) {
-                NSDictionary*dic=[arr lastObject];
-                self->lastId=dic[@"id"];
-            }
-            
-            
-            [self->tableView reloadData];
-            [self initScrollView];
-        }
-    } failure:^(NSString * _Nonnull errorMessage) {
-        
-    }];
+    if (isBottom) {
+        bottomView.frame = _rect;
+        bottomView.backgroundColor = [UIColor colorWithWhite:0.f alpha:0.5];
+        chartTF.backgroundColor =  [UIColor colorWithWhite:0.f alpha:0.7];
+        chartTF.textColor=[UIColor whiteColor];
+        sendBtn.hidden=YES;
+    }
     
 }
--(void)viewWillDisappear:(BOOL)animated{
-    [super viewWillDisappear:animated];
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
+{
+    isBottom=YES;
     
-    [self inRoomWithType:@"outroom"];
-    [self stopPlay];
-    [getDataTimer invalidate];
-    getDataTimer=nil;
+    
+    return YES;
+    
+}
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    isBottom=NO;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -692,7 +691,7 @@
 - (void)onPlayEvent:(int)EvtID withParam:(NSDictionary *)param
 {
     NSLog(@"SSSS %d",EvtID);
-    NSDictionary *dict = param;
+ //   NSDictionary *dict = param;
     dispatch_async(dispatch_get_main_queue(), ^{
         if (EvtID == PLAY_EVT_PLAY_BEGIN) {
             //  [self stopLoadingAnimation];
@@ -701,7 +700,8 @@
             
             [MBProgressHUD showSuccess:@"直播已结束" toView:self.view];
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [self.navigationController popViewControllerAnimated:YES];
+                [self  returnPress];
+                [self.navigationController popToRootViewControllerAnimated:YES];
             });
             
             

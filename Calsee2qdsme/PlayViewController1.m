@@ -29,6 +29,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor=[UIColor whiteColor];
+    
     // 创建播放器
     _player = [[TXLivePlayer alloc] init];
     
@@ -60,19 +62,27 @@
     [self.view addSubview:topView];
     
     UIButton *  collectBtn=[UIButton buttonWithType:UIButtonTypeCustom];
-      collectBtn.frame=CGRectMake(5, 5, 40, 35);
-      [collectBtn setImage:[UIImage imageNamed:@"icon_back_title"] forState:UIControlStateNormal];
+      collectBtn.frame=CGRectMake(0, 0, 60, 50);
+    collectBtn.backgroundColor=[UIColor clearColor];
       [collectBtn addTarget:self action:@selector(collectPress) forControlEvents:UIControlEventTouchUpInside];
       [topView addSubview:collectBtn];
+
+    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(15, 15, 12, 20)];
+    imageView.image=[UIImage imageNamed:@"icon_back_title"];
+    [collectBtn addSubview:imageView];
     
+    CGFloat videoHeight = 64;
+       if (KIsiPhoneX) {
+           videoHeight=100;
+       }
     
-    
-    _videoView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, ScreenW, ScreenW*2/3)];
+    _videoView = [[UIView alloc] initWithFrame:CGRectMake(0, videoHeight, ScreenW, ScreenW*2/3)];
     _videoView.backgroundColor=[UIColor lightGrayColor];
     [self.view addSubview:_videoView];
     
-    _contentTxt = [[UITextView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_videoView.frame)+10, ScreenW, ScreenH-ScreenW*2/3-64-20)];
+    _contentTxt = [[UITextView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_videoView.frame)+10, ScreenW, ScreenH-ScreenW*2/3-videoHeight-20)];
     _contentTxt.editable=NO;
+    _contentTxt.backgroundColor=[UIColor whiteColor];
     _contentTxt.font=[UIFont systemFontOfSize:14];
     _contentTxt.text=_playDic[@"content"];
     [self.view addSubview:_contentTxt];

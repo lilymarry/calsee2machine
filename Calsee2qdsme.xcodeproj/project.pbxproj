@@ -41,8 +41,6 @@
 		8848946324EF78EF00C13783 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8848946124EF78EF00C13783 /* MainViewController.m */; };
 		8848946424EF78EF00C13783 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8848946224EF78EF00C13783 /* MainViewController.xib */; };
 		8848947124EF946000C13783 /* PlayViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 8848946F24EF945F00C13783 /* PlayViewController1.m */; };
-		8848947A24EFC1D400C13783 /* CameraPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8848947824EFC1D300C13783 /* CameraPushViewController.m */; };
-		8848947B24EFC1D400C13783 /* CameraPushViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8848947924EFC1D400C13783 /* CameraPushViewController.xib */; };
 		8848947E24EFC8B400C13783 /* HelpCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 8848947D24EFC8B300C13783 /* HelpCommon.m */; };
 		88D297AB24F6293A006AE927 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297AA24F6293A006AE927 /* libz.tbd */; };
 		88D297AD24F62953006AE927 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297AC24F62953006AE927 /* libresolv.tbd */; };
@@ -134,9 +132,6 @@
 		8848946524EF7CEC00C13783 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		8848946E24EF945F00C13783 /* PlayViewController1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayViewController1.h; sourceTree = "<group>"; };
 		8848946F24EF945F00C13783 /* PlayViewController1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayViewController1.m; sourceTree = "<group>"; };
-		8848947724EFC1D300C13783 /* CameraPushViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CameraPushViewController.h; sourceTree = "<group>"; };
-		8848947824EFC1D300C13783 /* CameraPushViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraPushViewController.m; sourceTree = "<group>"; };
-		8848947924EFC1D400C13783 /* CameraPushViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CameraPushViewController.xib; sourceTree = "<group>"; };
 		8848947C24EFC8B300C13783 /* HelpCommon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HelpCommon.h; sourceTree = "<group>"; };
 		8848947D24EFC8B300C13783 /* HelpCommon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HelpCommon.m; sourceTree = "<group>"; };
 		88D297AA24F6293A006AE927 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -285,13 +280,6 @@
 			path = "直播";
 			sourceTree = "<group>";
 		};
-		883DCF6324FEB71D0057FED5 /* 三方 */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "三方";
-			sourceTree = "<group>";
-		};
 		88EFD45E24EE2B4F0018A6D1 = {
 			isa = PBXGroup;
 			children = (
@@ -334,15 +322,11 @@
 				883ABE6B24FC7DFB00F30C03 /* ReportReasonView.xib */,
 				8839B7EF24F79ED10051B7EC /* WatchLivePlayDiscussCell.h */,
 				8839B7F024F79ED10051B7EC /* WatchLivePlayDiscussCell.m */,
-				8848947724EFC1D300C13783 /* CameraPushViewController.h */,
-				8848947824EFC1D300C13783 /* CameraPushViewController.m */,
-				8848947924EFC1D400C13783 /* CameraPushViewController.xib */,
 				88EFD47024EE2B4F0018A6D1 /* ViewController.h */,
 				88EFD47124EE2B4F0018A6D1 /* ViewController.m */,
 				88EFD47324EE2B4F0018A6D1 /* Main.storyboard */,
 				883DCF2F24FE51160057FED5 /* ChatWebViewController.h */,
 				883DCF3024FE51160057FED5 /* ChatWebViewController.m */,
-				883DCF6324FEB71D0057FED5 /* 三方 */,
 				883DCF4624FE8B2A0057FED5 /* 直播 */,
 				883DCF4524FE8AF10057FED5 /* 会话 */,
 				883DCF3E24FE8A9E0057FED5 /* 多人会议 */,
@@ -507,7 +491,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				88EFD47A24EE2B520018A6D1 /* LaunchScreen.storyboard in Resources */,
-				8848947B24EFC1D400C13783 /* CameraPushViewController.xib in Resources */,
 				88EFD47724EE2B520018A6D1 /* Assets.xcassets in Resources */,
 				88D297B724F639B4006AE927 /* AliyunEmasServices-Info.plist in Resources */,
 				88EFD47524EE2B4F0018A6D1 /* Main.storyboard in Resources */,
@@ -585,7 +568,6 @@
 				883DCF3D24FE8A970057FED5 /* LoginBL.m in Sources */,
 				88EFD47224EE2B4F0018A6D1 /* ViewController.m in Sources */,
 				883DCF4424FE8AE20057FED5 /* HujiaoView.m in Sources */,
-				8848947A24EFC1D400C13783 /* CameraPushViewController.m in Sources */,
 				8839B7F124F79ED10051B7EC /* WatchLivePlayDiscussCell.m in Sources */,
 				883ABEB524FCC0D000F30C03 /* LivechatModel.m in Sources */,
 				883ABEA324FCAB9900F30C03 /* HttpManager.m in Sources */,
