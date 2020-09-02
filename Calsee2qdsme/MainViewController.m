@@ -11,14 +11,20 @@
 #import "PlayViewController1.h"
 #import "WatchLivePlayViewController.h"
 #import "PlayedViewController.h"
-#import "WebViewJavascriptBridge.h"
 #import "InRoomModel.h"
+#import "WatchLivePlayViewController.h"
+#import "PlayViewController1.h"
+#import "PlayedViewController.h"
+#import "LiveViewController.h"
+#import "RoomLiveViewController.h"
+#import "OneToOneViewController.h"
+#import "LoginBL.h"
 @interface MainViewController ()<WKNavigationDelegate, WKUIDelegate,UIScrollViewDelegate,WKScriptMessageHandler>
 
 @property (strong, nonatomic) WKWebView *webView;
 @property (nonatomic, strong) UIProgressView *progressView;
 @property (strong, nonatomic) NSString *urlStr;
-@property WebViewJavascriptBridge* bridge;
+
 @end
 
 @implementation MainViewController
@@ -42,20 +48,18 @@
    _webView.UIDelegate = self;
    _webView.scrollView.delegate = self;
     
-    _bridge = [WebViewJavascriptBridge bridgeForWebView:_webView];
-    [_bridge setWebViewDelegate:self];
-    
+
     NSString *url=@"https://www.calseeglobal.com/web/ios/index.aspx?exhiid=295621120832";
     NSString *userbh = [[NSUserDefaults standardUserDefaults] objectForKey:Userbh];
     if (userbh.length>0) {
-      url=[NSString stringWithFormat:@"https://www.calseeglobal.com/web/ios/index.aspx?exhiid=295621120832&ubh=%@&lang=%@",userbh,@"zh-CN"];
+      url=[NSString stringWithFormat:@"https://www.calseeglobal.com/web/ios/index.aspx?exhiid=295621120832&ubh=%@&lang=%@",userbh,Lang];
     }
    
-    NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+  NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
 
-//[_webView loadRequest:request];
+[_webView loadRequest:request];
    
-// [self.view addSubview:_webView];
+[self.view addSubview:_webView];
     
    self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, statusBarHeight, ScreenW, 5)];
    self.progressView.backgroundColor = [UIColor whiteColor];
@@ -68,9 +72,7 @@
    [_webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
     
 }
-- (void)registerHandler:(NSString *)handlerName handler:(WVJBHandler)handler {
-    NSLog(@"qqwqqqq");
-}
+
 - (void)userContentController:(WKUserContentController *)userContentController didReceiveScriptMessage:(WKScriptMessage *)message
 {
    // 登录
@@ -84,12 +86,30 @@
          NSLog(@"AAAAA %@",dic);
         [[NSUserDefaults standardUserDefaults]  setObject:dic[@"exhibh"] forKey:Exhibh] ;
         [[NSUserDefaults standardUserDefaults]  setObject:dic[@"userbh"] forKey:Userbh] ;
+          [[NSUserDefaults standardUserDefaults]  setObject:dic[@"lang"] forKey:Lang] ;
         NSString *str=@"15@15.com";
 
         [[NSUserDefaults standardUserDefaults]synchronize];
         //设备绑定 target 目标类型，1：本设备；2：本设备绑定账号；3：别名
        [ CloudPushSDK bindTag:1 withTags:@[str] withAlias:@"1111" withCallback:^(CloudPushCallbackResult *res) {
        }];
+        
+      NSMutableDictionary *dictoken = [[NSMutableDictionary alloc]init];
+        NSString *deviceToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"deviceToken"];
+        if (deviceToken.length>0) {
+          
+        }else{
+            deviceToken = @"";
+        }
+        
+        [dictoken setObject:dic[@"userbh"] forKey:@"ubh"];
+        [dictoken setObject:exhiid2 forKey:@"exhiid"];
+        [dictoken setObject:deviceToken forKey:@"devicetoken"];
+        [LoginBL updevicetoken:dictoken success:^(NSMutableDictionary *returnValue) {
+            
+        } failure:^(NSString *errorMessage) {
+            
+        }];
         
     }
     //退出登录
@@ -102,23 +122,92 @@
                 [ CloudPushSDK unbindTag:1 withTags:@[str] withAlias:@"1111" withCallback:^(CloudPushCallbackResult *res) {
                      }];
     }
-    
-    else   if ([message.name isEqualToString:@"openCeremony"]||[message.name isEqualToString:@"watchLiveBroadcast"]||[message.name isEqualToString:@"openMeeting"]||[message.name isEqualToString:@"openLiveBroadcast"]||[message.name isEqualToString:@"openForum"]) {
-           NSData *jsonData = [message.body dataUsingEncoding:NSUTF8StringEncoding];
-        NSError *err;
-        NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                                     options:NSJSONReadingMutableContainers
-                                                                    error:&err];
-           
-             NSLog(@"AAAAA %@",dic);
-      }
+    else   if ([message.name isEqualToString:@"watchLiveBroadcast"]) {
+        NSLog(@"message %@",message.body);
+        WatchLivePlayViewController *play=[[WatchLivePlayViewController alloc]init];
+        play.mainDic=message.body;
+        [self.navigationController pushViewController:play animated:YES];
+              
+        }
+    else   if ([message.name isEqualToString:@"openCeremony"]) {
+        NSLog(@"message %@",message.body);
+        NSDictionary *dic=message.body;
+        if ([dic[@"kms_type"] isEqualToString:@"1"]) {
+            //开幕直播
+            if ([dic[@"kms_playback"] isEqualToString:@"0"]) {
+                PlayViewController1 *play=[[PlayViewController1 alloc]init];
+                play.playDic=dic;
+                [self.navigationController pushViewController:play animated:YES];
+            }
+            else {
+                //直播回放
+            PlayedViewController *play=[[PlayedViewController alloc]init];
+            play.playDic=dic;
+            [self.navigationController pushViewController:play animated:YES];
+            }
+        }
+        else if ([dic[@"kms_type"] isEqualToString:@"2"])
+        {
+            //开幕录播
+            PlayedViewController *play=[[PlayedViewController alloc]init];
+                play.playDic=dic;
+                           [self.navigationController pushViewController:play animated:YES];
+            
+        }
+       
+        }
+  else if([message.name isEqualToString:@"openLiveBroadcast"]){
+        
+                       
+        NSDictionary *dic = message.body;
+        [self.navigationController setNavigationBarHidden:YES animated:YES];
+        LiveViewController *play=[[LiveViewController alloc]init];
+        play.LunTanOrLive = 1;
+        play.touxiangUrl = [dic objectForKey:@"logo"];
+        play.userNameStr = [dic objectForKey:@"name"];
+        [self.navigationController pushViewController:play animated:YES];
+    }else if([message.name isEqualToString:@"openForum"]){
+        NSDictionary *dic = message.body;
+            [self.navigationController setNavigationBarHidden:YES animated:YES];
+            LiveViewController *play=[[LiveViewController alloc]init];
+              play.LunTanOrLive = 2;
+        play.touxiangUrl = [dic objectForKey:@"logo"];
+        play.userNameStr = [dic objectForKey:@"name"];
+            [self.navigationController pushViewController:play animated:YES];
+        }else if([message.name isEqualToString:@"openMeeting"]){
+        
+                [self.navigationController setNavigationBarHidden:YES animated:YES];
+                RoomLiveViewController *play=[[RoomLiveViewController alloc]init];
+                [self.navigationController pushViewController:play animated:YES];
+            }else if([message.name isEqualToString:@"trtccall"]){
+            
+                NSLog(@"AAAAA %@",message.body);
+                if ([[message.body objectForKey:@"code"] intValue] == 100) {
+                    NSDictionary *dic = [message.body objectForKey:@"detail"];
+                    [self.navigationController setNavigationBarHidden:YES animated:YES];
+                    OneToOneViewController *play=[[OneToOneViewController alloc]init];
+                      play.callFrom = 1;
+                    play.callzt = [[dic objectForKey:@"callzt"] intValue];
+                    play.userid = [dic objectForKey:@"userid"];
+                    play.roomid = [dic objectForKey:@"roomid"];
+                    play.roomsig = [dic objectForKey:@"sig"];
+                    [self.navigationController pushViewController:play animated:YES];
+                }
+                    
+          }
 }
 - (void)viewWillAppear:(BOOL)animated
 {
       WKUserContentController *controller = self.webView.configuration.userContentController;
-     [controller addScriptMessageHandler:self name:@"exhiinfo"];//登录
-    [controller addScriptMessageHandler:self name:@"logout"];//登录
+     [controller addScriptMessageHandler:self name:@"exhiinfo"];
+    [controller addScriptMessageHandler:self name:@"logout"];
+     [controller addScriptMessageHandler:self name:@"openCeremony"];
+     [controller addScriptMessageHandler:self name:@"watchLiveBroadcast"];
     
+   [controller addScriptMessageHandler:self name:@"openLiveBroadcast"];//直播
+     [controller addScriptMessageHandler:self name:@"openForum"];//论坛直播
+     [controller addScriptMessageHandler:self name:@"openMeeting"];//会议
+     [controller addScriptMessageHandler:self name:@"trtccall"];//呼叫
     [self.navigationController setNavigationBarHidden:YES];
 }
 - (void)viewDidDisappear:(BOOL)animated
@@ -126,7 +215,13 @@
     WKUserContentController *controller = self.webView.configuration.userContentController;
     [controller removeScriptMessageHandlerForName:@"exhiinfo"];
     [controller removeScriptMessageHandlerForName:@"logout"];
-  //   [self.navigationController setNavigationBarHidden:NO];
+    [controller removeScriptMessageHandlerForName:@"openCeremony"];
+    [controller removeScriptMessageHandlerForName:@"watchLiveBroadcast"];//论坛直播
+    
+    [controller removeScriptMessageHandlerForName:@"openLiveBroadcast"];
+    [controller removeScriptMessageHandlerForName:@"openForum"];//论坛直播
+    [controller removeScriptMessageHandlerForName:@"openMeeting"];//会议
+    [controller removeScriptMessageHandlerForName:@"trtccall"];//呼叫
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
   

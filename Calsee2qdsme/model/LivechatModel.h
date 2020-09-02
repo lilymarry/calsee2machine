@@ -9,8 +9,7 @@
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
-typedef void(^LivechatModelSuccessBlock)(NSString *code,NSString* message  ,id data);
-typedef void(^LivechatModelFaiulureBlock)(NSError *error);
+
 @interface LivechatModel : NSObject
 @property(nonatomic,copy )NSString *exhiid;
 @property(nonatomic,copy )NSString *lang;
@@ -18,7 +17,8 @@ typedef void(^LivechatModelFaiulureBlock)(NSError *error);
 @property(nonatomic,copy )NSString *roomid;
 @property(nonatomic,copy )NSString *nr;//发言内容
 
--(void)LivechatModelSuccess:(LivechatModelSuccessBlock)success andFailure:(LivechatModelFaiulureBlock)failure;
+-(void)LivechatModelSuccess:(void (^)(NSMutableDictionary *returnValue))success
+failure:(void (^)(NSString *errorMessage))failure;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -10,9 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-
-typedef void(^AccusationModelSuccessBlock)(NSString *code,NSString* message  ,id data);
-typedef void(^AccusationModelFaiulureBlock)(NSError *error);
 @interface AccusationModel : NSObject
 @property(nonatomic,copy )NSString *exhiid;
 @property(nonatomic,copy )NSString *lang;
@@ -20,7 +17,9 @@ typedef void(^AccusationModelFaiulureBlock)(NSError *error);
 @property(nonatomic,copy )NSString *roomid;
 @property(nonatomic,copy )NSString *content;
 
--(void)AccusationModelSuccess:(AccusationModelSuccessBlock)success andFailure:(AccusationModelFaiulureBlock)failure;
+-(void)AccusationModelSuccess:(void (^)(NSMutableDictionary *returnValue))success
+                 failure:(void (^)(NSString *errorMessage))failure;
 @end
+
 
 NS_ASSUME_NONNULL_END

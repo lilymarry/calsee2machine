@@ -9,7 +9,8 @@
 #import "LivechatModel.h"
 
 @implementation LivechatModel
--(void)LivechatModelSuccess:(LivechatModelSuccessBlock)success andFailure:(LivechatModelFaiulureBlock)failure
+-(void)LivechatModelSuccess:(void (^)(NSMutableDictionary *returnValue))success
+failure:(void (^)(NSString *errorMessage))failure
 {
      NSMutableDictionary *para = [NSMutableDictionary dictionary];
            
@@ -30,16 +31,16 @@
               }
    
     
-        [HttpManager postWithUrl:@"livechat" baseurl:Base_url andParameters:para andSuccess:^(id Json) {
-               NSDictionary * dic = (NSDictionary *)Json;
-    //         [SearchGoodsModel mj_setupObjectClassInArray:^NSDictionary *{
-    //              return @{@"products":@"SearchGoodsModel"
-    //                       };
-    //          }];
-         //  success(dic[@"code"],dic[@"message"],[SearchGoodsModel mj_objectWithKeyValues:dic]);
-               
-           } andFail:^(NSError *error) {
-               failure(error);
-           }];
+        [[OAAPIClient sharedInstance] POST:@"/api/api/livechat" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+                   
+                   if (responseObject) {
+                         success(responseObject);
+                   }
+                  
+                 
+               } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                   failure(@"登录失败，请重试");
+                   
+               }];
 }
 @end

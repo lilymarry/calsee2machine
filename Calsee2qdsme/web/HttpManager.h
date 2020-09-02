@@ -13,7 +13,7 @@ typedef void(^HttpFailureBlock) (NSError * error);
 
 + (void)postWithUrl:(NSString *)url
                  baseurl:(NSString *)baseurl
-           andParameters:(NSDictionary *)params
+           andParameters:(NSString *)params
               andSuccess:(HttpSuccessBlock)success
                  andFail:(HttpFailureBlock)failure;
 

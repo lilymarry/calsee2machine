@@ -9,7 +9,8 @@
 #import "LiveUserModel.h"
 
 @implementation LiveUserModel
--(void)LiveUserModelSuccessBlock:(LiveUserModelSuccessBlock)success andFailure:(LiveUserModelFaiulureBlock)failure
+-(void)LiveUserModelSuccessBlock:(void (^)(NSMutableDictionary *returnValue))success
+failure:(void (^)(NSString *errorMessage))failure
 {
      NSMutableDictionary *para = [NSMutableDictionary dictionary];
            
@@ -28,18 +29,21 @@
           if (SWNOTEmptyStr(self.lastid)) {
                   [para setValue:self.lastid forKey:@"lastid"];
               }
-   
+      else
+   {
+       [para setValue:@"" forKey:@"lastid"];
+   }
     
-        [HttpManager postWithUrl:@"liveuser" baseurl:Base_url andParameters:para andSuccess:^(id Json) {
-               NSDictionary * dic = (NSDictionary *)Json;
-    //         [SearchGoodsModel mj_setupObjectClassInArray:^NSDictionary *{
-    //              return @{@"products":@"SearchGoodsModel"
-    //                       };
-    //          }];
-         //  success(dic[@"code"],dic[@"message"],[SearchGoodsModel mj_objectWithKeyValues:dic]);
-               
-           } andFail:^(NSError *error) {
-               failure(error);
-           }];
+        [[OAAPIClient sharedInstance] POST:@"/api/api/liveuser" parameters:para success:^(NSURLSessionDataTask *task, id responseObject) {
+                  
+                  if (responseObject) {
+                        success(responseObject);
+                  }
+                 
+                
+              } failure:^(NSURLSessionDataTask *task, NSError *error) {
+                  failure(@"登录失败，请重试");
+                  
+              }];
 }
 @end

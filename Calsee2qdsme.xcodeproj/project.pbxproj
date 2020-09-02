@@ -21,6 +21,23 @@
 		883ABEB224FCBFBA00F30C03 /* AccusationModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 883ABEB124FCBFBA00F30C03 /* AccusationModel.m */; };
 		883ABEB524FCC0D000F30C03 /* LivechatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 883ABEB424FCC0D000F30C03 /* LivechatModel.m */; };
 		883ABEB824FCC23200F30C03 /* HasKeFuModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 883ABEB724FCC23200F30C03 /* HasKeFuModel.m */; };
+		883DCF3124FE51160057FED5 /* ChatWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883DCF3024FE51160057FED5 /* ChatWebViewController.m */; };
+		883DCF3424FE8A810057FED5 /* CommonClass.m in Sources */ = {isa = PBXBuildFile; fileRef = 883DCF3324FE8A810057FED5 /* CommonClass.m */; };
+		883DCF3B24FE8A970057FED5 /* OAAPIClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 883DCF3624FE8A970057FED5 /* OAAPIClient.m */; };
+		883DCF3C24FE8A970057FED5 /* RoomLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883DCF3924FE8A970057FED5 /* RoomLiveViewController.m */; };
+		883DCF3D24FE8A970057FED5 /* LoginBL.m in Sources */ = {isa = PBXBuildFile; fileRef = 883DCF3A24FE8A970057FED5 /* LoginBL.m */; };
+		883DCF4424FE8AE20057FED5 /* HujiaoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 883DCF4224FE8AE20057FED5 /* HujiaoView.m */; };
+		883DCF4B24FE8B4B0057FED5 /* pushLiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 883DCF4724FE8B4B0057FED5 /* pushLiveView.m */; };
+		883DCF4C24FE8B4B0057FED5 /* scrollTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 883DCF4A24FE8B4B0057FED5 /* scrollTextView.m */; };
+		883DCF4F24FE8B590057FED5 /* LiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883DCF4D24FE8B590057FED5 /* LiveViewController.m */; };
+		883DCF5324FE95830057FED5 /* OneToOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883DCF5224FE95830057FED5 /* OneToOneViewController.m */; };
+		883DCF5624FEAC060057FED5 /* IntoroomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 883DCF5524FEAC060057FED5 /* IntoroomModel.m */; };
+		883DCF5A24FEB1FF0057FED5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297AE24F6295E006AE927 /* CoreTelephony.framework */; };
+		883DCF5B24FEB2690057FED5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297B024F62969006AE927 /* SystemConfiguration.framework */; };
+		883DCF6224FEB70A0057FED5 /* AlicloudUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 883DCF6124FEB70A0057FED5 /* AlicloudUtils.framework */; };
+		883DCF6F24FEBCA20057FED5 /* CloudPushSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 883DCF6C24FEBCA20057FED5 /* CloudPushSDK.framework */; };
+		883DCF7024FEBCA20057FED5 /* UTDID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 883DCF6D24FEBCA20057FED5 /* UTDID.framework */; };
+		883DCF7124FEBCA20057FED5 /* UTMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 883DCF6E24FEBCA20057FED5 /* UTMini.framework */; };
 		8848946324EF78EF00C13783 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8848946124EF78EF00C13783 /* MainViewController.m */; };
 		8848946424EF78EF00C13783 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8848946224EF78EF00C13783 /* MainViewController.xib */; };
 		8848947124EF946000C13783 /* PlayViewController1.m in Sources */ = {isa = PBXBuildFile; fileRef = 8848946F24EF945F00C13783 /* PlayViewController1.m */; };
@@ -29,10 +46,7 @@
 		8848947E24EFC8B400C13783 /* HelpCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 8848947D24EFC8B300C13783 /* HelpCommon.m */; };
 		88D297AB24F6293A006AE927 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297AA24F6293A006AE927 /* libz.tbd */; };
 		88D297AD24F62953006AE927 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297AC24F62953006AE927 /* libresolv.tbd */; };
-		88D297AF24F6295E006AE927 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297AE24F6295E006AE927 /* CoreTelephony.framework */; };
-		88D297B124F62969006AE927 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297B024F62969006AE927 /* SystemConfiguration.framework */; };
 		88D297B324F6297C006AE927 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297B224F6297C006AE927 /* libsqlite3.tbd */; };
-		88D297B524F63286006AE927 /* aliyun in Resources */ = {isa = PBXBuildFile; fileRef = 88D297B424F63285006AE927 /* aliyun */; };
 		88D297B724F639B4006AE927 /* AliyunEmasServices-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88D297B624F639B4006AE927 /* AliyunEmasServices-Info.plist */; };
 		88EFD46C24EE2B4F0018A6D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD46B24EE2B4F0018A6D1 /* AppDelegate.m */; };
 		88EFD47224EE2B4F0018A6D1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD47124EE2B4F0018A6D1 /* ViewController.m */; };
@@ -88,6 +102,32 @@
 		883ABEB424FCC0D000F30C03 /* LivechatModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LivechatModel.m; sourceTree = "<group>"; };
 		883ABEB624FCC23200F30C03 /* HasKeFuModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HasKeFuModel.h; sourceTree = "<group>"; };
 		883ABEB724FCC23200F30C03 /* HasKeFuModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HasKeFuModel.m; sourceTree = "<group>"; };
+		883DCF2F24FE51160057FED5 /* ChatWebViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChatWebViewController.h; sourceTree = "<group>"; };
+		883DCF3024FE51160057FED5 /* ChatWebViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChatWebViewController.m; sourceTree = "<group>"; };
+		883DCF3224FE8A810057FED5 /* CommonClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonClass.h; sourceTree = "<group>"; };
+		883DCF3324FE8A810057FED5 /* CommonClass.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonClass.m; sourceTree = "<group>"; };
+		883DCF3524FE8A970057FED5 /* OAAPIClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAAPIClient.h; sourceTree = "<group>"; };
+		883DCF3624FE8A970057FED5 /* OAAPIClient.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAAPIClient.m; sourceTree = "<group>"; };
+		883DCF3724FE8A970057FED5 /* LoginBL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginBL.h; sourceTree = "<group>"; };
+		883DCF3824FE8A970057FED5 /* RoomLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoomLiveViewController.h; sourceTree = "<group>"; };
+		883DCF3924FE8A970057FED5 /* RoomLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RoomLiveViewController.m; sourceTree = "<group>"; };
+		883DCF3A24FE8A970057FED5 /* LoginBL.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginBL.m; sourceTree = "<group>"; };
+		883DCF3F24FE8AD90057FED5 /* OneToOneViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OneToOneViewController.h; sourceTree = "<group>"; };
+		883DCF4224FE8AE20057FED5 /* HujiaoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HujiaoView.m; sourceTree = "<group>"; };
+		883DCF4324FE8AE20057FED5 /* HujiaoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HujiaoView.h; sourceTree = "<group>"; };
+		883DCF4724FE8B4B0057FED5 /* pushLiveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = pushLiveView.m; sourceTree = "<group>"; };
+		883DCF4824FE8B4B0057FED5 /* scrollTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scrollTextView.h; sourceTree = "<group>"; };
+		883DCF4924FE8B4B0057FED5 /* pushLiveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = pushLiveView.h; sourceTree = "<group>"; };
+		883DCF4A24FE8B4B0057FED5 /* scrollTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scrollTextView.m; sourceTree = "<group>"; };
+		883DCF4D24FE8B590057FED5 /* LiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveViewController.m; sourceTree = "<group>"; };
+		883DCF4E24FE8B590057FED5 /* LiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveViewController.h; sourceTree = "<group>"; };
+		883DCF5224FE95830057FED5 /* OneToOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OneToOneViewController.m; path = ../../../../Downloads/OneToOneViewController.m; sourceTree = "<group>"; };
+		883DCF5424FEAC060057FED5 /* IntoroomModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntoroomModel.h; sourceTree = "<group>"; };
+		883DCF5524FEAC060057FED5 /* IntoroomModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntoroomModel.m; sourceTree = "<group>"; };
+		883DCF6124FEB70A0057FED5 /* AlicloudUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlicloudUtils.framework; sourceTree = "<group>"; };
+		883DCF6C24FEBCA20057FED5 /* CloudPushSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudPushSDK.framework; path = "Calsee2qdsme/三方/aliyun/CloudPushSDK.framework"; sourceTree = "<group>"; };
+		883DCF6D24FEBCA20057FED5 /* UTDID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UTDID.framework; path = "Calsee2qdsme/三方/aliyun/UTDID.framework"; sourceTree = "<group>"; };
+		883DCF6E24FEBCA20057FED5 /* UTMini.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UTMini.framework; path = "Calsee2qdsme/三方/aliyun/UTMini.framework"; sourceTree = "<group>"; };
 		8848946024EF78EF00C13783 /* MainViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainViewController.h; sourceTree = "<group>"; };
 		8848946124EF78EF00C13783 /* MainViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainViewController.m; sourceTree = "<group>"; };
 		8848946224EF78EF00C13783 /* MainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainViewController.xib; sourceTree = "<group>"; };
@@ -104,7 +144,6 @@
 		88D297AE24F6295E006AE927 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		88D297B024F62969006AE927 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		88D297B224F6297C006AE927 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		88D297B424F63285006AE927 /* aliyun */ = {isa = PBXFileReference; lastKnownFileType = folder; path = aliyun; sourceTree = "<group>"; };
 		88D297B624F639B4006AE927 /* AliyunEmasServices-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AliyunEmasServices-Info.plist"; sourceTree = "<group>"; };
 		88D297B824F64C5F006AE927 /* 机床工具云展览.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "机床工具云展览.entitlements"; sourceTree = "<group>"; };
 		88EFD46724EE2B4F0018A6D1 /* 机床工具云展览.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "机床工具云展览.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -133,11 +172,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				883DCF6F24FEBCA20057FED5 /* CloudPushSDK.framework in Frameworks */,
+				883DCF7024FEBCA20057FED5 /* UTDID.framework in Frameworks */,
+				883DCF7124FEBCA20057FED5 /* UTMini.framework in Frameworks */,
 				88D297B324F6297C006AE927 /* libsqlite3.tbd in Frameworks */,
-				88D297B124F62969006AE927 /* SystemConfiguration.framework in Frameworks */,
-				88D297AF24F6295E006AE927 /* CoreTelephony.framework in Frameworks */,
 				88D297AD24F62953006AE927 /* libresolv.tbd in Frameworks */,
+				883DCF6224FEB70A0057FED5 /* AlicloudUtils.framework in Frameworks */,
+				883DCF5A24FEB1FF0057FED5 /* CoreTelephony.framework in Frameworks */,
 				88D297AB24F6293A006AE927 /* libz.tbd in Frameworks */,
+				883DCF5B24FEB2690057FED5 /* SystemConfiguration.framework in Frameworks */,
 				3DD0C1A11E0F562370B41D69 /* libPods-Calsee2qdsme.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,6 +229,8 @@
 				883ABEB424FCC0D000F30C03 /* LivechatModel.m */,
 				883ABEB624FCC23200F30C03 /* HasKeFuModel.h */,
 				883ABEB724FCC23200F30C03 /* HasKeFuModel.m */,
+				883DCF5424FEAC060057FED5 /* IntoroomModel.h */,
+				883DCF5524FEAC060057FED5 /* IntoroomModel.m */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -193,6 +238,8 @@
 		883ABEBC24FCF28700F30C03 /* help */ = {
 			isa = PBXGroup;
 			children = (
+				883DCF3224FE8A810057FED5 /* CommonClass.h */,
+				883DCF3324FE8A810057FED5 /* CommonClass.m */,
 				8848947C24EFC8B300C13783 /* HelpCommon.h */,
 				88D297B624F639B4006AE927 /* AliyunEmasServices-Info.plist */,
 				8848947D24EFC8B300C13783 /* HelpCommon.m */,
@@ -201,10 +248,46 @@
 			path = help;
 			sourceTree = "<group>";
 		};
-		883ABEBD24FCF2C000F30C03 /* 三方 */ = {
+		883DCF3E24FE8A9E0057FED5 /* 多人会议 */ = {
 			isa = PBXGroup;
 			children = (
-				88D297B424F63285006AE927 /* aliyun */,
+				883DCF3724FE8A970057FED5 /* LoginBL.h */,
+				883DCF3A24FE8A970057FED5 /* LoginBL.m */,
+				883DCF3524FE8A970057FED5 /* OAAPIClient.h */,
+				883DCF3624FE8A970057FED5 /* OAAPIClient.m */,
+				883DCF3824FE8A970057FED5 /* RoomLiveViewController.h */,
+				883DCF3924FE8A970057FED5 /* RoomLiveViewController.m */,
+			);
+			path = "多人会议";
+			sourceTree = "<group>";
+		};
+		883DCF4524FE8AF10057FED5 /* 会话 */ = {
+			isa = PBXGroup;
+			children = (
+				883DCF3F24FE8AD90057FED5 /* OneToOneViewController.h */,
+				883DCF5224FE95830057FED5 /* OneToOneViewController.m */,
+				883DCF4324FE8AE20057FED5 /* HujiaoView.h */,
+				883DCF4224FE8AE20057FED5 /* HujiaoView.m */,
+			);
+			path = "会话";
+			sourceTree = "<group>";
+		};
+		883DCF4624FE8B2A0057FED5 /* 直播 */ = {
+			isa = PBXGroup;
+			children = (
+				883DCF4E24FE8B590057FED5 /* LiveViewController.h */,
+				883DCF4D24FE8B590057FED5 /* LiveViewController.m */,
+				883DCF4924FE8B4B0057FED5 /* pushLiveView.h */,
+				883DCF4724FE8B4B0057FED5 /* pushLiveView.m */,
+				883DCF4824FE8B4B0057FED5 /* scrollTextView.h */,
+				883DCF4A24FE8B4B0057FED5 /* scrollTextView.m */,
+			);
+			path = "直播";
+			sourceTree = "<group>";
+		};
+		883DCF6324FEB71D0057FED5 /* 三方 */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = "三方";
 			sourceTree = "<group>";
@@ -257,7 +340,12 @@
 				88EFD47024EE2B4F0018A6D1 /* ViewController.h */,
 				88EFD47124EE2B4F0018A6D1 /* ViewController.m */,
 				88EFD47324EE2B4F0018A6D1 /* Main.storyboard */,
-				883ABEBD24FCF2C000F30C03 /* 三方 */,
+				883DCF2F24FE51160057FED5 /* ChatWebViewController.h */,
+				883DCF3024FE51160057FED5 /* ChatWebViewController.m */,
+				883DCF6324FEB71D0057FED5 /* 三方 */,
+				883DCF4624FE8B2A0057FED5 /* 直播 */,
+				883DCF4524FE8AF10057FED5 /* 会话 */,
+				883DCF3E24FE8A9E0057FED5 /* 多人会议 */,
 				883ABEBC24FCF28700F30C03 /* help */,
 				883ABEBA24FCF24200F30C03 /* model */,
 				883ABEB924FCF1FC00F30C03 /* web */,
@@ -290,6 +378,10 @@
 		90672F34DAFCDEE9C9661136 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				883DCF6C24FEBCA20057FED5 /* CloudPushSDK.framework */,
+				883DCF6D24FEBCA20057FED5 /* UTDID.framework */,
+				883DCF6E24FEBCA20057FED5 /* UTMini.framework */,
+				883DCF6124FEB70A0057FED5 /* AlicloudUtils.framework */,
 				88D297B224F6297C006AE927 /* libsqlite3.tbd */,
 				88D297B024F62969006AE927 /* SystemConfiguration.framework */,
 				88D297AE24F6295E006AE927 /* CoreTelephony.framework */,
@@ -414,7 +506,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				88D297B524F63286006AE927 /* aliyun in Resources */,
 				88EFD47A24EE2B520018A6D1 /* LaunchScreen.storyboard in Resources */,
 				8848947B24EFC1D400C13783 /* CameraPushViewController.xib in Resources */,
 				88EFD47724EE2B520018A6D1 /* Assets.xcassets in Resources */,
@@ -488,7 +579,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				883DCF5624FEAC060057FED5 /* IntoroomModel.m in Sources */,
+				883DCF4F24FE8B590057FED5 /* LiveViewController.m in Sources */,
+				883DCF4B24FE8B4B0057FED5 /* pushLiveView.m in Sources */,
+				883DCF3D24FE8A970057FED5 /* LoginBL.m in Sources */,
 				88EFD47224EE2B4F0018A6D1 /* ViewController.m in Sources */,
+				883DCF4424FE8AE20057FED5 /* HujiaoView.m in Sources */,
 				8848947A24EFC1D400C13783 /* CameraPushViewController.m in Sources */,
 				8839B7F124F79ED10051B7EC /* WatchLivePlayDiscussCell.m in Sources */,
 				883ABEB524FCC0D000F30C03 /* LivechatModel.m in Sources */,
@@ -502,8 +598,14 @@
 				8839B7E924F777B20051B7EC /* WatchLivePlayViewController.m in Sources */,
 				883ABE6C24FC7DFB00F30C03 /* ReportReasonView.m in Sources */,
 				8848947E24EFC8B400C13783 /* HelpCommon.m in Sources */,
+				883DCF3C24FE8A970057FED5 /* RoomLiveViewController.m in Sources */,
+				883DCF3124FE51160057FED5 /* ChatWebViewController.m in Sources */,
+				883DCF5324FE95830057FED5 /* OneToOneViewController.m in Sources */,
 				883ABEAF24FCBD9B00F30C03 /* LiveUserModel.m in Sources */,
+				883DCF3424FE8A810057FED5 /* CommonClass.m in Sources */,
 				883ABEA924FCAC4000F30C03 /* CollectModel.m in Sources */,
+				883DCF4C24FE8B4B0057FED5 /* scrollTextView.m in Sources */,
+				883DCF3B24FE8A970057FED5 /* OAAPIClient.m in Sources */,
 				883924D824F8D9A400C34F20 /* PlayedViewController.m in Sources */,
 				8848947124EF946000C13783 /* PlayViewController1.m in Sources */,
 				8848946324EF78EF00C13783 /* MainViewController.m in Sources */,
@@ -679,12 +781,13 @@
 				CODE_SIGN_ENTITLEMENTS = "Calsee2qdsme/机床工具云展览.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.3;
+				CURRENT_PROJECT_VERSION = 1.0.4;
 				DEVELOPMENT_TEAM = 5W969USCV9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/TXLiteAVSDK_Professional/TXLiteAVSDK_Professional\"",
+					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Calsee2qdsme/三方/aliyun",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -749,12 +852,13 @@
 				CODE_SIGN_ENTITLEMENTS = "Calsee2qdsme/机床工具云展览.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.3;
+				CURRENT_PROJECT_VERSION = 1.0.4;
 				DEVELOPMENT_TEAM = 5W969USCV9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/TXLiteAVSDK_Professional/TXLiteAVSDK_Professional\"",
+					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Calsee2qdsme/三方/aliyun",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

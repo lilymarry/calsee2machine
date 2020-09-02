@@ -9,10 +9,6 @@
 #import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
-
-
-typedef void(^CollectModelSuccessBlock)(NSString *code,NSString* message  ,id data);
-typedef void(^CollectModelFaiulureBlock)(NSError *error);
 @interface CollectModel : NSObject
 @property(nonatomic,copy )NSString *exhiid;
 @property(nonatomic,copy )NSString *lang;
@@ -21,7 +17,8 @@ typedef void(^CollectModelFaiulureBlock)(NSError *error);
 
 @property(nonatomic,copy )NSString *id; //被收藏者id
 @property(nonatomic,copy )NSString *type; //1收藏 2 取消收藏
--(void)CollectModelSuccessBlock:(CollectModelSuccessBlock)success andFailure:(CollectModelFaiulureBlock)failure;
+-(void)CollectModelSuccessBlock:(void (^)(NSMutableDictionary *returnValue))success
+failure:(void (^)(NSString *errorMessage))failure;
 @end
 
 

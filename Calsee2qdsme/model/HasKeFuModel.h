@@ -10,9 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-
-typedef void(^HasKeFuModelSuccessBlock)(NSString *code,NSString* message  ,id data);
-typedef void(^HasKeFuModelFaiulureBlock)(NSError *error);
 @interface HasKeFuModel : NSObject
 @property(nonatomic,copy )NSString *exhiid;
 @property(nonatomic,copy )NSString *lang;
@@ -20,7 +17,8 @@ typedef void(^HasKeFuModelFaiulureBlock)(NSError *error);
 @property(nonatomic,copy )NSString *cid;
 
 
--(void)HasKeFuModelSuccess:(HasKeFuModelSuccessBlock)success andFailure:(HasKeFuModelFaiulureBlock)failure;
+-(void)HasKeFuModelSuccess:(void (^)(NSMutableDictionary *returnValue))success
+failure:(void (^)(NSString *errorMessage))failure;
 @end
 
 

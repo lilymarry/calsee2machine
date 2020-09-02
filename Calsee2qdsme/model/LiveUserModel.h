@@ -10,10 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-
-
-typedef void(^LiveUserModelSuccessBlock)(NSString *code,NSString* message  ,id data);
-typedef void(^LiveUserModelFaiulureBlock)(NSError *error);
 @interface LiveUserModel : NSObject
 @property(nonatomic,copy )NSString *exhiid;
 @property(nonatomic,copy )NSString *lang;
@@ -21,6 +17,7 @@ typedef void(^LiveUserModelFaiulureBlock)(NSError *error);
 @property(nonatomic,copy )NSString *roomid;
 @property(nonatomic,copy )NSString *lastid;////最后一条消息的id，没有传“”
 
--(void)LiveUserModelSuccessBlock:(LiveUserModelSuccessBlock)success andFailure:(LiveUserModelFaiulureBlock)failure;
+-(void)LiveUserModelSuccessBlock:(void (^)(NSMutableDictionary *returnValue))success
+failure:(void (^)(NSString *errorMessage))failure;
 @end
 NS_ASSUME_NONNULL_END

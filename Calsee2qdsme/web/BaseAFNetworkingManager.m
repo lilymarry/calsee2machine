@@ -39,9 +39,10 @@ static BaseAFNetworkingManager *baseAFNetworkingManage = nil;
         self.sessionManager = [AFHTTPSessionManager manager];
         //设置超时时间
         self.sessionManager.requestSerializer.timeoutInterval = 60.0;
-          //  self.sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
-        
-        self.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"application/x-www-form-urlencoded",nil];
+          self.sessionManager.responseSerializer = [AFHTTPResponseSerializer serializer];
+        self.sessionManager.requestSerializer = [AFJSONRequestSerializer serializer];
+        self.sessionManager.responseSerializer = [AFJSONResponseSerializer serializer];
+      //  self.sessionManager.responseSerializer.acceptableContentTypes = [NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html",@"application/x-www-form-urlencoded",nil];
         
     }
     return self;

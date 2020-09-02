@@ -18,6 +18,8 @@
 
 #import <AVFoundation/AVFoundation.h>
 #import "TXLiveBase.h"  //TRTC
+#import "LoginBL.h"
+#import "OneToOneViewController.h"
 // appkey & AppSecret
 static NSString *const testAppKey = @"31100769";
 static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
@@ -250,9 +252,19 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
  */
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken NS_AVAILABLE_IOS(3_0) {
     NSLog(@"Upload deviceToken to CloudPush server.");
+//   NSString* newToken = [deviceToken description];
+//
+//   newToken = [newToken stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"<>"]];
+//
+//   newToken = [newToken stringByReplacingOccurrencesOfString:@" "
+//                                                  withString:@""];
+    
+    
+    
     [CloudPushSDK registerDevice:deviceToken withCallback:^(CloudPushCallbackResult *res) {
         if (res.success) {
             NSLog(@"\n ====== Register deviceToken success, deviceToken: %@", [CloudPushSDK getApnsDeviceToken]);
+            
         } else {
             NSLog(@"\n ====== Register deviceToken failed, error: %@", res.error);
         } }];
@@ -273,6 +285,20 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
     [CloudPushSDK asyncInit:testAppKey appSecret:testAppSecret callback:^(CloudPushCallbackResult *res) {
         if (res.success) {
             NSLog(@"\n ====== Push SDK init success, deviceId: %@.", [CloudPushSDK getDeviceId]);
+            NSString* newToken = [CloudPushSDK getDeviceId];
+            [[NSUserDefaults standardUserDefaults]setObject:newToken forKey:@"deviceToken"];
+            NSMutableDictionary *dictoken = [[NSMutableDictionary alloc]init];
+            NSString *userbh = [[NSUserDefaults standardUserDefaults] objectForKey:Userbh];
+            if (userbh.length>0) {
+              [dictoken setObject:userbh forKey:@"ubh"];
+              [dictoken setObject:exhiid2 forKey:@"exhiid"];
+              [dictoken setObject:newToken forKey:@"devicetoken"];
+              [LoginBL updevicetoken:dictoken success:^(NSMutableDictionary *returnValue) {
+                  
+              } failure:^(NSString *errorMessage) {
+                  
+              }];
+            }
         } else {
             NSLog(@"\n ====== Push SDK init failed, error: %@", res.error);
         }
@@ -449,6 +475,22 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
     [CloudPushSDK sendNotificationAck:userInfo];
     
     NSLog(@"\n ====== App 处于前台时收到通知 (iOS 10+ ) Notification, == date: %@, == title: %@, == subtitle: %@, == body: %@, == badge: %d, == extras: %@.", noticeDate, title, subtitle, body, badge, extras);
+    NSDictionary *alertDic = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+    NSString *bodyStr = [alertDic objectForKey:@"body"];
+    NSData *jsonData = [bodyStr dataUsingEncoding:NSUTF8StringEncoding];
+    NSError *err;
+    NSDictionary * arr = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                         options:NSJSONReadingMutableContainers error:&err];
+    NSDictionary *detailDic = [arr objectForKey:@"detail"];
+    UIViewController *viewController = [AppDelegate currentViewController];
+    [viewController.navigationController setNavigationBarHidden:YES animated:YES];
+    OneToOneViewController *play=[[OneToOneViewController alloc]init];
+      play.callFrom = 2;
+    play.roomid = [detailDic objectForKey:@"roomid"];
+    [viewController.navigationController pushViewController:play animated:YES];
+    
+    
+    
 }
 
 /* 同步通知角标数到服务端 */
@@ -487,7 +529,14 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
 }
 
 // iOS(8_0, 10_0） 当应用程序被用户从远程通知中选择操作时激活,调用该方法处理程序（
-- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullable NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(nonnull void (^)(void))completionHandler {}
+- (void)application:(UIApplication *)application handleActionWithIdentifier:(nullable NSString *)identifier forRemoteNotification:(NSDictionary *)userInfo completionHandler:(nonnull void (^)(void))completionHandler {
+    
+    
+    
+    
+    
+    
+}
 
 // iOS 7+ 不论是前台还是后台只要有远程推送都会调用
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler  NS_AVAILABLE_IOS(7_0) {
@@ -519,7 +568,34 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
          即key aps 对应了有一个字典，里面是该次推送消息的具体信息。具体跟我们注册的推送类型有关。另外剩下的一些key就是用户自定义的了。
          */
         
+        NSDictionary *alertDic = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+        NSString *bodyStr = [alertDic objectForKey:@"body"];
+        NSData *jsonData = [bodyStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *err;
+        NSDictionary * arr = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                             options:NSJSONReadingMutableContainers error:&err];
+        NSDictionary *detailDic = [arr objectForKey:@"detail"];
+        UIViewController *viewController = [AppDelegate currentViewController];
+        [viewController.navigationController setNavigationBarHidden:YES animated:YES];
+        OneToOneViewController *play=[[OneToOneViewController alloc]init];
+          play.callFrom = 2;
+        play.roomid = [detailDic objectForKey:@"roomid"];
+        [viewController.navigationController pushViewController:play animated:YES];
+        
     } else if (application.applicationState == UIApplicationStateInactive) {
+        NSDictionary *alertDic = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+        NSString *bodyStr = [alertDic objectForKey:@"body"];
+        NSData *jsonData = [bodyStr dataUsingEncoding:NSUTF8StringEncoding];
+        NSError *err;
+        NSDictionary * arr = [NSJSONSerialization JSONObjectWithData:jsonData
+                                                             options:NSJSONReadingMutableContainers error:&err];
+        NSDictionary *detailDic = [arr objectForKey:@"detail"];
+        UIViewController *viewController = [AppDelegate currentViewController];
+        [viewController.navigationController setNavigationBarHidden:YES animated:YES];
+        OneToOneViewController *play=[[OneToOneViewController alloc]init];
+          play.callFrom = 2;
+        play.roomid = [detailDic objectForKey:@"roomid"];
+        [viewController.navigationController pushViewController:play animated:YES];
         // 程序处于后台 做相应的处理
 //        for (NSString *tfStr in userInfo) {
 //            if ([tfStr isEqualToString:@"careline"]) {
@@ -567,4 +643,42 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
 
 - (void)applicationWillTerminate:(UIApplication *)application { }
 
+ + (UIViewController*)currentViewController{
+     UIViewController* vc = [UIApplication sharedApplication].keyWindow.rootViewController;
+     while (1) {
+    
+    if ([vc isKindOfClass:[UITabBarController class]]) {
+        
+        vc = ((UITabBarController*)vc).selectedViewController;
+        
+    }
+    
+    
+    
+    if ([vc isKindOfClass:[UINavigationController class]]) {
+        
+        vc = ((UINavigationController*)vc).visibleViewController;
+        
+    }
+    
+    
+    
+    if (vc.presentedViewController) {
+        
+        vc = vc.presentedViewController;
+        
+    }else{
+        
+        break;
+        
+    }
+    
+    
+    
+     }
+
+
+
+     return vc;
+}
 @end

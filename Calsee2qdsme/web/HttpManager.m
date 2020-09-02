@@ -16,7 +16,7 @@
 
 + (void)postWithUrl:(NSString *)url
        baseurl:(NSString *)baseurl
-      andParameters:(NSDictionary *)params
+      andParameters:(NSString *)params
          andSuccess:(HttpSuccessBlock)success
             andFail:(HttpFailureBlock)failure
 {
@@ -24,7 +24,7 @@
         url = @"";
     }
     if (params == nil) {
-        params = @{};
+        params = @"";
     }
  
     BaseAFNetworkingManager *baseAFNetworkingManager = [BaseAFNetworkingManager defaultManager];

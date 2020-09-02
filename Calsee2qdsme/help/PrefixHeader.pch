@@ -16,10 +16,19 @@
 #define RTMP_PUBLISH_URL    @"请输入推流地址或者扫二维码进行输入"
 #define Userbh    @"userbh"
 #define Exhibh    @"exhibh"
+#define Lang    @"lang"
 #import <CloudPushSDK/CloudPushSDK.h>
 #import "Masonry.h"
 #import "HttpManager.h"
+#import "OAAPIClient.h"
+#import "UIImageView+WebCache.h"
 
+
+// Status bar height.
+#define  LL_StatusBarHeight      (KIsiPhoneX ? 44.f : 20.f)
+// Tabbar safe bottom margin.
+#define  LL_TabbarSafeBottomMargin         (KIsiPhoneX ? 34.f : 0.f)
+#define exhiid2 @"295621120832"
 
 #define ScreenW [UIScreen mainScreen].bounds.size.width
 #define ScreenH [UIScreen mainScreen].bounds.size.height

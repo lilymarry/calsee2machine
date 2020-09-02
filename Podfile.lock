@@ -21,8 +21,7 @@ PODS:
   - SDWebImage (5.9.0):
     - SDWebImage/Core (= 5.9.0)
   - SDWebImage/Core (5.9.0)
-  - TXLiteAVSDK_Professional (7.5.9301)
-  - WebViewJavascriptBridge (6.0.3)
+  - TXLiteAVSDK_Professional (7.6.9360)
 
 DEPENDENCIES:
   - AFNetworking (~> 4.0.1)
@@ -32,7 +31,6 @@ DEPENDENCIES:
   - MJRefresh
   - SDWebImage
   - TXLiteAVSDK_Professional (from `http://pod-1252463788.cosgz.myqcloud.com/liteavsdkspec/TXLiteAVSDK_Professional.podspec`)
-  - WebViewJavascriptBridge
 
 SPEC REPOS:
   trunk:
@@ -42,7 +40,6 @@ SPEC REPOS:
     - MJExtension
     - MJRefresh
     - SDWebImage
-    - WebViewJavascriptBridge
 
 EXTERNAL SOURCES:
   TXLiteAVSDK_Professional:
@@ -55,9 +52,8 @@ SPEC CHECKSUMS:
   MJExtension: d9b9c74cbdeb724c1e9ecbb157b318276e62e876
   MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
   SDWebImage: 62ae4a18473520c67b79e9724c31a63599cc9423
-  TXLiteAVSDK_Professional: 7a6eb795915df21ef8163dd954f160aaca460989
-  WebViewJavascriptBridge: 7f5bc4d3581e672e8f32bd0f812d54bc69bb8e29
+  TXLiteAVSDK_Professional: 0993da88b243cba8250f027903f8b5f0c08be1fa
 
-PODFILE CHECKSUM: ad276b98093f39e98eeba219ebf5eb809dfda406
+PODFILE CHECKSUM: b85814ca337dd7f63588e380f805f47e48859156
 
 COCOAPODS: 1.9.3
