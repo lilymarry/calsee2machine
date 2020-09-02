@@ -365,7 +365,7 @@
     }
     if (userArr.count>0) {
         for (int i=0; i< userArr.count ;i++) {
-            UIImageView *view=[[UIImageView alloc]initWithFrame:CGRectMake(i* 37+5, 10,  35, 35)];
+            UIImageView *view=[[UIImageView alloc]initWithFrame:CGRectMake(i* 37+5, 15,  35, 35)];
             view.backgroundColor=[UIColor whiteColor];
             view.layer.masksToBounds = YES;
             view.layer.cornerRadius = view.frame.size.width/2;

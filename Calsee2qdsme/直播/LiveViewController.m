@@ -191,7 +191,7 @@
     //    [companyInfoView setBackgroundColor:[UIColor blueColor]];
         [self.view addSubview:companyInfoView];
    //右下角加入人员视图
-       joinUserIconView = [[UIScrollView alloc]initWithFrame:CGRectMake((self.view.frame.size.width-36)/2, self.view.frame.size.height-248-LL_TabbarSafeBottomMargin, (self.view.frame.size.width-36)/2, 36)];
+       joinUserIconView = [[UIScrollView alloc]initWithFrame:CGRectMake((self.view.frame.size.width-36)/2, 10+LL_StatusBarHeight, (self.view.frame.size.width-36)/2, 36)];
        
        
    //    [joinUserIconView setBackgroundColor:[UIColor redColor]];
