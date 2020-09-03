@@ -176,6 +176,7 @@
             [self->tableView reloadData];
             [self initScrollView];
         }
+        
     } failure:^(NSString * _Nonnull errorMessage) {
         
     }];
@@ -381,7 +382,7 @@
         [userScroll setContentSize:CGSizeMake(37 * userArr.count+35, 0)];
     }
 }
-
+#pragma mark 私聊
 -(void)goChat
 {
     ChatWebViewController *chart=[[ChatWebViewController alloc]init];
@@ -556,8 +557,6 @@
         [MBProgressHUD showError:@"网络错误，稍后再试" toView:self.view];
     }];
 }
-
-
 - ( NSString *)md5String:( NSString *)str
 {
     
@@ -639,7 +638,6 @@
         sendBtn.hidden=NO;
     }
     
-    
 }
 
 - (void)keyboardWillHide:(NSNotification *)notification
@@ -656,8 +654,6 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField
 {
     isBottom=YES;
-    
-    
     return YES;
     
 }

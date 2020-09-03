@@ -66,21 +66,16 @@ imageView.image=[UIImage imageNamed:@"icon_back_title"];
     NSTimeZone* timeZone = [NSTimeZone localTimeZone];
     [formatter setTimeZone:timeZone];
     
-    NSString *starttime=_playDic[@"starttime"];
-    NSDate  *time= [formatter dateFromString:starttime];
-    NSString *timestr=[formatter stringFromDate:time];
-    
-    
-    NSString *time1=  [HelpCommon timeSwitchTimestamp:timestr andFormatter:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *startTime=_playDic[@"starttime"];
+    NSDate  *startDate= [formatter dateFromString:startTime];
+    NSString *startTimeStr=[formatter stringFromDate:startDate];
+    NSString *startTimeStamp=  [HelpCommon timeSwitchTimestamp:startTimeStr andFormatter:@"yyyy-MM-dd HH:mm:ss"];
     
     NSDate *currentDate = [NSDate date];
+    NSString *currentDateStr = [formatter stringFromDate:currentDate];
+    NSString *currentTimeStamp=  [HelpCommon timeSwitchTimestamp:currentDateStr andFormatter:@"yyyy-MM-dd HH:mm:ss"];
     
-    NSString *dateStr = [formatter stringFromDate:currentDate];
-    
-    NSString *time2=  [HelpCommon timeSwitchTimestamp:dateStr andFormatter:@"yyyy-MM-dd HH:mm:ss"];
-    
-    NSInteger seconds =[ time1 integerValue]-[time2 integerValue];
-    
+    NSInteger seconds =[startTimeStamp integerValue]-[currentTimeStamp integerValue];
     if (seconds>0) {
         secondsCountDown =seconds;
         _countDownTimer = [NSTimer scheduledTimerWithTimeInterval:1 target:self selector:@selector(countDownAction) userInfo:nil repeats:YES];
@@ -95,8 +90,13 @@ imageView.image=[UIImage imageNamed:@"icon_back_title"];
     }
     else
     {
-        int seconds =[ time1 intValue]-[time2 intValue];
-        [self startPlay:seconds];
+        
+        //        int seconds =[currentTimeStamp intValue]-[startTimeStamp intValue];
+        //
+        //        int playLongTime =[_player duration];
+        //    [_player setStartTime:seconds];
+        
+        [self startPlay];
     }
      CGFloat videoHeight = 64;
     if (KIsiPhoneX) {
@@ -176,10 +176,10 @@ imageView.image=[UIImage imageNamed:@"icon_back_title"];
     //当倒计时到0时做需要的操作，比如验证码过期不能提交
     if(secondsCountDown==0){
         [_countDownTimer invalidate];
-        [self startPlay:0];
+        [self startPlay];
     }
 }
--(void)startPlay:(int )seek
+-(void)startPlay
 {
     
     TXPlayerAuthParams *p = [TXPlayerAuthParams new];
@@ -197,7 +197,7 @@ imageView.image=[UIImage imageNamed:@"icon_back_title"];
     int ret=  [_player startPlayWithParams:p];
     
     _player.vodDelegate=self;
-    [_player seek:seek];
+   // [_player seek:seek];
     if (ret==0) {
         NSLog(@"ssss ok");
     }
@@ -223,26 +223,26 @@ imageView.image=[UIImage imageNamed:@"icon_back_title"];
     }
     else if (EvtID == -2301)
           {
-              [MBProgressHUD showSuccess:@"播放已结束" toView:self.view];
-              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                  [self.navigationController popViewControllerAnimated:YES];
-              });
-              
+//              [MBProgressHUD showSuccess:@"播放已结束" toView:self.view];
+//              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//                  [self.navigationController popViewControllerAnimated:YES];
+//              });
+//
               
           }
     else  if (EvtID == PLAY_EVT_PLAY_PROGRESS) {
-        // 加载进度, 单位是秒, 小数部分为毫秒
-        double playable = [param[EVT_PLAYABLE_DURATION] doubleValue];
-        //    [_loadProgressBar setValue:playable];//
-        
-        // 播放进度, 单位是秒, 小数部分为毫秒
-        double progress = [param[EVT_PLAY_PROGRESS] doubleValue];
-        //   [_seekProgressBar setValue:progress];
-        
-        // 视频总长, 单位是秒, 小数部分为毫秒
-        double duration = [param[EVT_PLAY_DURATION] doubleValue];
-        // 可以用于设置时长显示等等
-        
+//        // 加载进度, 单位是秒, 小数部分为毫秒
+//        double playable = [param[EVT_PLAYABLE_DURATION] doubleValue];
+//        //    [_loadProgressBar setValue:playable];//
+//
+//        // 播放进度, 单位是秒, 小数部分为毫秒
+//        double progress = [param[EVT_PLAY_PROGRESS] doubleValue];
+//        //   [_seekProgressBar setValue:progress];
+//
+//        // 视频总长, 单位是秒, 小数部分为毫秒
+//        double duration = [param[EVT_PLAY_DURATION] doubleValue];
+//        // 可以用于设置时长显示等等
+//
         
     }
     else if (EvtID == PLAY_EVT_GET_MESSAGE) {
@@ -252,9 +252,9 @@ imageView.image=[UIImage imageNamed:@"icon_back_title"];
     }
     else  if (EvtID == PLAY_EVT_PLAY_END)
     {
-        //直播结束
-        [_player stopPlay];
-        [_player removeVideoWidget]; // 记得销毁 view 控件
+//        //直播结束
+//        [_player stopPlay];
+//        [_player removeVideoWidget]; // 记得销毁 view 控件
     }
     
 }

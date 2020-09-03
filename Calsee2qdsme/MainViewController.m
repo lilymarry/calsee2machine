@@ -57,9 +57,8 @@
     }
     
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-    
-[_webView loadRequest:request];
- [self.view addSubview:_webView];
+    [_webView loadRequest:request];
+    [self.view addSubview:_webView];
     
     self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, statusBarHeight, ScreenW, 5)];
     self.progressView.backgroundColor = [UIColor whiteColor];
@@ -317,9 +316,9 @@
     return nil;
 }
 - (IBAction)playPress:(id)sender {
- // PlayViewController1 *play=[[PlayViewController1 alloc]init];
-//PlayedViewController *play=[[PlayedViewController alloc]init];
-    ChatWebViewController *play=[[ChatWebViewController alloc]init];
+  // PlayViewController1 *play=[[PlayViewController1 alloc]init];
+  PlayedViewController *play=[[PlayedViewController alloc]init];
+ //   ChatWebViewController *play=[[ChatWebViewController alloc]init];
     [self.navigationController pushViewController:play animated:YES];
 }
 - (IBAction)watchLivePress:(id)sender {

@@ -98,26 +98,23 @@
     timeLab.textAlignment=NSTextAlignmentCenter;
     [topView addSubview:timeLab];
     
-    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+      NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
     [formatter setDateFormat:@"YYY-MM-dd HH:mm:ss"];
     NSTimeZone* timeZone = [NSTimeZone localTimeZone];
     [formatter setTimeZone:timeZone];
     
-    NSString *starttime=_playDic[@"starttime"];
-    NSDate  *time= [formatter dateFromString:starttime];
-    NSString *timestr=[formatter stringFromDate:time];
-    NSString *time1=  [HelpCommon timeSwitchTimestamp:timestr andFormatter:@"yyyy-MM-dd HH:mm:ss"];
+    NSString *startTime=_playDic[@"starttime"];
+    NSDate  *startDate= [formatter dateFromString:startTime];
+    NSString *startTimeStr=[formatter stringFromDate:startDate];
+    NSString *startTimeStamp=  [HelpCommon timeSwitchTimestamp:startTimeStr andFormatter:@"yyyy-MM-dd HH:mm:ss"];
     
     NSDate *currentDate = [NSDate date];
+    NSString *currentDateStr = [formatter stringFromDate:currentDate];
+    NSString *currentTimeStamp=  [HelpCommon timeSwitchTimestamp:currentDateStr andFormatter:@"yyyy-MM-dd HH:mm:ss"];
     
-    NSString *dateStr = [formatter stringFromDate:currentDate];
-    
-    NSString *time2=  [HelpCommon timeSwitchTimestamp:dateStr andFormatter:@"yyyy-MM-dd HH:mm:ss"];
-    
-    NSInteger seconds =[ time1 integerValue]-[time2 integerValue];
-    
+    NSInteger seconds =[startTimeStamp integerValue]-[currentTimeStamp integerValue];
     
     if (seconds>0) {
         secondsCountDown =seconds;
@@ -214,7 +211,7 @@
 
 - (void)onPlayEvent:(int)EvtID withParam:(NSDictionary *)param
 {
-    NSDictionary *dict = param;
+ //   NSDictionary *dict = param;
     
     dispatch_async(dispatch_get_main_queue(), ^{
         if (EvtID == PLAY_EVT_PLAY_BEGIN) {
