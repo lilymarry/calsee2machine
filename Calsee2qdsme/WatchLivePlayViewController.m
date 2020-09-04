@@ -409,8 +409,8 @@
               room.exhiid= [[NSUserDefaults standardUserDefaults] objectForKey:Exhibh];
               room.lang=[[NSUserDefaults standardUserDefaults] objectForKey:Lang];
               room.ubh=[[NSUserDefaults standardUserDefaults] objectForKey:Userbh];;
-            room.cid=self->_mainDic[@"cid"];
-             [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
+              room.cid=self->_mainDic[@"cid"];
+              [MBProgressHUD showMessage:nil toView:self.view];
             [room IntoroomModelSuccess:^(NSMutableDictionary * _Nonnull returnValue) {
                  [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
                 
