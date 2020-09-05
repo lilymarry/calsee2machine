@@ -61,15 +61,20 @@
     topView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:topView];
     
+    UIImageView *imageview=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, 64)];
+      imageview.image=[UIImage imageNamed:@"bg_title"];
+      [topView addSubview:imageview];
+     
     UIButton *  collectBtn=[UIButton buttonWithType:UIButtonTypeCustom];
       collectBtn.frame=CGRectMake(0, 0, 60, 50);
     collectBtn.backgroundColor=[UIColor clearColor];
       [collectBtn addTarget:self action:@selector(collectPress) forControlEvents:UIControlEventTouchUpInside];
       [topView addSubview:collectBtn];
+    
 
-    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(15, 15, 12, 20)];
-    imageView.image=[UIImage imageNamed:@"icon_back_title"];
-    [collectBtn addSubview:imageView];
+    UIImageView *imageView1=[[UIImageView alloc]initWithFrame:CGRectMake(15, 15, 12, 20)];
+    imageView1.image=[UIImage imageNamed:@"icon_back_title"];
+    [collectBtn addSubview:imageView1];
     
     CGFloat videoHeight = 64;
        if (KIsiPhoneX) {
@@ -80,34 +85,46 @@
     _videoView.backgroundColor=[UIColor lightGrayColor];
     [self.view addSubview:_videoView];
     
+   
     _contentTxt = [[UITextView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_videoView.frame)+10, ScreenW, ScreenH-ScreenW*2/3-videoHeight-20)];
     _contentTxt.editable=NO;
     _contentTxt.backgroundColor=[UIColor whiteColor];
     _contentTxt.font=[UIFont systemFontOfSize:14];
-    _contentTxt.text=_playDic[@"content"];
+    _contentTxt.text=[NSString stringWithFormat:@"    %@",_playDic[@"content"]];;
     [self.view addSubview:_contentTxt];
     
-   self.playUrl = _playDic[@"url"];
-    
-   // self.playUrl = @"http://liteavapp.qcloud.com/live/liteavdemoplayerstreamid.flv";
     
     
-    timeLab=[[UILabel alloc]initWithFrame:CGRectMake(70, 10, ScreenW-70, 34)];
-    timeLab.textColor=[UIColor redColor];
-    timeLab.font=[UIFont systemFontOfSize:14];
-    timeLab.textAlignment=NSTextAlignmentCenter;
+   UILabel *   titleLab=[[UILabel alloc]initWithFrame:CGRectMake(ScreenW/2-40, 10, 80, 34)];
+       titleLab.textColor=[UIColor whiteColor];
+       titleLab.font=[UIFont systemFontOfSize:17];
+       titleLab.textAlignment=NSTextAlignmentCenter;
+      titleLab.backgroundColor=[UIColor clearColor];
+       titleLab.text=@"开幕直播";
+       [topView addSubview:titleLab];
+    
+    NSString *url =  [ _playDic[@"url"] stringByRemovingPercentEncoding];
+    self.playUrl =url;
+    
+  // self.playUrl = @"http://liteavapp.qcloud.com/live/liteavdemoplayerstreamid.flv";
+    
+    
+    timeLab=[[UILabel alloc]initWithFrame:CGRectMake(ScreenW-150, 10, 140, 34)];
+    timeLab.textColor=[UIColor whiteColor];
+    timeLab.font=[UIFont systemFontOfSize:12];
+    timeLab.textAlignment=NSTextAlignmentRight;
+     timeLab.backgroundColor=[UIColor clearColor];
     [topView addSubview:timeLab];
     
-      NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     [formatter setTimeStyle:NSDateFormatterShortStyle];
     [formatter setDateFormat:@"YYY-MM-dd HH:mm:ss"];
-    NSTimeZone* timeZone = [NSTimeZone localTimeZone];
+    NSTimeZone* timeZone = [NSTimeZone localTimeZone]; ;
     [formatter setTimeZone:timeZone];
     
     NSString *startTime=_playDic[@"starttime"];
-    NSDate  *startDate= [formatter dateFromString:startTime];
-    NSString *startTimeStr=[formatter stringFromDate:startDate];
+    NSString *startTimeStr=[HelpCommon  getLocalDateFormateUTCDate:startTime];
     NSString *startTimeStamp=  [HelpCommon timeSwitchTimestamp:startTimeStr andFormatter:@"yyyy-MM-dd HH:mm:ss"];
     
     NSDate *currentDate = [NSDate date];
@@ -122,11 +139,11 @@
         //启动倒计时后会每秒钟调用一次方法 countDownAction
         
         //设置倒计时显示的时间
-        NSString *str_hour = [NSString stringWithFormat:@"%02d",secondsCountDown/3600];//时
-        NSString *str_minute = [NSString stringWithFormat:@"%02d",(secondsCountDown%3600)/60];//分
-        NSString *str_second = [NSString stringWithFormat:@"%02d",secondsCountDown%60];//秒
+        NSString *str_hour = [NSString stringWithFormat:@"%02ld",secondsCountDown/3600];//时
+        NSString *str_minute = [NSString stringWithFormat:@"%02ld",(secondsCountDown%3600)/60];//分
+        NSString *str_second = [NSString stringWithFormat:@"%02ld",secondsCountDown%60];//秒
         NSString *format_time = [NSString stringWithFormat:@"%@:%@:%@",str_hour,str_minute,str_second];
-        timeLab.text = [NSString stringWithFormat:@"即将开始：%@",format_time];
+        timeLab.text = [NSString stringWithFormat:@"%@",format_time];
     }
     else
     {
@@ -137,23 +154,25 @@
     
     
 }
+
 -(void)countDownAction{
     //倒计时-1
     secondsCountDown--;
     
     //重新计算 时/分/秒
-    NSString *str_hour = [NSString stringWithFormat:@"%02d",secondsCountDown/3600];
+    NSString *str_hour = [NSString stringWithFormat:@"%02ld",secondsCountDown/3600];
     
-    NSString *str_minute = [NSString stringWithFormat:@"%02d",(secondsCountDown%3600)/60];
+    NSString *str_minute = [NSString stringWithFormat:@"%02ld",(secondsCountDown%3600)/60];
     
-    NSString *str_second = [NSString stringWithFormat:@"%02d",secondsCountDown%60];
+    NSString *str_second = [NSString stringWithFormat:@"%02ld",secondsCountDown%60];
     
     NSString *format_time = [NSString stringWithFormat:@"%@:%@:%@",str_hour,str_minute,str_second];
     //修改倒计时标签及显示内容
-    timeLab.text=[NSString stringWithFormat:@"即将开始：%@",format_time];
+    timeLab.text=[NSString stringWithFormat:@"%@",format_time];
     
-    //当倒计时到0时做需要的操作，比如验证码过期不能提交
+    //当倒计时到0时做需要的操作
     if(secondsCountDown==0){
+        timeLab.hidden=YES;
         [_countDownTimer invalidate];
         [self startPlay];
     }
@@ -162,19 +181,7 @@
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
-- (void)startLoadingAnimation {
-    if (_loadingImageView != nil) {
-        _loadingImageView.hidden = NO;
-        [_loadingImageView startAnimating];
-    }
-}
 
-- (void)stopLoadingAnimation {
-    if (_loadingImageView != nil) {
-        _loadingImageView.hidden = YES;
-        [_loadingImageView stopAnimating];
-    }
-}
 - (void)viewDidDisappear:(BOOL)animated{
     [self stopPlay];
 }
@@ -214,9 +221,9 @@
  //   NSDictionary *dict = param;
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        if (EvtID == PLAY_EVT_PLAY_BEGIN) {
-            //  [self stopLoadingAnimation];
-            
+        if (EvtID == 2004) {
+            //视频开始播放
+             // [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         }
         else if (EvtID == -2301)
         {
@@ -226,35 +233,12 @@
             });
             
             
-        } else if (EvtID == PLAY_EVT_PLAY_LOADING){
+        } else if (EvtID == 2007){
             // [self startLoadingAnimation];
+          //  [MBProgressHUD showMessage:nil toView:self.view];
             
         } else if (EvtID == PLAY_EVT_CONNECT_SUCC) {
-            BOOL isWifi = [AFNetworkReachabilityManager sharedManager].reachableViaWiFi;
-            if (!isWifi) {
-                __weak __typeof(self) weakSelf = self;
-                [[AFNetworkReachabilityManager sharedManager] setReachabilityStatusChangeBlock:^(AFNetworkReachabilityStatus status) {
-                    if (weakSelf.playUrl.length == 0) {
-                        return;
-                    }
-                    if (status == AFNetworkReachabilityStatusReachableViaWiFi) {
-                        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@""
-                                                                                       message:@"您要切换到Wifi再观看吗?"
-                                                                                preferredStyle:UIAlertControllerStyleAlert];
-                        [alert addAction:[UIAlertAction actionWithTitle:@"是" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                            [alert dismissViewControllerAnimated:YES completion:nil];
-                            
-                            // 先停止，再重新播放
-                            [weakSelf stopPlay];
-                            [weakSelf startPlay];
-                        }]];
-                        [alert addAction:[UIAlertAction actionWithTitle:@"否" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                            [alert dismissViewControllerAnimated:YES completion:nil];
-                        }]];
-                        [weakSelf presentViewController:alert animated:YES completion:nil];
-                    }
-                }];
-            }
+            
         }
         else if (EvtID == PLAY_EVT_GET_MESSAGE) {
             //   NSData *msgData = param[@"EVT_GET_MSG"];

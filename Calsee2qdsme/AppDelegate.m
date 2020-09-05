@@ -471,19 +471,22 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
     [CloudPushSDK sendNotificationAck:userInfo];
     
     NSLog(@"\n ====== App 处于前台时收到通知 (iOS 10+ ) Notification, == date: %@, == title: %@, == subtitle: %@, == body: %@, == badge: %d, == extras: %@.", noticeDate, title, subtitle, body, badge, extras);
-    NSDictionary *alertDic = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
-    NSString *bodyStr = [alertDic objectForKey:@"body"];
-    NSData *jsonData = [bodyStr dataUsingEncoding:NSUTF8StringEncoding];
-    NSError *err;
-    NSDictionary * arr = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                         options:NSJSONReadingMutableContainers error:&err];
-    NSDictionary *detailDic = [arr objectForKey:@"detail"];
-    UIViewController *viewController = [AppDelegate currentViewController];
-    [viewController.navigationController setNavigationBarHidden:YES animated:YES];
-    OneToOneViewController *play=[[OneToOneViewController alloc]init];
-    play.callFrom = 2;
-    play.roomid = [detailDic objectForKey:@"roomid"];
-    [viewController.navigationController pushViewController:play animated:YES];
+//    NSDictionary *alertDic = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+//    NSString *bodyStr = [alertDic objectForKey:@"body"];
+//    NSData *jsonData = [bodyStr dataUsingEncoding:NSUTF8StringEncoding];
+//    NSError *err;
+//    NSDictionary * arr = [NSJSONSerialization JSONObjectWithData:jsonData
+//                                                         options:NSJSONReadingMutableContainers error:&err];
+    if ([[userInfo objectForKey:@"message"] isEqualToString:@"trtc"]) {
+//        NSDictionary *detailDic = [userInfo objectForKey:@"detail"];
+        UIViewController *viewController = [AppDelegate currentViewController];
+        [viewController.navigationController setNavigationBarHidden:YES animated:YES];
+        OneToOneViewController *play=[[OneToOneViewController alloc]init];
+        play.callFrom = 2;
+        play.roomid = [userInfo objectForKey:@"roomid"];
+        [viewController.navigationController pushViewController:play animated:YES];
+    }
+    
     
     
     
@@ -564,34 +567,52 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
          即key aps 对应了有一个字典，里面是该次推送消息的具体信息。具体跟我们注册的推送类型有关。另外剩下的一些key就是用户自定义的了。
          */
         
-        NSDictionary *alertDic = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
-        NSString *bodyStr = [alertDic objectForKey:@"body"];
-        NSData *jsonData = [bodyStr dataUsingEncoding:NSUTF8StringEncoding];
-        NSError *err;
-        NSDictionary * arr = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                             options:NSJSONReadingMutableContainers error:&err];
-        NSDictionary *detailDic = [arr objectForKey:@"detail"];
-        UIViewController *viewController = [AppDelegate currentViewController];
-        [viewController.navigationController setNavigationBarHidden:YES animated:YES];
-        OneToOneViewController *play=[[OneToOneViewController alloc]init];
-        play.callFrom = 2;
-        play.roomid = [detailDic objectForKey:@"roomid"];
-        [viewController.navigationController pushViewController:play animated:YES];
+//        NSDictionary *alertDic = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+//        NSString *bodyStr = [alertDic objectForKey:@"body"];
+//        NSData *jsonData = [bodyStr dataUsingEncoding:NSUTF8StringEncoding];
+//        NSError *err;
+//        NSDictionary * arr = [NSJSONSerialization JSONObjectWithData:jsonData
+//                                                             options:NSJSONReadingMutableContainers error:&err];
+        if ([[userInfo objectForKey:@"message"] isEqualToString:@"trtc"]) {
+//            NSDictionary *detailDic = [userInfo objectForKey:@"detail"];
+            UIViewController *viewController = [AppDelegate currentViewController];
+            [viewController.navigationController setNavigationBarHidden:YES animated:YES];
+            OneToOneViewController *play=[[OneToOneViewController alloc]init];
+            play.callFrom = 2;
+            play.roomid = [userInfo objectForKey:@"roomid"];
+            [viewController.navigationController pushViewController:play animated:YES];
+        }
+//        NSDictionary *detailDic = [arr objectForKey:@"detail"];
+//        UIViewController *viewController = [AppDelegate currentViewController];
+//        [viewController.navigationController setNavigationBarHidden:YES animated:YES];
+//        OneToOneViewController *play=[[OneToOneViewController alloc]init];
+//        play.callFrom = 2;
+//        play.roomid = [detailDic objectForKey:@"roomid"];
+//        [viewController.navigationController pushViewController:play animated:YES];
         
     } else if (application.applicationState == UIApplicationStateInactive) {
-        NSDictionary *alertDic = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
-        NSString *bodyStr = [alertDic objectForKey:@"body"];
-        NSData *jsonData = [bodyStr dataUsingEncoding:NSUTF8StringEncoding];
-        NSError *err;
-        NSDictionary * arr = [NSJSONSerialization JSONObjectWithData:jsonData
-                                                             options:NSJSONReadingMutableContainers error:&err];
-        NSDictionary *detailDic = [arr objectForKey:@"detail"];
-        UIViewController *viewController = [AppDelegate currentViewController];
-        [viewController.navigationController setNavigationBarHidden:YES animated:YES];
-        OneToOneViewController *play=[[OneToOneViewController alloc]init];
-        play.callFrom = 2;
-        play.roomid = [detailDic objectForKey:@"roomid"];
-        [viewController.navigationController pushViewController:play animated:YES];
+//        NSDictionary *alertDic = [[userInfo objectForKey:@"aps"] objectForKey:@"alert"];
+//        NSString *bodyStr = [alertDic objectForKey:@"body"];
+//        NSData *jsonData = [bodyStr dataUsingEncoding:NSUTF8StringEncoding];
+//        NSError *err;
+//        NSDictionary * arr = [NSJSONSerialization JSONObjectWithData:jsonData
+//                                                             options:NSJSONReadingMutableContainers error:&err];
+//        NSDictionary *detailDic = [arr objectForKey:@"detail"];
+//        UIViewController *viewController = [AppDelegate currentViewController];
+//        [viewController.navigationController setNavigationBarHidden:YES animated:YES];
+//        OneToOneViewController *play=[[OneToOneViewController alloc]init];
+//        play.callFrom = 2;
+//        play.roomid = [detailDic objectForKey:@"roomid"];
+//        [viewController.navigationController pushViewController:play animated:YES];
+        if ([[userInfo objectForKey:@"message"] isEqualToString:@"trtc"]) {
+//            NSDictionary *detailDic = [userInfo objectForKey:@"detail"];
+            UIViewController *viewController = [AppDelegate currentViewController];
+            [viewController.navigationController setNavigationBarHidden:YES animated:YES];
+            OneToOneViewController *play=[[OneToOneViewController alloc]init];
+            play.callFrom = 2;
+            play.roomid = [userInfo objectForKey:@"roomid"];
+            [viewController.navigationController pushViewController:play animated:YES];
+        }
         // 程序处于后台 做相应的处理
         //        for (NSString *tfStr in userInfo) {
         //            if ([tfStr isEqualToString:@"careline"]) {

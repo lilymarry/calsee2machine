@@ -24,6 +24,8 @@ NS_ASSUME_NONNULL_BEGIN
 +(NSString*)dicToJSONString:(NSDictionary  *)arr;
 
 + (UIColor *)colorWithHexString: (NSString *) stringToConvert;
+
++ (NSString *)getLocalDateFormateUTCDate:(NSString *)utcStr;
 //#pragma mark 图片压缩
 //+(UIImage *)zipImage:(UIImage *)image;
 ////压缩图片为指定大小

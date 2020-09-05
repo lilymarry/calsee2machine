@@ -387,7 +387,14 @@
 -(void)goChat
 {
     ChatWebViewController *chart=[[ChatWebViewController alloc]init];
-    chart.url=[NSString stringWithFormat:@"https://www.calseeglobal.com/web/ios/chat.aspx?cid=%@",_mainDic[@"cid"]];
+    
+     NSString * exhiid= [[NSUserDefaults standardUserDefaults] objectForKey:Exhibh];
+      NSString *langstr=[[NSUserDefaults standardUserDefaults] objectForKey:Lang];
+       NSString *ubh=[[NSUserDefaults standardUserDefaults] objectForKey:Userbh];;
+    
+    NSString *url=  [NSString stringWithFormat:@"https://www.calseeglobal.com/web/ios/chat.aspx?cid=%@&exhiid=%@&ubh=%@&lang=%@",_mainDic[@"cid"],exhiid,ubh,langstr];
+    chart.url=url;
+  
     [self.navigationController pushViewController:chart animated:YES];
 }
 -(void)goVedio

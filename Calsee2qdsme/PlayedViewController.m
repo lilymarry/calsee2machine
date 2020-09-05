@@ -16,6 +16,7 @@
     NSInteger secondsCountDown;
     
     NSString *startTimeStamp;//起始时间戳
+    NSString *startTimeStr;
     
 }
 
@@ -41,7 +42,9 @@
     UIView *   topView = [[UIView alloc] initWithFrame:CGRectMake(0, statusBarHeight, ScreenW, 64)];
     topView.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:topView];
-    
+    UIImageView *imageview=[[UIImageView alloc]initWithFrame:CGRectMake(0, 0, ScreenW, 64)];
+    imageview.image=[UIImage imageNamed:@"bg_title"];
+    [topView addSubview:imageview];
     
     UIButton *  collectBtn=[UIButton buttonWithType:UIButtonTypeCustom];
     collectBtn.frame=CGRectMake(0, 0, 60, 50);
@@ -49,17 +52,27 @@
     [collectBtn addTarget:self action:@selector(collectPress) forControlEvents:UIControlEventTouchUpInside];
     [topView addSubview:collectBtn];
     
-    UIImageView *imageView=[[UIImageView alloc]initWithFrame:CGRectMake(15, 15, 12, 20)];
-    imageView.image=[UIImage imageNamed:@"icon_back_title"];
-    [collectBtn addSubview:imageView];
+    UIImageView *imageView1=[[UIImageView alloc]initWithFrame:CGRectMake(15, 15, 12, 20)];
+    imageView1.image=[UIImage imageNamed:@"icon_back_title"];
+    [collectBtn addSubview:imageView1];
     
-    timeLab=[[UILabel alloc]initWithFrame:CGRectMake(70, 10, ScreenW-80, 34)];
-    timeLab.textColor=[UIColor redColor];
-    timeLab.font=[UIFont systemFontOfSize:14];
+     
+    UILabel *   titleLab=[[UILabel alloc]initWithFrame:CGRectMake(ScreenW/2-40, 10, 80, 34)];
+        titleLab.textColor=[UIColor whiteColor];
+        titleLab.font=[UIFont systemFontOfSize:17];
+        titleLab.textAlignment=NSTextAlignmentCenter;
+       titleLab.backgroundColor=[UIColor clearColor];
+        titleLab.text=@"开幕直播";
+        [topView addSubview:titleLab];
     
-    timeLab.textAlignment=NSTextAlignmentRight;
-    [topView addSubview:timeLab];
     
+     timeLab=[[UILabel alloc]initWithFrame:CGRectMake(ScreenW-150, 10, 140, 34)];
+      timeLab.textColor=[UIColor whiteColor];
+      timeLab.font=[UIFont systemFontOfSize:12];
+      timeLab.textAlignment=NSTextAlignmentRight;
+       timeLab.backgroundColor=[UIColor clearColor];
+      
+      [topView addSubview:timeLab];
     
     
     
@@ -79,7 +92,7 @@
     _contentTxt.backgroundColor=[UIColor whiteColor];
     _contentTxt.editable=NO;
     _contentTxt.font=[UIFont systemFontOfSize:14];
-    _contentTxt.text=_playDic[@"content"];;
+    _contentTxt.text=[NSString stringWithFormat:@"    %@",_playDic[@"content"]];
     [self.view addSubview:_contentTxt];
     
     
@@ -90,15 +103,14 @@
     NSTimeZone* timeZone = [NSTimeZone localTimeZone];
     [formatter setTimeZone:timeZone];
     
-     NSString *startTime=_playDic[@"starttime"];
-    NSDate  *startDate= [formatter dateFromString:startTime];
-    NSString *startTimeStr=[formatter stringFromDate:startDate];
+    NSString *startTime=_playDic[@"starttime"];
+    startTimeStr=[HelpCommon  getLocalDateFormateUTCDate:startTime];
     startTimeStamp=  [HelpCommon timeSwitchTimestamp:startTimeStr andFormatter:@"yyyy-MM-dd HH:mm:ss"];
 
     
     
     NSDate *currentDate = [NSDate date];
-    NSString *currentTimeStamp=  [self getCurrentTime:currentDate];
+    NSString *currentTimeStamp=  [self getTime:currentDate];
     
 
     
@@ -123,7 +135,7 @@
     
 }
 
--(NSString *)getCurrentTime:(NSDate *)time
+-(NSString *)getTime:(NSDate *)time
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
@@ -186,7 +198,7 @@
 }
 -(void) onPlayEvent:(TXVodPlayer *)player event:(int)EvtID withParam:(NSDictionary*)param {
 
-    if (EvtID == PLAY_EVT_PLAY_PROGRESS) {
+    if (EvtID == 2004) {
         
     }
     else if (EvtID == 2013)
@@ -194,18 +206,32 @@
           
            int intel=(int)player.duration;
            
-            NSDate *currentDate = [NSDate date];
-            NSDate * appointDate = [currentDate initWithTimeIntervalSinceNow: intel];
-            NSString *currentTimeStamp=  [self getCurrentTime:appointDate];
+           NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+             [formatter setDateStyle:NSDateFormatterMediumStyle];
+             [formatter setTimeStyle:NSDateFormatterShortStyle];
+             [formatter setDateFormat:@"YYY-MM-dd HH:mm:ss"];
+             NSTimeZone* timeZone = [NSTimeZone localTimeZone];
+             [formatter setTimeZone:timeZone];
            
-           int seconds= [startTimeStamp intValue]+intel-[currentTimeStamp intValue];
-           if (seconds>10) {
-                [_player seek:seconds];
+           NSDate *startDate=[formatter dateFromString:startTimeStr];//开始时间
+           NSDate * overDate = [startDate initWithTimeIntervalSinceNow: intel];//结束时间
+           NSString *overTimeStamp=  [self getTime:overDate];//结束时间戳
+           
+            NSDate *currentDate = [NSDate date];//当前时间
+            NSString *currentTimeStamp=  [self getTime:currentDate];//当前时间戳
+           
+           int second=[overTimeStamp intValue]-[currentTimeStamp intValue];
+           if (second>0) {
+               //直播没有结束 计算开始播放时间
+               int over=[currentTimeStamp intValue] -[startTimeStamp intValue];
+                [_player seek:over];
            }
-         else
-         {
-             [_player seek:0];
-         }
+           else
+           {
+               [_player seek:0];
+           }
+           
+           
            
        }
     else if (EvtID == -2301)

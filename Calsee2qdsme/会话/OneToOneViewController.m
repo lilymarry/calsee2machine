@@ -25,6 +25,7 @@
     UIView *remoteView;
     UILabel *videoTishiLab;
     UILabel *AudioTishiLab;
+    int guaduanNum;
 }
 @property (nonatomic, strong) TRTCCloud *trtcCloud;
 @end
@@ -218,48 +219,83 @@
     [dic2 setObject:langus forKey:@"lang"];
     [dic2 setObject:exhiid2 forKey:@"exhiid"];
     [dic2 setObject:self.roomid forKey:@"roomid"];
-    
-    [LoginBL CallWait:dic2 success:^(NSMutableDictionary *returnValue) {
-        if ([[returnValue objectForKey:@"callzt"] intValue] == 1) {
-            [self->hujiao removeFromSuperview];
-            [self->timer invalidate];
-            self->timer = nil;
-            [self setBtuView];
-            [self enterRoom];
-        }else if ([[returnValue objectForKey:@"callzt"] intValue] == 3){
-            [[CommonClass sharedManager] callStateLab:@"对方已挂断"];
-            NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
-            NSString *userbh = [[NSUserDefaults standardUserDefaults] objectForKey:Userbh];
-            if (userbh.length>0) {
-              
-            }
-            NSString *langus = [[NSUserDefaults standardUserDefaults] objectForKey:Lang];
-            if (userbh.length>0) {
-              
-            }else{
-                langus = @"";
-            }
-            [dic setObject:userbh forKey:@"ubh"];
-            [dic setObject:langus forKey:@"lang"];
-            [dic setObject:exhiid2 forKey:@"exhiid"];
-            [dic setObject:self.roomid forKey:@"roomid"];
-            [LoginBL UserLeaveRoom:dic success:^(NSMutableDictionary *returnValue) {
-                
-            } failure:^(NSString *errorMessage) {
-                
-            }];
-            dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0/*延迟执行时间*/ * NSEC_PER_SEC));
-                
-            dispatch_after(delayTime, dispatch_get_main_queue(), ^{
-                [self->hujiao removeFromSuperview];
-                [self->tongbuBackView removeFromSuperview];
-                [self.navigationController popViewControllerAnimated:YES];
-            });
-            
+    guaduanNum += 1;
+    if (guaduanNum == 15) {
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+        NSString *userbh = [[NSUserDefaults standardUserDefaults] objectForKey:Userbh];
+        if (userbh.length>0) {
+          
         }
-    } failure:^(NSString *errorMessage) {
-        
-    }];
+        NSString *langus = [[NSUserDefaults standardUserDefaults] objectForKey:Lang];
+        if (userbh.length>0) {
+          
+        }else{
+            langus = @"";
+        }
+        [dic setObject:userbh forKey:@"ubh"];
+        [dic setObject:langus forKey:@"lang"];
+        [dic setObject:exhiid2 forKey:@"exhiid"];
+        [dic setObject:self.roomid forKey:@"roomid"];
+        [LoginBL UserLeaveRoom:dic success:^(NSMutableDictionary *returnValue) {
+            
+        } failure:^(NSString *errorMessage) {
+            
+        }];
+        [self->timer invalidate];
+        self->timer = nil;
+        dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0/*延迟执行时间*/ * NSEC_PER_SEC));
+            
+        dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+            [self->hujiao removeFromSuperview];
+            [self->tongbuBackView removeFromSuperview];
+            [self.navigationController popViewControllerAnimated:YES];
+        });
+    }else{
+        [LoginBL CallWait:dic2 success:^(NSMutableDictionary *returnValue) {
+            if ([[returnValue objectForKey:@"callzt"] intValue] == 1) {
+                [self->hujiao removeFromSuperview];
+                [self->timer invalidate];
+                self->timer = nil;
+                [self setBtuView];
+                [self enterRoom];
+            }else if ([[returnValue objectForKey:@"callzt"] intValue] == 3){
+                [[CommonClass sharedManager] callStateLab:@"对方已挂断"];
+                NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
+                NSString *userbh = [[NSUserDefaults standardUserDefaults] objectForKey:Userbh];
+                if (userbh.length>0) {
+                  
+                }
+                NSString *langus = [[NSUserDefaults standardUserDefaults] objectForKey:Lang];
+                if (userbh.length>0) {
+                  
+                }else{
+                    langus = @"";
+                }
+                [dic setObject:userbh forKey:@"ubh"];
+                [dic setObject:langus forKey:@"lang"];
+                [dic setObject:exhiid2 forKey:@"exhiid"];
+                [dic setObject:self.roomid forKey:@"roomid"];
+                [LoginBL UserLeaveRoom:dic success:^(NSMutableDictionary *returnValue) {
+                    
+                } failure:^(NSString *errorMessage) {
+                    
+                }];
+                [self->timer invalidate];
+                self->timer = nil;
+                dispatch_time_t delayTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0/*延迟执行时间*/ * NSEC_PER_SEC));
+                    
+                dispatch_after(delayTime, dispatch_get_main_queue(), ^{
+                    [self->hujiao removeFromSuperview];
+                    [self->tongbuBackView removeFromSuperview];
+                    [self.navigationController popViewControllerAnimated:YES];
+                });
+                
+            }
+        } failure:^(NSString *errorMessage) {
+            
+        }];
+    }
+    
     
 }
 -(void)setBtuView{
