@@ -369,6 +369,7 @@
             UIImageView *view=[[UIImageView alloc]initWithFrame:CGRectMake(i* 37+5, 15,  35, 35)];
             view.backgroundColor=[UIColor whiteColor];
             view.layer.masksToBounds = YES;
+            view.image=[UIImage imageNamed:@"ic_placeholder"];
             view.layer.cornerRadius = view.frame.size.width/2;
             NSString *name=userArr[i][@"tx"];
             
@@ -401,7 +402,7 @@
          [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         if ([returnValue[@"code"] isEqualToString:@"101"]||[returnValue[@"code"] isEqualToString:@"102"]||[returnValue[@"code"] isEqualToString:@"103"]) {
            
-            [MBProgressHUD showError:returnValue[@"message"] toView:self.view];
+            [MBProgressHUD showError:@"暂无空闲客服" toView:self.view];
         }
         else
         {
@@ -439,7 +440,7 @@
         
     } failure:^(NSString * _Nonnull errorMessage) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
-                        [MBProgressHUD showError:@"网络错误 "toView:self.view];
+        [MBProgressHUD showError:@"网络错误 "toView:self.view];
     }];
 }
 -(void)alertPerss

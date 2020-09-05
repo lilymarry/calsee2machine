@@ -166,7 +166,23 @@
     //左上角公司视图
         UIView *companyInfoView = [[UIView alloc]initWithFrame:CGRectMake(18, 10+LL_StatusBarHeight, (self.view.frame.size.width-36)/2, 38)];
         UIImageView *touxiangIcon = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 38, 38)];
-    [touxiangIcon sd_setImageWithURL:[NSURL URLWithString:self.touxiangUrl]];
+//    if([self.touxiangUrl rangeOfString: @"../"].location == NSNotFound) {
+//
+//        self.touxiangUrl = [self.touxiangUrl stringByReplacingOccurrencesOfString:@"../" withString:@""];
+//
+//    } else {
+//
+//    }
+    NSString* encodedString =[self.touxiangUrl stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];//URL 含有中文 encode 编码
+    
+    [touxiangIcon sd_setImageWithURL:[NSURL URLWithString:encodedString] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+        if (image == nil) {
+            touxiangIcon.image=[UIImage imageNamed:@"ic_placeholder"];
+            touxiangIcon.backgroundColor=[UIColor whiteColor];
+        }
+    }];
+//    [touxiangIcon  sd_setImageWithURL:[NSURL URLWithString:encodedString] placeholderImage:[UIImage imageNamed:@"ic_placeholder"]];
+//    [touxiangIcon sd_setImageWithURL:[NSURL URLWithString:self.touxiangUrl]];
         touxiangIcon.layer.masksToBounds = YES;
         touxiangIcon.layer.cornerRadius = touxiangIcon.frame.size.width / 2;
     
@@ -197,6 +213,15 @@
    //    [joinUserIconView setBackgroundColor:[UIColor redColor]];
        [self.view addSubview:joinUserIconView];
     
+    UIButton *closeBtu = [[UIButton alloc]initWithFrame:CGRectMake(self.view.frame.size.width-18-27, self.view.frame.size.height-70-LL_TabbarSafeBottomMargin, 27, 30)];
+        //    [closeBtu setBackgroundColor:[UIColor yellowColor]];
+            [closeBtu setBackgroundImage:[UIImage imageNamed:@"icon_closelive"] forState:UIControlStateNormal];
+    //        closeBtu.layer.masksToBounds = YES;
+    //
+    //        closeBtu.layer.cornerRadius = closeBtu.frame.size.width / 2;
+            [closeBtu addTarget:self action:@selector(closeLive) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:closeBtu];
+    
 }
 -(void)setButtonIcon{
     
@@ -212,7 +237,7 @@
     
     
     //右下角控制按钮显示
-    UIView *controllBtuView = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-85-18, self.view.frame.size.height-70-LL_TabbarSafeBottomMargin, 85, 30)];
+    UIView *controllBtuView = [[UIView alloc]initWithFrame:CGRectMake(self.view.frame.size.width-85-18, self.view.frame.size.height-70-LL_TabbarSafeBottomMargin, 38, 30)];
     UIButton *switchBtu = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 38, 30)];
 //    [switchBtu setBackgroundColor:[UIColor systemPinkColor]];
     [switchBtu setBackgroundImage:[UIImage imageNamed:@"icon_live_switch"] forState:UIControlStateNormal];
@@ -221,14 +246,7 @@
 //    switchBtu.layer.cornerRadius = switchBtu.frame.size.width / 2;
     [controllBtuView addSubview:switchBtu];
     
-     UIButton *closeBtu = [[UIButton alloc]initWithFrame:CGRectMake(controllBtuView.frame.size.width-27, 0, 27, 30)];
-    //    [closeBtu setBackgroundColor:[UIColor yellowColor]];
-        [closeBtu setBackgroundImage:[UIImage imageNamed:@"icon_closelive"] forState:UIControlStateNormal];
-//        closeBtu.layer.masksToBounds = YES;
-//
-//        closeBtu.layer.cornerRadius = closeBtu.frame.size.width / 2;
-        [closeBtu addTarget:self action:@selector(closeLive) forControlEvents:UIControlEventTouchUpInside];
-        [controllBtuView addSubview:closeBtu];
+     
     
     [self.view addSubview:controllBtuView];
     
@@ -530,7 +548,23 @@
         UIImageView *companyIcon = [[UIImageView alloc]initWithFrame:CGRectMake(10+totalwidth,0 , 36, 36)];
         companyIcon.layer.masksToBounds = YES;
         companyIcon.layer.cornerRadius = companyIcon.frame.size.width / 2;
-        [companyIcon sd_setImageWithURL:[NSURL URLWithString:companyIconUrl]];
+        NSString *imageStr = companyIconUrl;
+//        if([imageStr rangeOfString: @"../../"].location == NSNotFound) {
+//
+//            imageStr = [imageStr stringByReplacingOccurrencesOfString:@"../../" withString:@""];
+//
+//        } else {
+//
+//        }
+        companyIcon.image=[UIImage imageNamed:@"ic_placeholder"];
+        NSString* encodedString =[imageStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];//URL 含有中文 encode 编码
+        [companyIcon sd_setImageWithURL:[NSURL URLWithString:encodedString] completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+            if (image == nil) {
+                companyIcon.image=[UIImage imageNamed:@"ic_placeholder"];
+                companyIcon.backgroundColor=[UIColor whiteColor];
+            }
+        }];
+//        [companyIcon  sd_setImageWithURL:[NSURL URLWithString:encodedString] placeholderImage:[UIImage imageNamed:@"ic_placeholder"]];
 //        [companyIcon setBackgroundColor:companyIconColor];
         [joinUserIconView addSubview:companyIcon];
         totalwidth += 36+10;

@@ -52,4 +52,8 @@ success:(void (^)(NSMutableDictionary *returnValue))success
 +(void)updevicetoken:(NSDictionary *)topInfo
 success:(void (^)(NSMutableDictionary *returnValue))success
              failure:(void (^)(NSString *errorMessage))failure;
+
++(void)UserGuaduanRoom:(NSDictionary *)topInfo
+success:(void (^)(NSMutableDictionary *returnValue))success
+               failure:(void (^)(NSString *errorMessage))failure;
 @end

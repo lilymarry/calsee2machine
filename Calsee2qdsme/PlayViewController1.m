@@ -87,9 +87,9 @@
     _contentTxt.text=_playDic[@"content"];
     [self.view addSubview:_contentTxt];
     
-    self.playUrl = _playDic[@"url"];
+   self.playUrl = _playDic[@"url"];
     
-    
+   // self.playUrl = @"http://liteavapp.qcloud.com/live/liteavdemoplayerstreamid.flv";
     
     
     timeLab=[[UILabel alloc]initWithFrame:CGRectMake(70, 10, ScreenW-70, 34)];
@@ -122,9 +122,9 @@
         //启动倒计时后会每秒钟调用一次方法 countDownAction
         
         //设置倒计时显示的时间
-        NSString *str_hour = [NSString stringWithFormat:@"%02ld",secondsCountDown/3600];//时
-        NSString *str_minute = [NSString stringWithFormat:@"%02ld",(secondsCountDown%3600)/60];//分
-        NSString *str_second = [NSString stringWithFormat:@"%02ld",secondsCountDown%60];//秒
+        NSString *str_hour = [NSString stringWithFormat:@"%02d",secondsCountDown/3600];//时
+        NSString *str_minute = [NSString stringWithFormat:@"%02d",(secondsCountDown%3600)/60];//分
+        NSString *str_second = [NSString stringWithFormat:@"%02d",secondsCountDown%60];//秒
         NSString *format_time = [NSString stringWithFormat:@"%@:%@:%@",str_hour,str_minute,str_second];
         timeLab.text = [NSString stringWithFormat:@"即将开始：%@",format_time];
     }
@@ -142,11 +142,11 @@
     secondsCountDown--;
     
     //重新计算 时/分/秒
-    NSString *str_hour = [NSString stringWithFormat:@"%02ld",secondsCountDown/3600];
+    NSString *str_hour = [NSString stringWithFormat:@"%02d",secondsCountDown/3600];
     
-    NSString *str_minute = [NSString stringWithFormat:@"%02ld",(secondsCountDown%3600)/60];
+    NSString *str_minute = [NSString stringWithFormat:@"%02d",(secondsCountDown%3600)/60];
     
-    NSString *str_second = [NSString stringWithFormat:@"%02ld",secondsCountDown%60];
+    NSString *str_second = [NSString stringWithFormat:@"%02d",secondsCountDown%60];
     
     NSString *format_time = [NSString stringWithFormat:@"%@:%@:%@",str_hour,str_minute,str_second];
     //修改倒计时标签及显示内容

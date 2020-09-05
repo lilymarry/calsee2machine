@@ -23,6 +23,8 @@
     NSString *roomID;
     HujiaoView *hujiao;
     UIView *remoteView;
+    UILabel *videoTishiLab;
+    UILabel *AudioTishiLab;
 }
 @property (nonatomic, strong) TRTCCloud *trtcCloud;
 @end
@@ -146,7 +148,7 @@
     [dic setObject:langus forKey:@"lang"];
     [dic setObject:exhiid2 forKey:@"exhiid"];
     [dic setObject:self.roomid forKey:@"roomid"];
-    [LoginBL UserLeaveRoom:dic success:^(NSMutableDictionary *returnValue) {
+    [LoginBL UserGuaduanRoom:dic success:^(NSMutableDictionary *returnValue) {
         
     } failure:^(NSString *errorMessage) {
         
@@ -162,7 +164,8 @@
         timer  =  [NSTimer timerWithTimeInterval:2.0 target:self selector:@selector(Timered) userInfo:nil repeats:YES];
         [[NSRunLoop mainRunLoop] addTimer:self->timer forMode:NSDefaultRunLoopMode];
     }else{
-        
+        timer  =  [NSTimer timerWithTimeInterval:2.0 target:self selector:@selector(Timered) userInfo:nil repeats:YES];
+               [[NSRunLoop mainRunLoop] addTimer:self->timer forMode:NSDefaultRunLoopMode];
         
     }
     /*NSMutableDictionary *dic = [[NSMutableDictionary alloc]init];
@@ -302,6 +305,13 @@
     //    closeVideoBtu.layer.borderWidth = 1.0f;
     //    closeVideoBtu.layer.borderColor = [[UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1] CGColor];
         [tongbuBackView addSubview:closeVideoBtu];
+    videoTishiLab = [[UILabel alloc]initWithFrame:CGRectMake((tongbuBackView.frame.size.width-132)/4+30+14+((tongbuBackView.frame.size.width-132)/4)-12, 89+44+5, 80, 11)];
+    videoTishiLab.text = @"请开启摄像头";
+    videoTishiLab.textColor = [UIColor whiteColor];
+    videoTishiLab.textAlignment = NSTextAlignmentCenter;
+    videoTishiLab.font = [UIFont systemFontOfSize:11];
+    videoTishiLab.hidden = YES;
+    [tongbuBackView addSubview:videoTishiLab];
         
         UIButton *closeAvdioBtu = [[UIButton alloc]initWithFrame:CGRectMake((tongbuBackView.frame.size.width-132)/4+74+14+((tongbuBackView.frame.size.width-132)/4)+((tongbuBackView.frame.size.width-132)/4), 89, 44, 44)];
     [closeAvdioBtu addTarget:self action:@selector(closeAvdio:) forControlEvents:UIControlEventTouchUpInside];
@@ -313,6 +323,13 @@
     //    closeAvdioBtu.layer.borderWidth = 1.0f;
     //    closeAvdioBtu.layer.borderColor = [[UIColor colorWithRed:204.0/255.0 green:204.0/255.0 blue:204.0/255.0 alpha:1] CGColor];
         [tongbuBackView addSubview:closeAvdioBtu];
+    AudioTishiLab = [[UILabel alloc]initWithFrame:CGRectMake((tongbuBackView.frame.size.width-132)/4+74+14+((tongbuBackView.frame.size.width-132)/4)+((tongbuBackView.frame.size.width-132)/4)-12, 89+44+5, 80, 11)];
+    AudioTishiLab.text = @"请开启麦克风";
+    AudioTishiLab.textColor = [UIColor whiteColor];
+    AudioTishiLab.textAlignment = NSTextAlignmentCenter;
+    AudioTishiLab.font = [UIFont systemFontOfSize:11];
+    AudioTishiLab.hidden = YES;
+    [tongbuBackView addSubview:AudioTishiLab];
     
 }
 -(void)enterRoom{
@@ -417,8 +434,10 @@
     videoNum +=1;
     if (videoNum %2 == 1) {
         [_trtcCloud stopLocalPreview];
+        videoTishiLab.hidden = NO;
         [btu setBackgroundImage:[UIImage imageNamed:@"icon_avp_video_gray"] forState:UIControlStateNormal];
     }else{
+        videoTishiLab.hidden = YES;
         [_trtcCloud startLocalPreview:YES view:remoteViewOwen];
         [btu setBackgroundImage:[UIImage imageNamed:@"icon_avp_video_white"] forState:UIControlStateNormal];
     }
@@ -428,8 +447,11 @@
     audioNum +=1;
     if (audioNum %2 == 1) {
         [_trtcCloud stopLocalAudio];
+        AudioTishiLab.hidden = NO;
         [btu setBackgroundImage:[UIImage imageNamed:@"icon_avp_mute_gray"] forState:UIControlStateNormal];
     }else{
+        
+        AudioTishiLab.hidden = YES;
         [_trtcCloud startLocalAudio];
         [btu setBackgroundImage:[UIImage imageNamed:@"icon_avp_mute_white"] forState:UIControlStateNormal];
     }

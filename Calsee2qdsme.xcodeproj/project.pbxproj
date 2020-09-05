@@ -30,7 +30,6 @@
 		883DCF4B24FE8B4B0057FED5 /* pushLiveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 883DCF4724FE8B4B0057FED5 /* pushLiveView.m */; };
 		883DCF4C24FE8B4B0057FED5 /* scrollTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 883DCF4A24FE8B4B0057FED5 /* scrollTextView.m */; };
 		883DCF4F24FE8B590057FED5 /* LiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883DCF4D24FE8B590057FED5 /* LiveViewController.m */; };
-		883DCF5324FE95830057FED5 /* OneToOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 883DCF5224FE95830057FED5 /* OneToOneViewController.m */; };
 		883DCF5624FEAC060057FED5 /* IntoroomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 883DCF5524FEAC060057FED5 /* IntoroomModel.m */; };
 		883DCF5A24FEB1FF0057FED5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297AE24F6295E006AE927 /* CoreTelephony.framework */; };
 		883DCF5B24FEB2690057FED5 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297B024F62969006AE927 /* SystemConfiguration.framework */; };
@@ -46,6 +45,7 @@
 		88D297AD24F62953006AE927 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297AC24F62953006AE927 /* libresolv.tbd */; };
 		88D297B324F6297C006AE927 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 88D297B224F6297C006AE927 /* libsqlite3.tbd */; };
 		88D297B724F639B4006AE927 /* AliyunEmasServices-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 88D297B624F639B4006AE927 /* AliyunEmasServices-Info.plist */; };
+		88E8279C250215DF00168162 /* OneToOneViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88E8279B250215DF00168162 /* OneToOneViewController.m */; };
 		88EFD46C24EE2B4F0018A6D1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD46B24EE2B4F0018A6D1 /* AppDelegate.m */; };
 		88EFD47224EE2B4F0018A6D1 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 88EFD47124EE2B4F0018A6D1 /* ViewController.m */; };
 		88EFD47524EE2B4F0018A6D1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 88EFD47324EE2B4F0018A6D1 /* Main.storyboard */; };
@@ -119,7 +119,6 @@
 		883DCF4A24FE8B4B0057FED5 /* scrollTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scrollTextView.m; sourceTree = "<group>"; };
 		883DCF4D24FE8B590057FED5 /* LiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveViewController.m; sourceTree = "<group>"; };
 		883DCF4E24FE8B590057FED5 /* LiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveViewController.h; sourceTree = "<group>"; };
-		883DCF5224FE95830057FED5 /* OneToOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = OneToOneViewController.m; path = ../../../../Downloads/OneToOneViewController.m; sourceTree = "<group>"; };
 		883DCF5424FEAC060057FED5 /* IntoroomModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntoroomModel.h; sourceTree = "<group>"; };
 		883DCF5524FEAC060057FED5 /* IntoroomModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntoroomModel.m; sourceTree = "<group>"; };
 		883DCF6124FEB70A0057FED5 /* AlicloudUtils.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlicloudUtils.framework; sourceTree = "<group>"; };
@@ -141,6 +140,7 @@
 		88D297B224F6297C006AE927 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		88D297B624F639B4006AE927 /* AliyunEmasServices-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "AliyunEmasServices-Info.plist"; sourceTree = "<group>"; };
 		88D297B824F64C5F006AE927 /* 机床工具云展览.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "机床工具云展览.entitlements"; sourceTree = "<group>"; };
+		88E8279B250215DF00168162 /* OneToOneViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OneToOneViewController.m; sourceTree = "<group>"; };
 		88EFD46724EE2B4F0018A6D1 /* 机床工具云展览.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "机床工具云展览.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		88EFD46A24EE2B4F0018A6D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		88EFD46B24EE2B4F0018A6D1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -233,10 +233,10 @@
 		883ABEBC24FCF28700F30C03 /* help */ = {
 			isa = PBXGroup;
 			children = (
+				88D297B624F639B4006AE927 /* AliyunEmasServices-Info.plist */,
 				883DCF3224FE8A810057FED5 /* CommonClass.h */,
 				883DCF3324FE8A810057FED5 /* CommonClass.m */,
 				8848947C24EFC8B300C13783 /* HelpCommon.h */,
-				88D297B624F639B4006AE927 /* AliyunEmasServices-Info.plist */,
 				8848947D24EFC8B300C13783 /* HelpCommon.m */,
 				8848946524EF7CEC00C13783 /* PrefixHeader.pch */,
 			);
@@ -260,7 +260,7 @@
 			isa = PBXGroup;
 			children = (
 				883DCF3F24FE8AD90057FED5 /* OneToOneViewController.h */,
-				883DCF5224FE95830057FED5 /* OneToOneViewController.m */,
+				88E8279B250215DF00168162 /* OneToOneViewController.m */,
 				883DCF4324FE8AE20057FED5 /* HujiaoView.h */,
 				883DCF4224FE8AE20057FED5 /* HujiaoView.m */,
 			);
@@ -582,7 +582,7 @@
 				8848947E24EFC8B400C13783 /* HelpCommon.m in Sources */,
 				883DCF3C24FE8A970057FED5 /* RoomLiveViewController.m in Sources */,
 				883DCF3124FE51160057FED5 /* ChatWebViewController.m in Sources */,
-				883DCF5324FE95830057FED5 /* OneToOneViewController.m in Sources */,
+				88E8279C250215DF00168162 /* OneToOneViewController.m in Sources */,
 				883ABEAF24FCBD9B00F30C03 /* LiveUserModel.m in Sources */,
 				883DCF3424FE8A810057FED5 /* CommonClass.m in Sources */,
 				883ABEA924FCAC4000F30C03 /* CollectModel.m in Sources */,
@@ -763,7 +763,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Calsee2qdsme/机床工具云展览.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.1;
+				CURRENT_PROJECT_VERSION = 1.2.2;
 				DEVELOPMENT_TEAM = 5W969USCV9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -780,7 +780,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -835,7 +835,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Calsee2qdsme/机床工具云展览.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.1.1;
+				CURRENT_PROJECT_VERSION = 1.2.2;
 				DEVELOPMENT_TEAM = 5W969USCV9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -852,7 +852,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",

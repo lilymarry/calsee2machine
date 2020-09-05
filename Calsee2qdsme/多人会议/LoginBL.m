@@ -373,4 +373,39 @@
         
     }];
 }
+
+
+#pragma mark - 会议/呼叫挂断退出房间信息接口
++(void)UserGuaduanRoom:(NSDictionary *)topInfo
+                    success:(void (^)(NSMutableDictionary *returnValue))success
+                    failure:(void (^)(NSString *errorMessage))failure
+{
+    [[OAAPIClient sharedInstance] POST:@"/api/api/callfail" parameters:topInfo success:^(NSURLSessionDataTask *task, id responseObject) {
+        
+        NSDictionary * arr = responseObject;
+        int mt = [[arr objectForKey:@"code"] intValue];
+            if (mt == 100) {
+            NSMutableDictionary *dic = [arr objectForKey:@"detail"];
+//            NSData *jsonData = [dit dataUsingEncoding:NSUTF8StringEncoding];
+//            NSError *err;
+//            NSDictionary * arr = [NSJSONSerialization JSONObjectWithData:jsonData
+//                                                                 options:NSJSONReadingMutableContainers error:&err];
+//            NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithDictionary:arr];
+                success(dic);
+//            if (![[dic objectForKey:@"Result"] isEqualToString:@"False"]) {
+//                success(dic);
+//
+//            }else{
+//                failure(@"用户名或密码错误，请重试");
+//            }
+//
+        }else{
+            failure(@"登录失败，请重试");
+        }
+        //        NSLog(@"%@",responseObject);
+    } failure:^(NSURLSessionDataTask *task, NSError *error) {
+        failure(@"登录失败，请重试");
+        
+    }];
+}
 @end

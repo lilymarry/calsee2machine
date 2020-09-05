@@ -13,7 +13,7 @@
 #import "AFNetworkReachabilityManager.h"
 #import "AFNetworking.h"
 #import "HttpUrl.h"
-#define RTMP_PUBLISH_URL    @"请输入推流地址或者扫二维码进行输入"
+
 #define Userbh    @"userbh"
 #define Exhibh    @"exhibh"
 #define Lang    @"lang"
