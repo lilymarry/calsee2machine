@@ -34,6 +34,7 @@
     // 创建播放器
     _player = [[TXLivePlayer alloc] init];
     
+    [_player setRenderMode: RENDER_MODE_FILL_EDGE];
     TXLivePlayConfig* config = _player.config;
     // 开启 flvSessionKey 数据回调
     //config.flvSessionKey = @"X-Tlive-SpanId";
@@ -83,14 +84,26 @@
     
     _videoView = [[UIView alloc] initWithFrame:CGRectMake(0, videoHeight, ScreenW, ScreenW*2/3)];
     _videoView.backgroundColor=[UIColor lightGrayColor];
-    [self.view addSubview:_videoView];
+      [self.view addSubview:_videoView];
     
-   
+    UIImageView *_videoViewImageView1=[[UIImageView alloc]initWithFrame:CGRectMake(0,0,ScreenW,ScreenW*2/3)];
+    _videoViewImageView1.image=[UIImage imageNamed:@"playBack"];
+    [_videoView addSubview:_videoViewImageView1];
+
+  
+    
     _contentTxt = [[UITextView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_videoView.frame)+10, ScreenW, ScreenH-ScreenW*2/3-videoHeight-20)];
     _contentTxt.editable=NO;
     _contentTxt.backgroundColor=[UIColor whiteColor];
     _contentTxt.font=[UIFont systemFontOfSize:14];
-    _contentTxt.text=[NSString stringWithFormat:@"    %@",_playDic[@"content"]];;
+    if ([_playDic[@"content"] length]==0 ) {
+        _contentTxt.text=@"    第十五届中国国际机床工具展览会（CIMES 2020）于9月7日隆重开幕。中国机械国际合作股份有限公司总经理赵立志主持并介绍展会情况。中国机械工业集团有限公司副总经理丁宏祥、中国机械国际合作股份有限公司党委书记、董事长夏闻迪、中国机床总公司总经理唐亮及企业代表剪彩。作为后疫情时期在北京举办的第一场机床工具行业展会，展会规模50000m2 ,参展企业600多家。为了充分满足国内外展商、采购商及观众的需求，保证展览效果，CIMES 2020主办方联合机械工业信息研究院产业与市场研究所与线下展会同期举办“2020中国国际机床工具云展览会”。";
+    }
+    else
+    {
+          _contentTxt.text=[NSString stringWithFormat:@"    %@",_playDic[@"content"]];
+    }
+  
     [self.view addSubview:_contentTxt];
     
     
@@ -193,7 +206,7 @@
         return NO;
     }
     [_player setDelegate:self];
-    [_player setupVideoWidget:CGRectMake(0, 64, ScreenW, ScreenW*2/3) containView:_videoView insertIndex:0];
+    [_player setupVideoWidget:CGRectMake(0, 64, ScreenW, ScreenW*2/3) containView:_videoView insertIndex:1];
     int ret = [_player startPlay:playUrl type:_playType];
     
     if (ret != 0) {

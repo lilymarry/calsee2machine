@@ -72,7 +72,7 @@
     
     TXLivePlayConfig* config = _player.config;
     // 开启 flvSessionKey 数据回调
-    //config.flvSessionKey = @"X-Tlive-SpanId";
+     [_player setRenderMode: RENDER_MODE_FILL_EDGE];
     // 允许接收消息
     config.enableMessage = YES;
     [_player setConfig:config];
@@ -375,7 +375,7 @@
             
             NSString* encodedString =[name stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]];//URL 含有中文 encode 编码
             
-            [userImageView  sd_setImageWithURL:[NSURL URLWithString:encodedString] placeholderImage:[UIImage imageNamed:@"ic_placeholder"]];
+            [view  sd_setImageWithURL:[NSURL URLWithString:encodedString] placeholderImage:[UIImage imageNamed:@"ic_placeholder"]];
             
             [userScroll addSubview:view];
             
