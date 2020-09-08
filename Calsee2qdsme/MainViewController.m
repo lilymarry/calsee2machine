@@ -57,8 +57,8 @@
     }
     
     NSMutableURLRequest *request=[NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
-   [_webView loadRequest:request];
-   [self.view addSubview:_webView];
+ //  [_webView loadRequest:request];
+//   [self.view addSubview:_webView];
     
     self.progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, statusBarHeight, ScreenW, 5)];
     self.progressView.backgroundColor = [UIColor whiteColor];

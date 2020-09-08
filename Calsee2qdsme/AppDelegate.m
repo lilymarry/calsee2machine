@@ -110,6 +110,21 @@ static NSString *const testAppSecret = @"e3029b663f420b93e90a6ff60f388267";
     return YES;
 }
 
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(nullable UIWindow *)window
+
+{
+    
+    if (_allowRotation == YES) {
+        
+        return UIInterfaceOrientationMaskLandscapeLeft;
+        
+    }else{
+        
+        return (UIInterfaceOrientationMaskPortrait);
+        
+    }
+    
+}
 
 /**
  *    向APNs注册，获取deviceToken 用于推送

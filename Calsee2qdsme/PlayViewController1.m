@@ -8,7 +8,7 @@
 
 #import "PlayViewController1.h"
 #import "TXLivePlayer.h"
-
+#import "AppDelegate.h"
 @interface PlayViewController1 ()<TXLivePlayListener,TXLiveRecordListener>
 {
     UIView               *_videoView;             // 视频画面
@@ -16,6 +16,9 @@
     UIImageView          *_loadingImageView;      // 菊花
     UILabel *  timeLab;
     NSInteger secondsCountDown;
+    
+    UIButton *fullScreenButton;
+     BOOL isFull;
 }
 
 @property (nonatomic, strong) TXLivePlayer *player;
@@ -90,7 +93,15 @@
     _videoViewImageView1.image=[UIImage imageNamed:@"playBack"];
     [_videoView addSubview:_videoViewImageView1];
 
-  
+     fullScreenButton=[UIButton buttonWithType:UIButtonTypeCustom];
+     fullScreenButton.frame=CGRectMake(ScreenW-60, 0, 80, 60);
+     fullScreenButton.backgroundColor=[UIColor colorWithWhite:0.f alpha:0.5];
+     [fullScreenButton setTitle:@"全屏" forState:UIControlStateNormal];
+     [fullScreenButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+     [fullScreenButton addTarget:self action:@selector(fullScreen) forControlEvents:UIControlEventTouchUpInside];
+     [_videoView addSubview:fullScreenButton];
+     
+     isFull=NO;
     
     _contentTxt = [[UITextView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_videoView.frame)+10, ScreenW, ScreenH-ScreenW*2/3-videoHeight-20)];
     _contentTxt.editable=NO;
@@ -167,7 +178,35 @@
     
     
 }
-
+-(void)fullScreen
+{
+    isFull =!isFull;
+    if (isFull) {
+         AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+             appDelegate.allowRotation = YES;//(以上2行代码,可以理解为打开横屏开关)
+             [self setNewOrientation:YES];//调用转屏代码
+           
+              [_videoView setFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
+              _contentTxt.hidden=YES;
+         fullScreenButton.frame=CGRectMake(ScreenW-80, 0, 80, 60);
+        [fullScreenButton setTitle:@"取消全屏" forState:UIControlStateNormal];
+    }
+    else
+    {
+        AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                   appDelegate.allowRotation = NO;
+                   [self setNewOrientation:NO];
+                     CGFloat videoHeight = 64;
+                    if (KIsiPhoneX) {
+                        videoHeight=100;
+                    }
+                    [_videoView setFrame:CGRectMake(0, videoHeight, ScreenW, ScreenW*2/3)];
+                    _contentTxt.hidden=NO;
+                fullScreenButton.frame=CGRectMake(ScreenW-80, 0, 80, 60);
+           [fullScreenButton setTitle:@"全屏" forState:UIControlStateNormal];
+        
+    }
+}
 -(void)countDownAction{
     //倒计时-1
     secondsCountDown--;
@@ -304,5 +343,35 @@
     
 }
 
+- (void)setNewOrientation:(BOOL)fullscreen
+
+{
+    if (fullscreen) {
+        
+        NSNumber *resetOrientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationUnknown];
+        
+        [[UIDevice currentDevice] setValue:resetOrientationTarget forKey:@"orientation"];
+        
+        
+        
+        NSNumber *orientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
+        
+        [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
+        
+    }else{
+        
+        NSNumber *resetOrientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationUnknown];
+        
+        [[UIDevice currentDevice] setValue:resetOrientationTarget forKey:@"orientation"];
+        
+        
+        
+        NSNumber *orientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+        
+        [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
+        
+    }
+    
+}
 
 @end

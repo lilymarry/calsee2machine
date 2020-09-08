@@ -8,6 +8,7 @@
 
 #import "PlayedViewController.h"
 #import "TXVodPlayer.h"
+#import "AppDelegate.h"
 @interface PlayedViewController ()<TXVodPlayListener>{
     UIView               *_videoView;             // 视频画面
     TX_Enum_PlayerType     _playType;               // 播放类型
@@ -17,6 +18,9 @@
     
     NSString *startTimeStamp;//起始时间戳
     NSString *startTimeStr;
+    
+    UIButton *fullScreenButton;
+    BOOL isFull;
     
 }
 
@@ -89,6 +93,17 @@
      [_videoView addSubview:_videoViewImageView1];
 
     
+    fullScreenButton=[UIButton buttonWithType:UIButtonTypeCustom];
+    fullScreenButton.frame=CGRectMake(ScreenW-60, 0, 80, 60);
+    fullScreenButton.backgroundColor=[UIColor colorWithWhite:0.f alpha:0.5];
+    [fullScreenButton setTitle:@"全屏" forState:UIControlStateNormal];
+    [fullScreenButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [fullScreenButton addTarget:self action:@selector(fullScreen) forControlEvents:UIControlEventTouchUpInside];
+    fullScreenButton.enabled=NO;
+    [_videoView addSubview:fullScreenButton];
+    
+    isFull=NO;
+    
     // 创建播放器
     _player = [[TXVodPlayer alloc] init];
     [_player setRenderMode: RENDER_MODE_FILL_EDGE];
@@ -146,7 +161,38 @@
     }
     
 }
-
+-(void)fullScreen
+{
+    isFull =!isFull;
+    if (isFull) {
+         AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+             appDelegate.allowRotation = YES;//(以上2行代码,可以理解为打开横屏开关)
+             [self setNewOrientation:YES];//调用转屏代码
+           
+              [_videoView setFrame:CGRectMake(0, 0, ScreenW, ScreenH)];
+              _contentTxt.hidden=YES;
+         fullScreenButton.frame=CGRectMake(ScreenW-80, 0, 80, 60);
+        [fullScreenButton setTitle:@"取消全屏" forState:UIControlStateNormal];
+    }
+    else
+    {
+        AppDelegate * appDelegate = (AppDelegate *)[UIApplication sharedApplication].delegate;
+                   appDelegate.allowRotation = NO;
+                   [self setNewOrientation:NO];
+                     CGFloat videoHeight = 64;
+                    if (KIsiPhoneX) {
+                        videoHeight=100;
+                    }
+                    [_videoView setFrame:CGRectMake(0, videoHeight, ScreenW, ScreenW*2/3)];
+                    _contentTxt.hidden=NO;
+                fullScreenButton.frame=CGRectMake(ScreenW-80, 0, 80, 60);
+           [fullScreenButton setTitle:@"全屏" forState:UIControlStateNormal];
+        
+    }
+    
+     
+   
+}
 -(NSString *)getTime:(NSDate *)time
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -188,8 +234,8 @@
 {
     
     TXPlayerAuthParams *p = [TXPlayerAuthParams new];
-     //   p.appId = 1252463788;
-     //   p.fileId = @"4564972819219071568";
+//     p.appId = 1252463788;
+//     p.fileId = @"4564972819219071568";
     //-----------------------------正式
     p.appId = 1301332811;
     p.fileId = _playDic[@"url"];
@@ -268,7 +314,7 @@
       //          double duration = [param[EVT_PLAY_DURATION] doubleValue];
      //     NSLog(@"AAAA %f",duration);
       //          // 可以用于设置时长显示等等
-        
+       
         
     }
     else if (EvtID == PLAY_EVT_GET_MESSAGE) {
@@ -283,7 +329,36 @@
     }
     
 }
+- (void)setNewOrientation:(BOOL)fullscreen
 
+{
+    if (fullscreen) {
+        
+        NSNumber *resetOrientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationUnknown];
+        
+        [[UIDevice currentDevice] setValue:resetOrientationTarget forKey:@"orientation"];
+        
+        
+        
+        NSNumber *orientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationLandscapeLeft];
+        
+        [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
+        
+    }else{
+        
+        NSNumber *resetOrientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationUnknown];
+        
+        [[UIDevice currentDevice] setValue:resetOrientationTarget forKey:@"orientation"];
+        
+        
+        
+        NSNumber *orientationTarget = [NSNumber numberWithInt:UIInterfaceOrientationPortrait];
+        
+        [[UIDevice currentDevice] setValue:orientationTarget forKey:@"orientation"];
+        
+    }
+    
+}
 
 
 
